@@ -31,10 +31,10 @@
 
   --color-border:     color-mix(in srgb, var(--color-sage-300) 35%, transparent);
 
-  /* Typography — provisional pairing: Fraunces (display) + Public Sans (body).
+  /* Typography — provisional pairing: Newsreader (display) + Public Sans (body).
      Both load from Google Fonts in the page <head>. Swap by changing
-     the @import + these two vars only. */
-  --font-display: 'Fraunces', Georgia, 'Iowan Old Style', 'Hoefler Text', serif;
+     the <link> in <head> and this var only. */
+  --font-display: 'Newsreader', Georgia, 'Iowan Old Style', 'Hoefler Text', serif;
   --font-body:    'Public Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', system-ui, sans-serif;
 
   --text-xs:   0.8125rem;        /* 13 */
