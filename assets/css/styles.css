@@ -7,22 +7,23 @@
 
 /* -------- Tokens ------------------------------------------------ */
 :root {
-  /* Color — sage family on warm cream, mustard accent (provisional).
+  /* Color — earthy/army sage on warm cream, mustard accent (provisional).
+     Tones lean warm and olive — moss on stone, sun-faded uniform, dried grass.
      Hard rule: no pink. Anywhere. */
-  --color-ink:        #1f2a26;   /* near-black with a sage tint, for body text */
-  --color-ink-soft:   #4a5a52;   /* secondary text */
-  --color-muted:      #8b988f;   /* captions, meta */
+  --color-ink:        #23281e;   /* warm near-black with subtle olive */
+  --color-ink-soft:   #525A40;   /* olive secondary text */
+  --color-muted:      #8C927A;   /* warm muted, for captions/meta */
 
   --color-bg:         #faf6ef;   /* warm off-white / cream — page base */
   --color-bg-elev:    #ffffff;   /* pure white for occasional elevation */
   --color-surface:    #f1ede3;   /* warmer cream surface, alternate sections */
 
-  --color-sage-50:    #eef2ec;
-  --color-sage-100:   #dde6da;
-  --color-sage-300:   #a8bba2;
-  --color-sage-500:   #7a9275;   /* primary sage */
-  --color-sage-700:   #4f6a4c;   /* deep sage — headings on cream, mascot stroke */
-  --color-sage-900:   #2d3f2c;   /* deepest sage for dark sections */
+  --color-sage-50:    #ECEEE0;   /* sun-bleached linen */
+  --color-sage-100:   #D7DCC1;   /* dried-grass pale */
+  --color-sage-300:   #A8B189;   /* dusty olive-sage */
+  --color-sage-500:   #7C8758;   /* primary — olive-leaning sage */
+  --color-sage-700:   #565F38;   /* deep army sage — headings, mascot stroke */
+  --color-sage-900:   #2E3320;   /* near-black olive for dark sections */
 
   --color-accent:       #c89a3a; /* mustard — provisional accent */
   --color-accent-deep:  #9a7423;
