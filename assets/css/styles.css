@@ -175,11 +175,10 @@ p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
 .brand__mark img {
   width: 100%; height: 100%;
   object-fit: contain;
-  /* Bertie's source PNG is the original pink/coral. A small hue nudge
-     + lower brightness pulls her toward clay/terracotta — warm enough
-     that the brain folds still read as a brain, dark enough that it's
-     clearly not the candy pink the brief rules out. Tune here only. */
-  filter: hue-rotate(8deg) saturate(0.9) brightness(0.82);
+  /* Bertie's source PNG is candy coral. Real brain tissue is
+     pinkish-gray — warm undertone but heavily desaturated. Drop
+     saturation hard, keep hue near-source so the warmth stays. */
+  filter: hue-rotate(3deg) saturate(0.35) brightness(0.92);
 }
 .brand__name {
   font-family: var(--font-display);
