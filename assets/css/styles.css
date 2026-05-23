@@ -356,6 +356,103 @@ body.nav-open { overflow: hidden; }
   background: color-mix(in srgb, var(--color-sage-50) 50%, transparent);
 }
 
+/* -------- Feature blocks (image + text, alternating) ----------- */
+.feature {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .feature { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+  .feature--text-first .feature__media { order: 2; }
+}
+.feature__media {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--color-sage-50);
+}
+.feature__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.feature__title {
+  margin: 0 0 var(--space-4);
+}
+.feature__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.4em;
+  font-weight: 500;
+}
+.feature__link::after {
+  content: "→";
+  transition: transform var(--duration-quick) var(--ease-out);
+}
+.feature__link:hover::after { transform: translateX(3px); }
+
+/* -------- Credentials band (quiet, parent-friendly) ------------ */
+.creds .container { max-width: var(--measure-wide); }
+.creds__lead {
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--color-ink-soft);
+  max-width: none;
+  margin: 0 auto;
+}
+.creds__lead strong {
+  font-weight: 500;
+  color: var(--color-sage-700);
+}
+
+/* -------- "Coming soon" card (testimonials placeholder) -------- */
+.soon-card {
+  background: var(--color-bg-elev);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-7) var(--space-6);
+  max-width: var(--measure);
+  margin: 0 auto;
+  text-align: center;
+  color: var(--color-ink-soft);
+}
+.soon-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  margin: 0 0 var(--space-3);
+  color: var(--color-ink);
+}
+.soon-card p { margin: 0 auto; }
+
+/* -------- Close CTA block (image + invitation) ----------------- */
+.close-cta {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .close-cta { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+}
+.close-cta__media {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--color-sage-50);
+}
+.close-cta__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* -------- Utility: centered text ------------------------------- */
+.text-center { text-align: center; }
+.text-center .eyebrow { margin-inline: auto; }
+
 /* -------- Footer ----------------------------------------------- */
 .site-footer {
   margin-top: var(--space-10);
