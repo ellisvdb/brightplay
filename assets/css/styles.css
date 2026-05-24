@@ -449,6 +449,37 @@ body.nav-open { overflow: hidden; }
   object-fit: cover;
 }
 
+/* -------- Through-line stanzas (Approach page) ----------------- */
+.through-line {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+.phase {
+  padding-left: var(--space-5);
+  border-left: 2px solid var(--color-sage-300);
+}
+.phase__label {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-sage-700);
+  margin: 0 0 var(--space-2);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+.phase p {
+  margin: 0;
+  max-width: 36ch;
+}
+.phase__note {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+  font-style: italic;
+}
+
 /* -------- Utility: centered text ------------------------------- */
 .text-center { text-align: center; }
 .text-center .eyebrow { margin-inline: auto; }
