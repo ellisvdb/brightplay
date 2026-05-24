@@ -449,6 +449,32 @@ body.nav-open { overflow: hidden; }
   object-fit: cover;
 }
 
+/* -------- Feature: circle variant (smaller, magazine feel) ----
+   Image becomes a contained circle rather than a co-equal column.
+   Text gets more room to breathe. Used on the home page; Approach
+   page keeps the larger rectangular default. */
+.feature--circle .feature__media,
+.close-cta--circle .close-cta__media {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  width: clamp(220px, 38vw, 360px);
+  height: clamp(220px, 38vw, 360px);
+  margin: 0 auto;
+  background: var(--color-sage-50);
+}
+@media (min-width: 768px) {
+  .feature--circle {
+    grid-template-columns: 1fr auto;
+  }
+  .feature--circle.feature--reverse {
+    grid-template-columns: auto 1fr;
+  }
+  .close-cta--circle {
+    grid-template-columns: auto 1fr;
+    gap: var(--space-8);
+  }
+}
+
 /* -------- Through-line stanzas (Approach page) ----------------- */
 .through-line {
   display: flex;
