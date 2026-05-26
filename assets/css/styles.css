@@ -266,39 +266,41 @@ body.nav-open { overflow: hidden; }
 .btn--ghost  { background: transparent; color: var(--color-ink); border-color: var(--color-sage-300); }
 .btn--ghost:hover { background: var(--color-sage-50); }
 
-/* -------- Hero (full-bleed image with centered overlay) -------
-   Section breaks out of any container and stretches to viewport
-   edges. The image scales responsively via object-fit: cover.
-   A soft top-to-bottom gradient + light text-shadow keeps white
-   overlay copy legible without making the image feel moody. */
-.hero {
+/* -------- Hero parallax (sticky-position approach) ------------
+   The hero section is 150svh tall. The image inside is sticky at
+   top:0 with height 100svh, so it "anchors" to the viewport while
+   the overlay text scrolls up off-screen. After 50svh of scroll
+   the image un-sticks and the next section emerges beneath.
+   CSS-only — no JS required. Honors prefers-reduced-motion. */
+.hero-parallax {
   position: relative;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  height: 150svh;
   background: var(--color-sage-100);
+}
+
+.hero-parallax__sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  width: 100%;
   overflow: hidden;
 }
 
-.hero__media {
-  position: relative;
+.hero-parallax__img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  min-height: 78svh;
-  max-height: 100svh;
-}
-
-.hero__img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-/* Soft cream radial brightening the center where text sits — lifts
-   contrast for dark text without darkening the image overall. */
-.hero__media::after {
-  content: "";
-  position: absolute; inset: 0;
+/* Cream radial lifts contrast for dark overlay text without
+   darkening the image globally. */
+.hero-parallax__overlay {
+  position: absolute;
+  inset: 0;
   background: radial-gradient(ellipse 70% 55% at 50% 45%,
     rgba(250, 246, 239, 0.45) 0%,
     rgba(250, 246, 239, 0.20) 45%,
@@ -306,18 +308,24 @@ body.nav-open { overflow: hidden; }
   pointer-events: none;
 }
 
-.hero__content {
-  position: absolute; inset: 0;
-  display: grid; place-items: center;
+/* Text container is absolute at the top of the hero, scrolls
+   away naturally with the section. */
+.hero-parallax__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100svh;
+  display: grid;
+  place-items: center;
   padding: var(--gutter);
   text-align: center;
   color: var(--color-ink);
+  z-index: 2;
 }
-.hero__content > * { max-width: 28ch; }
+.hero-parallax__content > div { max-width: 28ch; }
 
-/* Dark text on the bright photo, with a soft cream halo so it stays
-   legible even when characters cross darker bits of the image. */
-.hero__title {
+.hero-parallax__title {
   color: var(--color-ink);
   text-shadow:
     0 0 12px rgba(250, 246, 239, 0.85),
@@ -326,7 +334,7 @@ body.nav-open { overflow: hidden; }
   max-width: none;
 }
 
-.hero__sub {
+.hero-parallax__sub {
   color: var(--color-ink-soft);
   font-family: var(--font-body);
   font-size: var(--text-xl);
@@ -337,14 +345,42 @@ body.nav-open { overflow: hidden; }
   max-width: none;
 }
 
-.hero__cta { display: flex; justify-content: center; }
+.hero-parallax__cta { margin: 0; }
 
-@media (min-width: 768px) {
-  .hero__media {
-    aspect-ratio: 16 / 9;
-    min-height: 60vh;
-    max-height: 92vh;
-  }
+/* CDC-style "scroll down to begin" cue at the bottom of the hero
+   while the image is still anchored. */
+.hero-parallax__scroll {
+  position: absolute;
+  bottom: max(var(--space-6), env(safe-area-inset-bottom));
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--color-ink);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: var(--color-ink);
+  opacity: 0.65;
+  animation: scroll-bounce 2.4s var(--ease-out) infinite;
+  z-index: 3;
+}
+.hero-parallax__scroll::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-parallax { height: 100svh; }
+  .hero-parallax__scroll { animation: none; }
 }
 
 /* -------- Section placeholders --------------------------------- */

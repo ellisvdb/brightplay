@@ -45,26 +45,28 @@
   <!-- /shell:header -->
 
   <main id="main">
-    <!-- content:hero — full-bleed image with centered overlay copy. -->
-    <section class="hero">
-      <div class="hero__media">
-        <img class="hero__img"
+    <!-- content:hero — parallax: image stays anchored while overlay scrolls up -->
+    <section class="hero-parallax">
+      <div class="hero-parallax__sticky">
+        <img class="hero-parallax__img"
              src="assets/images/photos/hero-mom-toddler-blocks.jpg"
              alt="A parent and curly-haired toddler sit on a striped rug, building tall towers of colorful wooden blocks together in a sunlit room."
              width="1200" height="675" />
-        <div class="hero__content">
-          <div>
-            <h1 class="hero__title">Play that meets you where you are</h1>
-            <p class="hero__sub">coaching that fits your day — and your way</p>
-            <p class="hero__cta"><a class="btn btn--primary" href="contact.html">Let's chat</a></p>
-          </div>
+        <div class="hero-parallax__overlay"></div>
+        <a class="hero-parallax__scroll" href="#what-is" aria-label="Scroll down"></a>
+      </div>
+      <div class="hero-parallax__content">
+        <div>
+          <h1 class="hero-parallax__title">Play that meets you where you are</h1>
+          <p class="hero-parallax__sub">coaching that fits your day — and your way</p>
+          <p class="hero-parallax__cta"><a class="btn btn--primary" href="contact.html">Let's chat</a></p>
         </div>
       </div>
     </section>
     <!-- /content:hero -->
 
     <!-- content:what-this-is -->
-    <section class="section section--surface">
+    <section class="section section--surface" id="what-is">
       <div class="container">
         <div class="feature feature--circle">
           <div>
