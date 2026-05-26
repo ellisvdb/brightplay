@@ -449,6 +449,79 @@ body.nav-open { overflow: hidden; }
   object-fit: cover;
 }
 
+/* -------- Modular section bands -------------------------------
+   Full-width colored bands per the brief's CDC-style rhythm.
+   Use sparingly — bands earn their place when the content shifts
+   emphasis. Default sections stay on the cream page background. */
+.section--sage {
+  background: var(--color-sage-50);
+}
+.section--mustard {
+  background: color-mix(in srgb, var(--color-accent-soft) 35%, var(--color-bg) 65%);
+}
+.section--ink {
+  background: var(--color-sage-900);
+  color: var(--color-bg);
+}
+.section--ink h2,
+.section--ink h3 { color: var(--color-bg); }
+
+/* -------- Column grids (one / two / three) --------------------
+   The .cols-N pattern is the layout system promised in the brief.
+   Three-column collapses to one on mobile. */
+.cols { display: grid; gap: var(--space-6); }
+@media (min-width: 700px) {
+  .cols-2 { grid-template-columns: repeat(2, 1fr); gap: var(--space-7); }
+  .cols-3 { grid-template-columns: repeat(3, 1fr); gap: var(--space-7); }
+}
+
+/* -------- Learning-Objectives card (three-column row) ---------
+   CDC pattern: number badge + flat two-tone figure icon + short
+   label + one line of context. Icon uses currentColor for stroke
+   and --icon-fill (mustard-soft) for the two-tone interior. */
+.lo-card {
+  --icon-fill: var(--color-accent-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-3);
+}
+.lo-card__number {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-accent-deep);
+  background: var(--color-accent-soft);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.lo-card__icon {
+  width: 96px;
+  height: 80px;
+  color: var(--color-sage-700);
+  margin-block: var(--space-2);
+}
+.lo-card__icon svg { width: 100%; height: 100%; display: block; }
+.lo-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-ink);
+  margin: 0;
+}
+.lo-card__body {
+  font-size: var(--text-base);
+  color: var(--color-ink-soft);
+  max-width: 28ch;
+  margin: 0;
+}
+
 /* -------- Feature: circle variant (smaller, magazine feel) ----
    Image becomes a contained circle rather than a co-equal column.
    Text gets more room to breathe. Used on the home page; Approach
@@ -475,7 +548,36 @@ body.nav-open { overflow: hidden; }
   }
 }
 
-/* -------- Through-line stanzas (Approach page) ----------------- */
+/* -------- Resources list (Home page) --------------------------- */
+.resources-list h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-sage-700);
+  margin: 0 0 var(--space-4);
+}
+.resources-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.resources-list li {
+  font-size: var(--text-base);
+  color: var(--color-ink-soft);
+  line-height: var(--leading-snug);
+}
+.resources-list a {
+  color: var(--color-ink);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+}
+
+/* -------- Through-line stanzas --------------------------------- */
 .through-line {
   display: flex;
   flex-direction: column;
