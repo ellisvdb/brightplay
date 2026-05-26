@@ -734,26 +734,6 @@ body.nav-open { overflow: hidden; }
   text-underline-offset: 0.25em;
 }
 
-/* -------- Doodle watermark ------------------------------------
-   Faded kid-drawing wall-pattern overlay for one section per page.
-   Used on the through-line on Home — a "kid's bedroom wall covered
-   in drawings" texture behind the quiet stanzas. */
-.section--doodles {
-  position: relative;
-  isolation: isolate;
-}
-.section--doodles::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('../images/doodles/wall-pattern.svg');
-  background-size: 360px;
-  background-repeat: repeat;
-  opacity: 0.06;
-  pointer-events: none;
-  z-index: -1;
-}
-
 /* -------- Through-line stanzas --------------------------------- */
 .through-line {
   display: flex;
