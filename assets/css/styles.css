@@ -31,11 +31,16 @@
 
   --color-border:     color-mix(in srgb, var(--color-sage-300) 35%, transparent);
 
-  /* Typography — provisional pairing: Newsreader (display) + Public Sans (body).
-     Both load from Google Fonts in the page <head>. Swap by changing
-     the <link> in <head> and this var only. */
+  /* Typography — three roles per the revised brief:
+     - display: Newsreader (warm editorial serif for headlines)
+     - body:    Public Sans (humanist sans for reading copy)
+     - accent:  Patrick Hand (friendly hand-drawn font for the
+                rare playful moment — Talking-is-Teaching vibe)
+     All three load from Google Fonts in the page <head>. Swap by
+     changing the <link> + the var here. */
   --font-display: 'Newsreader', Georgia, 'Iowan Old Style', 'Hoefler Text', serif;
   --font-body:    'Public Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', system-ui, sans-serif;
+  --font-accent:  'Patrick Hand', 'Comic Sans MS', cursive;
 
   --text-xs:   0.8125rem;        /* 13 */
   --text-sm:   0.9375rem;        /* 15 */
@@ -446,8 +451,11 @@ body.nav-open { overflow: hidden; }
   color: var(--color-sage-700);
 }
 
-/* -------- "Coming soon" card (testimonials placeholder) -------- */
+/* -------- "Coming soon" card (testimonials placeholder) --------
+   Styled as a soft speech bubble — left-side triangular tail keeps
+   the playful Talking-is-Teaching motif quietly present. */
 .soon-card {
+  position: relative;
   background: var(--color-bg-elev);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
@@ -457,11 +465,24 @@ body.nav-open { overflow: hidden; }
   text-align: center;
   color: var(--color-ink-soft);
 }
+.soon-card::after {
+  content: "";
+  position: absolute;
+  bottom: 28px;
+  left: -16px;
+  width: 0;
+  height: 0;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-right: 18px solid var(--color-bg-elev);
+}
 .soon-card__title {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-family: var(--font-accent);
+  font-size: var(--text-3xl);
   margin: 0 0 var(--space-3);
   color: var(--color-ink);
+  letter-spacing: 0;
+  line-height: 1;
 }
 .soon-card p { margin: 0 auto; }
 
@@ -711,6 +732,26 @@ body.nav-open { overflow: hidden; }
   text-decoration-color: var(--color-accent);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.25em;
+}
+
+/* -------- Doodle watermark ------------------------------------
+   Faded kid-drawing wall-pattern overlay for one section per page.
+   Used on the through-line on Home — a "kid's bedroom wall covered
+   in drawings" texture behind the quiet stanzas. */
+.section--doodles {
+  position: relative;
+  isolation: isolate;
+}
+.section--doodles::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/doodles/wall-pattern.svg');
+  background-size: 360px;
+  background-repeat: repeat;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* -------- Through-line stanzas --------------------------------- */
