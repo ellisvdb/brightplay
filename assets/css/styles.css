@@ -548,6 +548,33 @@ body.nav-open { overflow: hidden; }
   }
 }
 
+/* -------- Calendly embed slot (Contact page) ------------------- */
+.calendar-slot {
+  background: var(--color-bg-elev);
+  border: 2px dashed var(--color-sage-300);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.calendar-slot__placeholder {
+  color: var(--color-ink-soft);
+  font-size: var(--text-base);
+  line-height: var(--leading-snug);
+  margin: 0;
+  max-width: 38ch;
+}
+.calendar-slot__placeholder code {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.85em;
+  background: var(--color-sage-50);
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-sm);
+}
+
 /* -------- About-page pieces ------------------------------------ */
 .about-banner {
   margin: 0;
