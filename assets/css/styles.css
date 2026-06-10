@@ -143,7 +143,14 @@ p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
 /* -------- Layout primitives ------------------------------------ */
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
 .stack > * + * { margin-top: var(--space-5); }
-.section { padding-block: var(--space-9); }
+/* Default section: opaque cream bg + own stacking context so it
+   covers the fixed hero behind. Colored modifiers below override. */
+.section {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--space-9);
+  background: var(--color-bg);
+}
 .section--tight { padding-block: var(--space-7); }
 .section--surface { background: var(--color-surface); }
 
@@ -322,56 +329,26 @@ body.nav-open { overflow: hidden; }
 }
 
 .hero-parallax__title {
-  color: var(--color-ink);
+  color: #fff;
   text-shadow:
-    0 0 12px rgba(250, 246, 239, 0.85),
-    0 0 28px rgba(250, 246, 239, 0.55);
+    0 2px 14px rgba(0, 0, 0, 0.40),
+    0 1px 3px rgba(0, 0, 0, 0.30);
   margin: 0 0 var(--space-4);
   max-width: none;
 }
 
 .hero-parallax__sub {
-  color: var(--color-ink-soft);
+  color: rgba(255, 255, 255, 0.96);
   font-family: var(--font-body);
   font-size: var(--text-xl);
   text-shadow:
-    0 0 10px rgba(250, 246, 239, 0.85),
-    0 0 22px rgba(250, 246, 239, 0.5);
+    0 1px 10px rgba(0, 0, 0, 0.40),
+    0 1px 3px rgba(0, 0, 0, 0.28);
   margin: 0 0 var(--space-6);
   max-width: none;
 }
 
 .hero-parallax__cta { margin: 0; }
-
-/* CDC-style "scroll down" cue at the bottom of the hero. */
-.hero-parallax__scroll {
-  position: absolute;
-  bottom: max(var(--space-6), env(safe-area-inset-bottom));
-  left: 50%;
-  width: 44px;
-  height: 44px;
-  border: 2px solid var(--color-ink);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  text-decoration: none;
-  color: var(--color-ink);
-  opacity: 0.65;
-  animation: scroll-bounce 2.4s var(--ease-out) infinite;
-  z-index: 3;
-}
-.hero-parallax__scroll::after {
-  content: "";
-  width: 9px;
-  height: 9px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: translateY(-2px) rotate(45deg);
-}
-@keyframes scroll-bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%      { transform: translateX(-50%) translateY(6px); }
-}
 
 /* When a fixed hero is present, <main> sits z-1 with a 100svh
    margin so the hero is visible until the reader scrolls. Each
@@ -394,7 +371,6 @@ main.has-parallax-hero {
 @media (prefers-reduced-motion: reduce) {
   .hero-parallax { position: relative; }
   main.has-parallax-hero { margin-top: 0; }
-  .hero-parallax__scroll { animation: none; }
 }
 
 /* -------- Section placeholders --------------------------------- */
