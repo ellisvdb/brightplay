@@ -304,21 +304,29 @@ body.nav-open { overflow: hidden; }
   object-position: center;
 }
 
-/* Light sage wash — tints the photo gently while keeping it bright
-   enough that the room reads. Sage-100 at ~0.4. */
+/* Dark-sage radial vignette concentrated at the upper text area.
+   Strong opacity at the text center for legibility; fades to
+   near-transparent everywhere else so the photo's natural detail
+   and contrast read crisp. Sage-900 (#2E3320) as the ink. */
 .hero-parallax__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(215, 220, 193, 0.4);
+  background: radial-gradient(
+    ellipse 55% 32% at 50% 18%,
+    rgba(46, 51, 32, 0.55) 0%,
+    rgba(46, 51, 32, 0.32) 45%,
+    rgba(46, 51, 32, 0.08) 80%,
+    transparent 100%
+  );
   pointer-events: none;
 }
 
-/* Text sits in the gap between mom (left) and toddler (right) —
-   centered horizontally, ~30% from top so it lands between heads
-   and above the block towers. */
+/* Text sits in the clean white-wall gap between the figures —
+   centered horizontally, ~16% from top so it lands above mom's
+   hair and well clear of the toddler / block towers. */
 .hero-parallax__content {
   position: absolute;
-  top: 30%;
+  top: 16%;
   left: 50%;
   transform: translateX(-50%);
   width: min(90%, 36ch);
@@ -361,9 +369,9 @@ main.has-parallax-hero {
 }
 
 /* Mobile: portrait crop pulls the figures' heads higher up, so
-   bias the text a touch upward to stay in the visible gap. */
+   bias the text a touch further toward the top of the gap. */
 @media (max-width: 600px) {
-  .hero-parallax__content { top: 26%; }
+  .hero-parallax__content { top: 14%; }
 }
 
 /* Reduced motion: drop the fixed-positioning trick and render the
@@ -758,8 +766,8 @@ main.has-parallax-hero {
 .site-footer {
   position: relative;
   z-index: 1;
-  margin-top: var(--space-10);
   padding-block: var(--space-7);
+  padding-top: calc(var(--space-10) + var(--space-7));
   border-top: 1px solid var(--color-border);
   background: var(--color-bg);
   color: var(--color-ink-soft);
