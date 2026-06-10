@@ -271,25 +271,21 @@ body.nav-open { overflow: hidden; }
 .btn--ghost  { background: transparent; color: var(--color-ink); border-color: var(--color-sage-300); }
 .btn--ghost:hover { background: var(--color-sage-50); }
 
-/* -------- Hero parallax (sticky-position approach) ------------
-   The hero section is 150svh tall. The image inside is sticky at
-   top:0 with height 100svh, so it "anchors" to the viewport while
-   the overlay text scrolls up off-screen. After 50svh of scroll
-   the image un-sticks and the next section emerges beneath.
-   CSS-only — no JS required. Honors prefers-reduced-motion. */
+/* -------- Hero parallax (reveal: anchored fixed hero) ---------
+   Hero is position:fixed, full-viewport, z-0 — it stays anchored
+   to the viewport behind the rest of the page. <main> is z-1 with
+   margin-top:100svh, so subsequent sections rise up and cover the
+   hero as the reader scrolls. CSS-only, no JS required.
+   Honors prefers-reduced-motion (collapses to static). */
 .hero-parallax {
-  position: relative;
-  width: 100%;
-  height: 150svh;
-  background: var(--color-sage-100);
-}
-
-.hero-parallax__sticky {
-  position: sticky;
+  position: fixed;
   top: 0;
-  height: 100svh;
+  left: 0;
   width: 100%;
+  height: 100svh;
   overflow: hidden;
+  z-index: 0;
+  background: var(--color-sage-100);
 }
 
 .hero-parallax__img {
@@ -301,34 +297,29 @@ body.nav-open { overflow: hidden; }
   object-position: center;
 }
 
-/* Cream radial lifts contrast for dark overlay text without
-   darkening the image globally. */
+/* Light sage wash — tints the photo gently while keeping it bright
+   enough that the room reads. Sage-100 at ~0.4. */
 .hero-parallax__overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 55% at 50% 45%,
-    rgba(250, 246, 239, 0.45) 0%,
-    rgba(250, 246, 239, 0.20) 45%,
-    transparent 75%);
+  background: rgba(215, 220, 193, 0.4);
   pointer-events: none;
 }
 
-/* Text container is absolute at the top of the hero, scrolls
-   away naturally with the section. */
+/* Text sits in the gap between mom (left) and toddler (right) —
+   centered horizontally, ~30% from top so it lands between heads
+   and above the block towers. */
 .hero-parallax__content {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: var(--gutter);
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 36ch);
+  padding-inline: var(--gutter);
   text-align: center;
   color: var(--color-ink);
   z-index: 2;
 }
-.hero-parallax__content > div { max-width: 28ch; }
 
 .hero-parallax__title {
   color: var(--color-ink);
@@ -352,8 +343,7 @@ body.nav-open { overflow: hidden; }
 
 .hero-parallax__cta { margin: 0; }
 
-/* CDC-style "scroll down to begin" cue at the bottom of the hero
-   while the image is still anchored. */
+/* CDC-style "scroll down" cue at the bottom of the hero. */
 .hero-parallax__scroll {
   position: absolute;
   bottom: max(var(--space-6), env(safe-area-inset-bottom));
@@ -383,8 +373,27 @@ body.nav-open { overflow: hidden; }
   50%      { transform: translateX(-50%) translateY(6px); }
 }
 
+/* When a fixed hero is present, <main> sits z-1 with a 100svh
+   margin so the hero is visible until the reader scrolls. Each
+   section's opaque background then covers the hero on rise. */
+main.has-parallax-hero {
+  position: relative;
+  z-index: 1;
+  margin-top: 100svh;
+  background: var(--color-bg);
+}
+
+/* Mobile: portrait crop pulls the figures' heads higher up, so
+   bias the text a touch upward to stay in the visible gap. */
+@media (max-width: 600px) {
+  .hero-parallax__content { top: 26%; }
+}
+
+/* Reduced motion: drop the fixed-positioning trick and render the
+   hero inline as a normal full-viewport block. */
 @media (prefers-reduced-motion: reduce) {
-  .hero-parallax { height: 100svh; }
+  .hero-parallax { position: relative; }
+  main.has-parallax-hero { margin-top: 0; }
   .hero-parallax__scroll { animation: none; }
 }
 
@@ -771,9 +780,12 @@ body.nav-open { overflow: hidden; }
 
 /* -------- Footer ----------------------------------------------- */
 .site-footer {
+  position: relative;
+  z-index: 1;
   margin-top: var(--space-10);
   padding-block: var(--space-7);
   border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
   color: var(--color-ink-soft);
   font-size: var(--text-sm);
 }
