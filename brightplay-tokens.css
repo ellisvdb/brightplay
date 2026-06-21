@@ -1,0 +1,104 @@
+/* ============================================================
+   BrightPlay — design tokens
+   Hand this to Claude Code as the :root token layer for
+   assets/css/styles.css. Everything else references these vars.
+
+   LOCKED (Ellis, June 2026):
+   - Logo/wordmark : current serif (unchanged)
+   - Headlines (H1): Newsreader, weight 500 (MEDIUM — never bold)
+   - Body          : Atkinson Hyperlegible Next
+   - Accent font   : hand-drawn TIT font, seasoning only (TBD)
+   - Cards         : rounded, 24–32px radius
+   - Direction     : lots of whitespace, gentle parent-child
+                     photography, occasional Bertie appearances
+
+   OPEN: spine colour. Defaulted to TEAL below. To switch to
+   sage, comment out the TEAL block and uncomment the SAGE block.
+   ============================================================ */
+
+/* ---- Font loading ----------------------------------------
+   Quick path (gets you live now). Newsreader carries italics
+   for pull-quotes; Atkinson Hyperlegible Next is variable.
+
+   NOTE: per the brief's self-host plan (/assets/fonts/), the
+   most reliable way to ship "Next" is to self-host the webfont
+   files from brailleinstitute.org/freefont and @font-face them.
+   Ask me for that block when you want to move off the CDN.
+----------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+
+  /* ---- Colour · SPINE = TEAL (active) -------------------- */
+  --color-bg:           #FAF8F4;  /* ivory — page background, the 60% */
+  --color-surface:      #FFFFFF;  /* cards */
+  --color-band-warm:    #F1E8DA;  /* sand — alternating section band */
+
+  --color-primary:      #4F908B;  /* coastal teal — nav, links, structure */
+  --color-primary-deep: #285E61;  /* deep teal — colour bands, colour headings */
+
+  --color-accent:       #E5BF59;  /* gold — CTA buttons + highlights ONLY */
+  --color-accent-soft:  #D68B73;  /* clay — sparing playful accent, a whisper */
+
+  --color-text:         #2C3135;  /* charcoal — body + headlines */
+  --color-text-soft:    #3A3F40;  /* slightly lifted body text */
+  --color-on-primary:   #FAF8F4;  /* text sitting on teal */
+  --color-on-accent:    #2C3135;  /* text sitting on gold */
+
+  /* ---- Colour · SPINE = SAGE (swap) ----------------------
+     To use sage instead, comment the four TEAL lines above
+     and uncomment these four:
+  --color-primary:      #6F8463;
+  --color-primary-deep: #3E4A36;
+  --color-accent:       #E0B33D;
+  --color-accent-soft:  #C66B4A;
+  ------------------------------------------------------------ */
+
+  /* ---- Type --------------------------------------------- */
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body:    'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, sans-serif;
+
+  --weight-display:     500;  /* MEDIUM — headlines are never bold */
+  --weight-body:        400;
+  --weight-body-strong: 700;
+
+  /* mobile-first, fluid type scale */
+  --text-h1:    clamp(2rem,   5vw + 0.5rem, 3.25rem);
+  --text-h2:    clamp(1.5rem, 3.5vw,        2.25rem);
+  --text-h3:    1.25rem;
+  --text-body:  1.0625rem;   /* ~17px — Atkinson breathes a touch larger */
+  --text-small: 0.875rem;
+
+  --leading-display: 1.12;
+  --leading-body:    1.6;    /* generous for tired-at-midnight reading */
+
+  /* ---- Radius (your 24–32px) ---------------------------- */
+  --radius-card: 28px;       /* rounded cards */
+  --radius-img:  24px;       /* rounded photos */
+  --radius-pill: 999px;      /* buttons / chips */
+
+  /* ---- Spacing — generous whitespace -------------------- */
+  --space-section: clamp(3rem, 8vw, 6rem);   /* vertical rhythm between sections */
+  --space-block:   1.5rem;                   /* within a section */
+  --gutter:        clamp(1.25rem, 5vw, 2.5rem); /* page side padding */
+  --content-maxw:  72rem;                    /* readable line lengths */
+}
+
+/* ---- Baseline usage (reference for Claude Code) ----------
+   body      { background: var(--color-bg); color: var(--color-text);
+               font-family: var(--font-body); font-size: var(--text-body);
+               line-height: var(--leading-body); }
+   h1, h2    { font-family: var(--font-display); font-weight: var(--weight-display);
+               line-height: var(--leading-display); }
+   .band     { background: var(--color-band-warm); }       /* sand band */
+   .band--deep { background: var(--color-primary-deep);
+                 color: var(--color-on-primary); }          /* deep teal band */
+   .card     { background: var(--color-surface);
+               border-radius: var(--radius-card); }
+   .btn-cta  { background: var(--color-accent);
+               color: var(--color-on-accent);
+               border-radius: var(--radius-pill); }         /* gold = the only CTA colour */
+   a, nav    { color: var(--color-primary); }               /* teal = structure */
+   /* clay (--color-accent-soft) is a whisper: a dot, a tiny
+      underline, a doodle tint — never a full surface. */
+----------------------------------------------------------- */

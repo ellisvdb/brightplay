@@ -1,47 +1,87 @@
 /* =============================================================
    BrightPlay — base styles
-   Design tokens first, then a small base + structural styles.
-   Provisional choices are flagged; everything is meant to be
-   swapped without touching page HTML.
+   Token layer (below) is the design system locked by Ellis,
+   June 2026. Everything else references these vars; the spine
+   swaps TEAL↔SAGE in one block without touching components.
    ============================================================= */
 
-/* -------- Tokens ------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* -------- Token layer (BrightPlay brief) ----------------------- */
 :root {
-  /* Color — earthy/army sage on warm cream, mustard accent (provisional).
-     Tones lean warm and olive — moss on stone, sun-faded uniform, dried grass.
-     Hard rule: no pink. Anywhere. */
-  --color-ink:        #23281e;   /* warm near-black with subtle olive */
-  --color-ink-soft:   #525A40;   /* olive secondary text */
-  --color-muted:      #8C927A;   /* warm muted, for captions/meta */
 
-  --color-bg:         #faf6ef;   /* warm off-white / cream — page base */
-  --color-bg-elev:    #ffffff;   /* pure white for occasional elevation */
-  --color-surface:    #f1ede3;   /* warmer cream surface, alternate sections */
+  /* ---- Colour · SPINE = TEAL (active) -------------------- */
+  --color-bg:           #FAF8F4;  /* ivory — page background, the 60% */
+  --color-surface:      #FFFFFF;  /* cards */
+  --color-band-warm:    #F1E8DA;  /* sand — alternating section band */
 
-  --color-sage-50:    #ECEEE0;   /* sun-bleached linen */
-  --color-sage-100:   #D7DCC1;   /* dried-grass pale */
-  --color-sage-300:   #A8B189;   /* dusty olive-sage */
-  --color-sage-500:   #7C8758;   /* primary — olive-leaning sage */
-  --color-sage-700:   #565F38;   /* deep army sage — headings, mascot stroke */
-  --color-sage-900:   #2E3320;   /* near-black olive for dark sections */
+  --color-primary:      #4F908B;  /* coastal teal — nav, links, structure */
+  --color-primary-deep: #285E61;  /* deep teal — colour bands, colour headings */
 
-  --color-accent:       #c89a3a; /* mustard — provisional accent */
-  --color-accent-deep:  #9a7423;
-  --color-accent-soft:  #e9c879;
+  --color-accent:       #E5BF59;  /* gold — CTA buttons + highlights ONLY */
+  --color-accent-soft:  #D68B73;  /* clay — sparing playful accent, a whisper */
 
-  --color-border:     color-mix(in srgb, var(--color-sage-300) 35%, transparent);
+  --color-text:         #2C3135;  /* charcoal — body + headlines */
+  --color-text-soft:    #3A3F40;  /* slightly lifted body text */
+  --color-on-primary:   #FAF8F4;  /* text sitting on teal */
+  --color-on-accent:    #2C3135;  /* text sitting on gold */
 
-  /* Typography — three roles per the revised brief:
-     - display: Newsreader (warm editorial serif for headlines)
-     - body:    Public Sans (humanist sans for reading copy)
-     - accent:  Patrick Hand (friendly hand-drawn font for the
-                rare playful moment — Talking-is-Teaching vibe)
-     All three load from Google Fonts in the page <head>. Swap by
-     changing the <link> + the var here. */
-  --font-display: 'Newsreader', Georgia, 'Iowan Old Style', 'Hoefler Text', serif;
-  --font-body:    'Public Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', system-ui, sans-serif;
-  --font-accent:  'Patrick Hand', 'Comic Sans MS', cursive;
+  /* ---- Colour · SPINE = SAGE (swap) ----------------------
+     To use sage instead, comment the four TEAL lines above
+     and uncomment these four:
+  --color-primary:      #6F8463;
+  --color-primary-deep: #3E4A36;
+  --color-accent:       #E0B33D;
+  --color-accent-soft:  #C66B4A;
+  ------------------------------------------------------------ */
 
+  /* ---- Type --------------------------------------------- */
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body:    'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, sans-serif;
+
+  --weight-display:     500;  /* MEDIUM — headlines are never bold */
+  --weight-body:        400;
+  --weight-body-strong: 700;
+
+  /* mobile-first, fluid type scale (brief) */
+  --text-h1:    clamp(2rem,   5vw + 0.5rem, 3.25rem);
+  --text-h2:    clamp(1.5rem, 3.5vw,        2.25rem);
+  --text-h3:    1.25rem;
+  --text-body:  1.0625rem;   /* ~17px — Atkinson breathes a touch larger */
+  --text-small: 0.875rem;
+
+  --leading-display: 1.12;
+  --leading-body:    1.6;    /* generous for tired-at-midnight reading */
+
+  /* ---- Radius (24–32px) --------------------------------- */
+  --radius-card: 28px;       /* rounded cards */
+  --radius-img:  24px;       /* rounded photos */
+  --radius-pill: 999px;      /* buttons / chips */
+
+  /* ---- Spacing — generous whitespace -------------------- */
+  --space-section: clamp(3rem, 8vw, 6rem);      /* vertical rhythm between sections */
+  --space-block:   1.5rem;                      /* within a section */
+  --gutter:        clamp(1.25rem, 5vw, 2.5rem); /* page side padding */
+  --content-maxw:  72rem;                       /* readable line lengths */
+}
+
+/* -------- Component scale & derived tokens ---------------------
+   Extends the brief token layer above with the granular scales
+   and in-between shades the components still need. Derived colours
+   are computed from the spine, so the TEAL↔SAGE swap cascades. */
+:root {
+  /* Accent display font — the brief leaves this TBD (hand-drawn
+     TIT font). Patrick Hand is the current placeholder, loaded via
+     the page <head>. Swap the var when the real font lands. */
+  --font-accent: 'Patrick Hand', 'Comic Sans MS', cursive;
+
+  /* Derived colour shades (computed from the spine) */
+  --color-soft:        color-mix(in srgb, var(--color-primary) 10%, var(--color-bg));  /* soft surfaces / image placeholders */
+  --color-line:        color-mix(in srgb, var(--color-primary) 45%, var(--color-bg));  /* visible / dashed borders */
+  --color-border:      color-mix(in srgb, var(--color-primary) 22%, transparent);      /* subtle hairline */
+  --color-accent-deep: color-mix(in srgb, var(--color-accent) 62%, #000);              /* darker gold — hover / number */
+
+  /* Granular type scale (component sizes) */
   --text-xs:   0.8125rem;        /* 13 */
   --text-sm:   0.9375rem;        /* 15 */
   --text-base: 1.0625rem;        /* 17 — body */
@@ -72,12 +112,9 @@
   --space-9:  6rem;
   --space-10: 8rem;
 
-  /* Radii — rounded corners are part of the brand */
-  --radius-sm:   6px;
-  --radius-md:  12px;
-  --radius-lg:  24px;
-  --radius-xl:  36px;
-  --radius-pill: 999px;
+  /* Extra radii — the brief covers card / img / pill */
+  --radius-sm:    6px;
+  --radius-md:   12px;
   --radius-round: 50%;
 
   /* Layout */
@@ -85,7 +122,6 @@
   --measure:        44rem;
   --measure-wide:   64rem;
   --container:      72rem;   /* 1152px content max */
-  --gutter:         clamp(1.25rem, 4vw, 2.5rem);
 
   /* Motion */
   --ease-out:        cubic-bezier(.2,.7,.3,1);
@@ -106,7 +142,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
-  color: var(--color-ink);
+  color: var(--color-text);
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -114,16 +150,16 @@ body {
 img, svg, video { display: block; max-width: 100%; height: auto; }
 button { font: inherit; cursor: pointer; }
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
-:focus-visible { outline: 2px solid var(--color-sage-700); outline-offset: 3px; border-radius: var(--radius-sm); }
+:focus-visible { outline: 2px solid var(--color-primary-deep); outline-offset: 3px; border-radius: var(--radius-sm); }
 
 /* -------- Type ------------------------------------------------- */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 450;
+  font-weight: var(--weight-display);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   margin: 0 0 var(--space-4);
-  color: var(--color-ink);
+  color: var(--color-text);
 }
 h1 { font-size: var(--text-5xl); }
 h2 { font-size: var(--text-3xl); }
@@ -131,12 +167,12 @@ h3 { font-size: var(--text-2xl); }
 h4 { font-size: var(--text-xl); font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
 
 p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
-.lede { font-size: var(--text-xl); line-height: var(--leading-snug); color: var(--color-ink-soft); }
+.lede { font-size: var(--text-xl); line-height: var(--leading-snug); color: var(--color-text-soft); }
 .eyebrow {
   font-size: var(--text-sm);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--color-sage-700);
+  color: var(--color-primary-deep);
   margin: 0 0 var(--space-4);
 }
 
@@ -152,12 +188,12 @@ p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
   background: var(--color-bg);
 }
 .section--tight { padding-block: var(--space-7); }
-.section--surface { background: var(--color-surface); }
+.section--surface { background: var(--color-band-warm); }
 
 /* -------- Skip link -------------------------------------------- */
 .skip-link {
   position: absolute; left: -9999px; top: auto;
-  background: var(--color-ink); color: var(--color-bg);
+  background: var(--color-text); color: var(--color-bg);
   padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm);
 }
 .skip-link:focus { left: var(--gutter); top: var(--space-3); z-index: 100; }
@@ -177,7 +213,7 @@ p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
 }
 .brand {
   display: inline-flex; align-items: center; gap: var(--space-3);
-  text-decoration: none; color: var(--color-ink);
+  text-decoration: none; color: var(--color-text);
 }
 .brand__mark {
   display: inline-flex;
@@ -197,7 +233,7 @@ p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
   font-family: var(--font-display);
   font-size: var(--text-xl);
   letter-spacing: var(--tracking-tight);
-  font-weight: 500;
+  font-weight: var(--weight-display);
 }
 
 /* -------- Nav (mobile-first slide-in, desktop inline) ---------- */
@@ -209,7 +245,7 @@ p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
 .nav-toggle__bars,
 .nav-toggle__bars::before,
 .nav-toggle__bars::after {
-  display: block; width: 24px; height: 2px; background: var(--color-ink); border-radius: 2px;
+  display: block; width: 24px; height: 2px; background: var(--color-text); border-radius: 2px;
 }
 .nav-toggle__bars { position: relative; }
 .nav-toggle__bars::before,
@@ -233,9 +269,9 @@ p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   text-decoration: none;
-  color: var(--color-ink);
+  color: var(--color-text);
 }
-.site-nav__link[aria-current="page"] { color: var(--color-sage-700); }
+.site-nav__link[aria-current="page"] { color: var(--color-primary-deep); }
 
 @media (min-width: 768px) {
   .nav-toggle { display: none; }
@@ -249,10 +285,10 @@ p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
   .site-nav__link {
     font-family: var(--font-body);
     font-size: var(--text-base);
-    color: var(--color-ink-soft);
+    color: var(--color-text-soft);
   }
-  .site-nav__link:hover { color: var(--color-ink); }
-  .site-nav__link[aria-current="page"] { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 0.4em; text-decoration-thickness: 2px; }
+  .site-nav__link:hover { color: var(--color-text); }
+  .site-nav__link[aria-current="page"] { color: var(--color-text); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 0.4em; text-decoration-thickness: 2px; }
 }
 
 /* Prevent body scroll when mobile nav is open */
@@ -273,10 +309,10 @@ body.nav-open { overflow: hidden; }
     transform var(--duration-quick) var(--ease-out);
 }
 .btn:active { transform: translateY(1px); }
-.btn--primary { background: var(--color-accent); color: #fff; }
+.btn--primary { background: var(--color-accent); color: var(--color-on-accent); }
 .btn--primary:hover { background: var(--color-accent-deep); }
-.btn--ghost  { background: transparent; color: var(--color-ink); border-color: var(--color-sage-300); }
-.btn--ghost:hover { background: var(--color-sage-50); }
+.btn--ghost  { background: transparent; color: var(--color-text); border-color: var(--color-line); }
+.btn--ghost:hover { background: var(--color-soft); }
 
 /* -------- Hero parallax (reveal: anchored fixed hero) ---------
    Hero is position:fixed, full-viewport, z-0 — it stays anchored
@@ -292,7 +328,7 @@ body.nav-open { overflow: hidden; }
   height: 100svh;
   overflow: hidden;
   z-index: 0;
-  background: var(--color-sage-100);
+  background: var(--color-soft);
 }
 
 .hero-parallax__img {
@@ -304,18 +340,18 @@ body.nav-open { overflow: hidden; }
   object-position: center;
 }
 
-/* Dark-sage radial vignette concentrated at the upper text area.
+/* Dark radial vignette concentrated at the upper text area.
    Strong opacity at the text center for legibility; fades to
    near-transparent everywhere else so the photo's natural detail
-   and contrast read crisp. Sage-900 (#2E3320) as the ink. */
+   and contrast read crisp. Charcoal (--color-text) as the ink. */
 .hero-parallax__overlay {
   position: absolute;
   inset: 0;
   background: radial-gradient(
     ellipse 55% 32% at 50% 18%,
-    rgba(46, 51, 32, 0.55) 0%,
-    rgba(46, 51, 32, 0.32) 45%,
-    rgba(46, 51, 32, 0.08) 80%,
+    color-mix(in srgb, var(--color-text) 55%, transparent) 0%,
+    color-mix(in srgb, var(--color-text) 32%, transparent) 45%,
+    color-mix(in srgb, var(--color-text) 8%, transparent) 80%,
     transparent 100%
   );
   pointer-events: none;
@@ -332,10 +368,12 @@ body.nav-open { overflow: hidden; }
   width: min(90%, 36ch);
   padding-inline: var(--gutter);
   text-align: center;
-  color: var(--color-ink);
+  color: var(--color-text);
   z-index: 2;
 }
 
+/* Pure white + black shadows below are deliberate: this text sits
+   over photography, not over a token surface, so it stays literal. */
 .hero-parallax__title {
   color: #fff;
   text-shadow:
@@ -384,10 +422,10 @@ main.has-parallax-hero {
 /* -------- Section placeholders --------------------------------- */
 .placeholder {
   padding: var(--space-5);
-  border: 1px dashed var(--color-sage-300);
+  border: 1px dashed var(--color-line);
   border-radius: var(--radius-md);
-  color: var(--color-ink-soft);
-  background: color-mix(in srgb, var(--color-sage-50) 50%, transparent);
+  color: var(--color-text-soft);
+  background: color-mix(in srgb, var(--color-soft) 50%, transparent);
 }
 
 /* -------- Feature blocks (image + text, alternating) ----------- */
@@ -401,10 +439,10 @@ main.has-parallax-hero {
   .feature--text-first .feature__media { order: 2; }
 }
 .feature__media {
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-card);
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  background: var(--color-sage-50);
+  background: var(--color-soft);
 }
 .feature__media img {
   width: 100%; height: 100%;
@@ -435,13 +473,13 @@ main.has-parallax-hero {
 .creds__lead {
   font-size: var(--text-lg);
   line-height: var(--leading-snug);
-  color: var(--color-ink-soft);
+  color: var(--color-text-soft);
   max-width: none;
   margin: 0 auto;
 }
 .creds__lead strong {
   font-weight: 500;
-  color: var(--color-sage-700);
+  color: var(--color-primary-deep);
 }
 
 /* -------- "Coming soon" card (testimonials placeholder) --------
@@ -449,14 +487,14 @@ main.has-parallax-hero {
    the playful Talking-is-Teaching motif quietly present. */
 .soon-card {
   position: relative;
-  background: var(--color-bg-elev);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-card);
   padding: var(--space-7) var(--space-6);
   max-width: var(--measure);
   margin: 0 auto;
   text-align: center;
-  color: var(--color-ink-soft);
+  color: var(--color-text-soft);
 }
 .soon-card::after {
   content: "";
@@ -467,13 +505,13 @@ main.has-parallax-hero {
   height: 0;
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
-  border-right: 18px solid var(--color-bg-elev);
+  border-right: 18px solid var(--color-surface);
 }
 .soon-card__title {
   font-family: var(--font-accent);
   font-size: var(--text-3xl);
   margin: 0 0 var(--space-3);
-  color: var(--color-ink);
+  color: var(--color-text);
   letter-spacing: 0;
   line-height: 1;
 }
@@ -489,10 +527,10 @@ main.has-parallax-hero {
   .close-cta { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
 }
 .close-cta__media {
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-card);
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  background: var(--color-sage-50);
+  background: var(--color-soft);
 }
 .close-cta__media img {
   width: 100%; height: 100%;
@@ -504,17 +542,17 @@ main.has-parallax-hero {
    Use sparingly — bands earn their place when the content shifts
    emphasis. Default sections stay on the cream page background. */
 .section--sage {
-  background: var(--color-sage-50);
+  background: var(--color-soft);
 }
 .section--mustard {
   background: color-mix(in srgb, var(--color-accent-soft) 35%, var(--color-bg) 65%);
 }
 .section--ink {
-  background: var(--color-sage-900);
-  color: var(--color-bg);
+  background: var(--color-primary-deep);
+  color: var(--color-on-primary);
 }
 .section--ink h2,
-.section--ink h3 { color: var(--color-bg); }
+.section--ink h3 { color: var(--color-on-primary); }
 
 /* -------- Column grids (one / two / three) --------------------
    The .cols-N pattern is the layout system promised in the brief.
@@ -528,7 +566,7 @@ main.has-parallax-hero {
 /* -------- Learning-Objectives card (three-column row) ---------
    CDC pattern: number badge + flat two-tone figure icon + short
    label + one line of context. Icon uses currentColor for stroke
-   and --icon-fill (mustard-soft) for the two-tone interior. */
+   and --icon-fill (accent-soft) for the two-tone interior. */
 .lo-card {
   --icon-fill: var(--color-accent-soft);
   display: flex;
@@ -555,19 +593,19 @@ main.has-parallax-hero {
 .lo-card__icon {
   width: 96px;
   height: 80px;
-  color: var(--color-sage-700);
+  color: var(--color-primary-deep);
   margin-block: var(--space-2);
 }
 .lo-card__icon svg { width: 100%; height: 100%; display: block; }
 .lo-card__title {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
-  color: var(--color-ink);
+  color: var(--color-text);
   margin: 0;
 }
 .lo-card__body {
   font-size: var(--text-base);
-  color: var(--color-ink-soft);
+  color: var(--color-text-soft);
   max-width: 28ch;
   margin: 0;
 }
@@ -583,7 +621,7 @@ main.has-parallax-hero {
   width: clamp(220px, 38vw, 360px);
   height: clamp(220px, 38vw, 360px);
   margin: 0 auto;
-  background: var(--color-sage-50);
+  background: var(--color-soft);
 }
 @media (min-width: 768px) {
   .feature--circle {
@@ -600,9 +638,9 @@ main.has-parallax-hero {
 
 /* -------- Calendly embed slot (Contact page) ------------------- */
 .calendar-slot {
-  background: var(--color-bg-elev);
-  border: 2px dashed var(--color-sage-300);
-  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border: 2px dashed var(--color-line);
+  border-radius: var(--radius-card);
   padding: var(--space-8) var(--space-6);
   text-align: center;
   min-height: 420px;
@@ -611,7 +649,7 @@ main.has-parallax-hero {
   justify-content: center;
 }
 .calendar-slot__placeholder {
-  color: var(--color-ink-soft);
+  color: var(--color-text-soft);
   font-size: var(--text-base);
   line-height: var(--leading-snug);
   margin: 0;
@@ -620,7 +658,7 @@ main.has-parallax-hero {
 .calendar-slot__placeholder code {
   font-family: ui-monospace, SFMono-Regular, monospace;
   font-size: 0.85em;
-  background: var(--color-sage-50);
+  background: var(--color-soft);
   padding: 0.1em 0.4em;
   border-radius: var(--radius-sm);
 }
@@ -628,10 +666,10 @@ main.has-parallax-hero {
 /* -------- About-page pieces ------------------------------------ */
 .about-banner {
   margin: 0;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-card);
   overflow: hidden;
   aspect-ratio: 10 / 3;
-  background: var(--color-sage-50);
+  background: var(--color-soft);
 }
 .about-banner img {
   width: 100%;
@@ -650,7 +688,7 @@ main.has-parallax-hero {
 }
 .parent-creds li {
   font-size: var(--text-base);
-  color: var(--color-ink-soft);
+  color: var(--color-text-soft);
   line-height: var(--leading-snug);
   padding-left: var(--space-5);
   position: relative;
@@ -671,14 +709,14 @@ main.has-parallax-hero {
   border-radius: var(--radius-md);
   padding: var(--space-4) var(--space-5);
   font-size: var(--text-sm);
-  color: var(--color-ink-soft);
-  background: var(--color-bg-elev);
+  color: var(--color-text-soft);
+  background: var(--color-surface);
 }
 .credentials-detail summary {
   cursor: pointer;
   font-family: var(--font-display);
   font-size: var(--text-base);
-  color: var(--color-ink);
+  color: var(--color-text);
   list-style: none;
 }
 .credentials-detail summary::-webkit-details-marker { display: none; }
@@ -702,7 +740,7 @@ main.has-parallax-hero {
 .resources-list h3 {
   font-family: var(--font-display);
   font-size: var(--text-xl);
-  color: var(--color-sage-700);
+  color: var(--color-primary-deep);
   margin: 0 0 var(--space-4);
 }
 .resources-list ul {
@@ -715,11 +753,11 @@ main.has-parallax-hero {
 }
 .resources-list li {
   font-size: var(--text-base);
-  color: var(--color-ink-soft);
+  color: var(--color-text-soft);
   line-height: var(--leading-snug);
 }
 .resources-list a {
-  color: var(--color-ink);
+  color: var(--color-text);
   font-weight: 500;
   text-decoration: underline;
   text-decoration-color: var(--color-accent);
@@ -736,12 +774,12 @@ main.has-parallax-hero {
 }
 .phase {
   padding-left: var(--space-5);
-  border-left: 2px solid var(--color-sage-300);
+  border-left: 2px solid var(--color-line);
 }
 .phase__label {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
-  color: var(--color-sage-700);
+  color: var(--color-primary-deep);
   margin: 0 0 var(--space-2);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
@@ -754,7 +792,7 @@ main.has-parallax-hero {
   display: block;
   margin-top: var(--space-2);
   font-size: var(--text-sm);
-  color: var(--color-ink-soft);
+  color: var(--color-text-soft);
   font-style: italic;
 }
 
@@ -770,13 +808,13 @@ main.has-parallax-hero {
   padding-top: calc(var(--space-10) + var(--space-7));
   border-top: 1px solid var(--color-border);
   background: var(--color-bg);
-  color: var(--color-ink-soft);
+  color: var(--color-text-soft);
   font-size: var(--text-sm);
 }
 .site-footer__inner {
   display: flex; flex-direction: column; gap: var(--space-4);
 }
-.site-footer__mark { color: var(--color-sage-700); }
+.site-footer__mark { color: var(--color-primary-deep); }
 @media (min-width: 768px) {
   .site-footer__inner { flex-direction: row; justify-content: space-between; align-items: center; }
 }
