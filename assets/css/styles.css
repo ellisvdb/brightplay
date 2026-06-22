@@ -13,10 +13,10 @@
   /* ---- Colour · SPINE = TEAL (active) -------------------- */
   --color-bg:           #FAF8F4;  /* ivory — page background, the 60% */
   --color-surface:      #FFFFFF;  /* cards */
-  --color-band-warm:    #F1E8DA;  /* sand — alternating section band */
+  --color-band-warm:    #EFEDE6;  /* warm neutral — alternating section band */
 
-  --color-primary:      #4F908B;  /* coastal teal — nav, links, structure */
-  --color-primary-deep: #285E61;  /* deep teal — colour bands, colour headings */
+  --color-primary:      #2C8079;  /* coastal teal — nav, links, structure */
+  --color-primary-deep: #1C5854;  /* deep teal — colour bands, colour headings */
 
   --color-accent:       #E5BF59;  /* gold — CTA buttons + highlights ONLY */
   --color-accent-soft:  #D68B73;  /* clay — sparing playful accent, a whisper */
