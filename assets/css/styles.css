@@ -184,10 +184,13 @@ p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
 .section {
   position: relative;
   z-index: 1;
-  padding-block: var(--space-9);
+  padding-block: var(--space-section);   /* single site-wide vertical rhythm */
   background: var(--color-bg);
 }
-.section--tight { padding-block: var(--space-7); }
+.section--tight { padding-block: var(--space-section); }   /* equalized — uniform everywhere (flag A) */
+/* Carousel compensates for its track's internal padding so its visible
+   outer gap equals every other section. */
+.carousel-section { padding-block: calc(var(--space-section) - var(--space-5)); }
 
 /* Automatic subliminal alternation: every other <section> in any <main>
    breathes one hair deeper (#FCF9EC). Structural (nth-of-type), so new
@@ -395,9 +398,9 @@ body.nav-open { overflow: hidden; }
   pointer-events: none;
   background:
     radial-gradient(ellipse 66% 48% at 50% 20%,
-      rgba(0, 0, 0, .60) 0%, rgba(0, 0, 0, .32) 46%, rgba(0, 0, 0, 0) 80%),
+      rgba(0, 0, 0, .44) 0%, rgba(0, 0, 0, .22) 46%, rgba(0, 0, 0, 0) 80%),
     linear-gradient(180deg,
-      rgba(0, 0, 0, .36) 0%, rgba(0, 0, 0, .10) 40%, rgba(0, 0, 0, 0) 72%);
+      rgba(0, 0, 0, .24) 0%, rgba(0, 0, 0, .06) 40%, rgba(0, 0, 0, 0) 72%);
 }
 .on-photo__title,
 .on-photo__sub {
@@ -812,45 +815,53 @@ main.has-parallax-hero {
    MIDDLE (z2) < right box IN FRONT (z3). Polaroid tilted +3deg,
    overlapping both boxes. Stacks vertically below 680px. Used
    as-is from Ellis's finalized mockup — proportions are the point. */
+/* Scaled ~1.25x from the approved mockup (proportions + overlaps preserved).
+   Top padding kept as the hero-overlap whitespace; bottom uses the shared
+   rhythm so composed->carousel matches every other gap. */
 .bp-intro{ background:transparent;   /* inherits the section tone (milky base / whisper) — no own gradient */
-  padding:clamp(48px,8vw,80px) 20px; }
-.bp-intro__stage{ max-width:660px; margin:0 auto; display:flex; flex-direction:column;
-  align-items:center; gap:20px; }
-.bp-floatbox{ background:#fff; border:0.5px solid rgba(45,42,37,.18); border-radius:22px;
-  box-shadow:0 8px 24px rgba(28,88,84,.10); padding:22px 24px 24px; }
-.bp-eyebrow{ font-family:'Atkinson Hyperlegible Next',sans-serif; font-size:12px;
-  letter-spacing:.09em; text-transform:uppercase; color:#C08A73; margin:0 0 10px; }
-.bp-floatbox__title{ font-family:'Newsreader',serif; font-weight:500; font-size:22px;
-  line-height:1.15; color:#1C5854; margin:0 0 12px; }
-.bp-floatbox__body{ font-family:'Atkinson Hyperlegible Next',sans-serif; font-size:15px;
+  padding:clamp(48px,8vw,80px) 20px var(--space-section); }
+.bp-intro__stage{ max-width:825px; margin:0 auto; display:flex; flex-direction:column;
+  align-items:center; gap:25px; }
+.bp-floatbox{ background:#fff; border:0.5px solid rgba(45,42,37,.18); border-radius:27px;
+  box-shadow:0 8px 24px rgba(28,88,84,.10); padding:28px 30px 30px; }
+.bp-eyebrow{ font-family:'Atkinson Hyperlegible Next',sans-serif; font-size:15px;
+  letter-spacing:.09em; text-transform:uppercase; color:#C08A73; margin:0 0 12px; }
+.bp-floatbox__title{ font-family:'Newsreader',serif; font-weight:500; font-size:27px;
+  line-height:1.15; color:#1C5854; margin:0 0 15px; }
+.bp-floatbox__body{ font-family:'Atkinson Hyperlegible Next',sans-serif; font-size:19px;
   line-height:1.6; color:#54534d; margin:0; }
 .bp-bullets{ list-style:none; margin:0; padding:0; }
-.bp-bullets li{ position:relative; padding-left:18px; margin-bottom:9px;
-  font-family:'Atkinson Hyperlegible Next',sans-serif; font-size:15px; line-height:1.5; color:#54534d; }
-.bp-bullets li::before{ content:""; position:absolute; left:0; top:9px; width:7px; height:7px;
+.bp-bullets li{ position:relative; padding-left:22px; margin-bottom:11px;
+  font-family:'Atkinson Hyperlegible Next',sans-serif; font-size:19px; line-height:1.5; color:#54534d; }
+.bp-bullets li::before{ content:""; position:absolute; left:0; top:11px; width:9px; height:9px;
   border-radius:50%; background:#2C8079; }
-.bp-polaroid{ width:258px; max-width:78vw; margin:0; background:#fff; border-radius:2px;
-  box-shadow:0 12px 32px rgba(28,88,84,.18); padding:13px 13px 0; }
+.bp-polaroid{ width:322px; max-width:78vw; margin:0; background:#fff; border-radius:2px;
+  box-shadow:0 12px 32px rgba(28,88,84,.18); padding:16px 16px 0; }
 .bp-polaroid__photo{ aspect-ratio:1/1; overflow:hidden; border-radius:1px; }
 .bp-polaroid__photo img{ width:100%; height:100%; object-fit:cover; object-position:43% 50%;
   display:block; }
-.bp-polaroid__caption{ height:60px; display:flex; align-items:center; justify-content:center;
-  font-family:'Gloria Hallelujah',cursive; font-size:19px; color:#2D2A26; }
+.bp-polaroid__caption{ height:75px; display:flex; align-items:center; justify-content:center;
+  font-family:'Gloria Hallelujah',cursive; font-size:24px; color:#2D2A26; }
 @media (min-width:680px){
-  .bp-intro__stage{ display:block; position:relative; min-height:380px; }
-  .bp-intro__left{ position:absolute; left:0; top:43px; width:226px; z-index:1; }
-  .bp-intro__polaroid{ position:absolute; left:50%; top:24px;
+  .bp-intro__stage{ display:block; position:relative; min-height:475px; }
+  .bp-intro__left{ position:absolute; left:0; top:54px; width:283px; z-index:1; }
+  .bp-intro__polaroid{ position:absolute; left:50%; top:30px;
     transform:translateX(-50%) rotate(3deg); z-index:2; }
-  .bp-intro__right{ position:absolute; right:0; top:180px; width:236px; z-index:3; }
+  .bp-intro__right{ position:absolute; right:0; top:225px; width:295px; z-index:3; }
 }
 @media (max-width:679px){
-  .bp-floatbox{ width:100%; max-width:360px; }
+  .bp-floatbox{ width:100%; max-width:380px; }
 }
 
 /* -------- Recommendation carousel (brief §9) ------------------
-   CSS-only auto-scroll marquee. The track holds the cards twice;
-   translateX(-50%) loops seamlessly. Pauses on hover; the hovered
-   card lifts. Reduced-motion → no animation, manual scroll. */
+   CSS-only seamless marquee. The track holds the card set THREE times and
+   animates left by exactly one copy (calc(-100%/3)); at the loop point
+   copy 2 sits precisely where copy 1 began, so the restart is invisible:
+   no gap, no snap, no boundary pause. Spacing is per-card margin-right
+   (NOT flex gap), so every card including the last has an equal trailing
+   gap and the copies line up exactly. Three copies keep the track wider
+   than any viewport, so there is never an empty tail. Pauses on hover
+   (without resetting); reduced-motion drops to a static, scrollable row. */
 .carousel {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
@@ -859,20 +870,19 @@ main.has-parallax-hero {
 .carousel__track {
   display: flex;
   align-items: stretch;            /* every card stretches to the tallest = equal height */
-  gap: 16px;                       /* cards ~16px apart — just over the Polaroid border width */
   width: max-content;
   padding-block: var(--space-5);   /* vertical room so the hover lift's shadow isn't clipped */
-  animation: bp-marquee 52s linear infinite;
+  animation: bp-marquee 36s linear infinite;
 }
 .carousel:hover .carousel__track,
 .carousel:focus-within .carousel__track { animation-play-state: paused; }
 @keyframes bp-marquee {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to   { transform: translateX(calc(-100% / 3)); }   /* exactly one of three copies */
 }
 .rec-card {
   flex: 0 0 clamp(220px, 24vw, 250px);   /* narrower → 3–4 visible at once */
-  margin: 6px 0;                          /* kill the <figure> UA default margin:1em 40px (the real gap culprit); 6px block = hover-shadow room */
+  margin: 6px 16px 6px 0;                 /* 6px block = hover-shadow room; 16px right = the inter-card gap on EVERY card (incl. last) so the loop is seamless. Not flex gap. */
   min-height: 200px;                      /* short quotes gain whitespace, never shrink */
   padding: var(--space-6);
   display: flex;
@@ -921,6 +931,330 @@ main.has-parallax-hero {
   .carousel { overflow-x: auto; }
   .carousel__track { animation: none; }
   .rec-card:hover { transform: none; }
+}
+
+/* ==============================================================
+   v4 HOME: §11 heading + §12 feature grid + §16 offset Polaroids
+   Teal accents only (never orange). White tiles keep the charcoal
+   hairline (.float-box); Polaroids do not. Reuses .cols-3,
+   .float-box, .bp-polaroid. All offset rules are scoped so the
+   composed intro block's Polaroid stays untouched. =========== */
+
+/* Uniform placeholder line-icon set (refined later to match Bertie) */
+.ficon { display: inline-flex; width: 28px; height: 28px; color: var(--color-primary); flex: 0 0 auto; }
+.ficon--lg { width: 48px; height: 48px; }
+.ficon svg { width: 100%; height: 100%; display: block; }
+.ficon svg * { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* §11 heading group */
+.offerings__sub { max-width: 46ch; margin-inline: auto; }
+.fgrid { margin-top: var(--space-8); align-items: start; gap: var(--space-7); }   /* 2x the earlier gap — more air between columns */
+
+/* Premium nested outer card around each column. Rounded corners preserved
+   (gradient ring drawn by a masked ::before, not border-image). The top
+   blends into the page (transparent fill, no top line); the ring fades in
+   from transparent at the top to a faint charcoal at the bottom; a
+   bottom-weighted shadow settles it. Inner tiles stay white. */
+.fcol {
+  position: relative;
+  background: transparent;
+  border-radius: 22px;
+  padding: var(--space-7) var(--space-6);   /* generous breathing room on all sides */
+  box-shadow: 0 16px 28px -23px rgba(45, 42, 37, .09);   /* a notch deeper than before — still very subtle */
+}
+.fcol::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  /* Ring stays invisible most of the way down, hints faintly near the
+     bottom, then FADES LIGHTER again at the very edge — barely perceptible. */
+  background: linear-gradient(180deg,
+    rgba(45, 42, 37, 0) 0%, rgba(45, 42, 37, 0) 64%,
+    rgba(45, 42, 37, .11) 88%, rgba(45, 42, 37, .06) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Placeholder icon above each column title */
+.fcol__icon { display: block; margin: 0 0 var(--space-3); width: 38px; height: 38px; }   /* ~22% smaller */
+.fcol__title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-lg);   /* ~30% smaller than text-2xl — calmer, fits one line */
+  color: var(--color-primary-deep);
+  margin: 0 0 var(--space-1);
+}
+.fcol__sub { color: var(--color-text-soft); margin: 0 0 var(--space-5); }
+
+/* Column A: option tiles (icon + label rows) */
+.opt-tiles, .benefit-tiles { list-style: none; margin: 0; padding: 0; }
+.opt-tiles { display: flex; flex-direction: column; gap: var(--space-3); }
+.opt-tile {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm); color: var(--color-text);
+}
+.opt-tile .ficon { width: 22px; height: 22px; }   /* ~22% smaller */
+
+/* Column B: six identical mustard-filled rounded squares (icon only, white)
+   in a 3 x 2 grid; the label sits BELOW each square, outside it, so longer
+   labels never resize a tile. */
+.benefit-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5) var(--space-4); }   /* more air between squares */
+.benefit-tile {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: var(--space-2);
+}
+.benefit-tile__square {
+  width: 100%;
+  max-width: 62px;            /* smaller squares, clear air around them */
+  margin-inline: auto;
+  aspect-ratio: 1 / 1;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--color-accent) 30%, transparent);   /* soft translucent golden wash */
+}
+.benefit-tile__square .ficon { width: 20px; height: 20px; color: var(--color-primary-deep); }   /* deeper colour reads on the light wash */
+.benefit-tile__label { font-size: var(--text-xs); line-height: 1.2; color: var(--color-text); }
+
+/* Column C: placeholder nested box (the premium nested effect) + skeleton lines */
+.fcol__nested {
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-5);
+}
+.fcol__nested-icon { width: 24px; height: 24px; }   /* ~25% smaller */
+.skeleton { display: block; height: 12px; width: 100%; border-radius: 999px; background: rgba(45, 42, 37, .10); }
+.skeleton--lg { height: 16px; width: 80%; }
+.skeleton--sm { width: 55%; }
+
+/* §16: three STATIC staggered Polaroids, none level. Scaled ~1.25x, keeping
+   their current tilts and relative arrangement. Scoped to .offset so the
+   composed-block Polaroid (in .bp-intro) is never affected. No hover (these
+   Polaroids do not link anywhere). */
+.offset__row {
+  display: flex; justify-content: center; align-items: flex-start;
+  gap: clamp(6px, 1.4vw, 16px);
+}
+.offset .bp-polaroid { width: clamp(190px, 26vw, 288px); }
+.offset .bp-polaroid__photo img { object-position: center; }  /* override composed-block 43% crop */
+.offset__pol--left  { transform: rotate(4deg); z-index: 1; }   /* Wheee! tilted a touch more right */
+.offset__pol--mid   { position: relative; left: -13px; transform: rotate(-1deg); z-index: 2; }
+.offset__pol--right { position: relative; margin-top: 43px; margin-left: -34px; transform: rotate(-2.5deg); z-index: 3; }
+
+@media (max-width: 679px) {
+  .offset__row { flex-direction: column; align-items: center; gap: var(--space-6); }
+  .offset__pol--left, .offset__pol--mid,
+  .offset__pol--right {
+    transform: none; margin: 0; left: 0;
+  }
+  .offset .bp-polaroid { width: min(80vw, 320px); }
+}
+
+/* ==============================================================
+   v4 HOME (A): "What we create together" SERVICE-CYCLE.
+   A wide HORIZONTAL bar of five service options in a row. A teal
+   pill auto-advances SIDEWAYS, option to option, ~2.5s dwell on a
+   12.5s loop (staggered animation-delay keeps the items in
+   lockstep, so it loops with no snap). Active option = teal pill +
+   light content; inactive = muted. Pause on hover; reduced-motion
+   shows all options static and legible. Teal only, never dark. */
+.text-teal { color: var(--color-primary); }
+
+.service-cycle {
+  list-style: none;
+  width: fit-content;
+  max-width: 100%;
+  margin: var(--space-7) auto 0;
+  padding: var(--space-1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+  border-radius: 999px;   /* slim rounded band that hugs its content */
+}
+.service-cycle__item {
+  flex: 0 0 auto;
+  display: inline-flex;
+  flex-direction: row;            /* icon left, label right, one line */
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);   /* snug; the bar stays one line tall */
+  border-radius: 999px;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--color-text) 42%, var(--color-bg));   /* muted when inactive */
+  animation: sc-advance 12.5s linear infinite;
+}
+.service-cycle__item:nth-child(1) { animation-delay: 0s; }
+.service-cycle__item:nth-child(2) { animation-delay: 2.5s; }
+.service-cycle__item:nth-child(3) { animation-delay: 5s; }
+.service-cycle__item:nth-child(4) { animation-delay: 7.5s; }
+.service-cycle__item:nth-child(5) { animation-delay: 10s; }
+.service-cycle:hover .service-cycle__item,
+.service-cycle:focus-within .service-cycle__item { animation-play-state: paused; }
+@keyframes sc-advance {
+  0%   { background: transparent;          color: color-mix(in srgb, var(--color-text) 42%, var(--color-bg)); }
+  4%   { background: var(--color-primary); color: var(--color-bg); }   /* teal pill, light content */
+  18%  { background: var(--color-primary); color: var(--color-bg); }
+  20%  { background: transparent;          color: color-mix(in srgb, var(--color-text) 42%, var(--color-bg)); }
+  100% { background: transparent;          color: color-mix(in srgb, var(--color-text) 42%, var(--color-bg)); }
+}
+.service-cycle__icon { width: 20px; height: 20px; color: inherit; }
+.service-cycle__name {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-base);
+  color: inherit;
+  line-height: 1;
+}
+@media (max-width: 700px) {
+  .service-cycle { width: 100%; }
+  .service-cycle__item { flex: 1 1 40%; justify-content: center; }   /* 2 per row on a phone, never 5 across */
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-cycle__item { animation: none; color: var(--color-text); }
+}
+
+/* Fix 2: the vertical auto-cycle now lives on the feature grid's FIRST
+   column (Multiple ways to connect). The soft-teal fill wipes in DOWN the
+   five option rows, ~2.5s dwell each on a 12.5s loop. Pause on hover;
+   reduced-motion shows all five lit, static. */
+.opt-tile { position: relative; overflow: hidden; }
+.opt-tile > * { position: relative; z-index: 1; }
+.opt-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--color-primary) 14%, var(--color-surface));
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0;
+  animation: opt-sweep 12.5s linear infinite;
+}
+.opt-tile:nth-child(1)::before { animation-delay: 0s; }
+.opt-tile:nth-child(2)::before { animation-delay: 2.5s; }
+.opt-tile:nth-child(3)::before { animation-delay: 5s; }
+.opt-tile:nth-child(4)::before { animation-delay: 7.5s; }
+.opt-tile:nth-child(5)::before { animation-delay: 10s; }
+.opt-tiles:hover .opt-tile::before,
+.opt-tiles:focus-within .opt-tile::before { animation-play-state: paused; }
+@keyframes opt-sweep {
+  0%   { transform: scaleX(0); opacity: 0; }
+  4%   { transform: scaleX(1); opacity: 1; }
+  18%  { transform: scaleX(1); opacity: 1; }
+  20%  { transform: scaleX(0); opacity: 0; }
+  100% { transform: scaleX(0); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .opt-tile::before { animation: none; transform: scaleX(1); opacity: 1; }
+}
+
+/* B) Specialty tags: italic label + outline pill tags in a wrapping row.
+   White pills with the charcoal hairline; one seed tag in a soft teal tint
+   (never mustard, which stays CTA-only). */
+.specialty {
+  display: flex;
+  flex-wrap: nowrap;            /* desktop: ONE single row */
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  max-width: 64rem;             /* wider than the slim band, so it sticks out both sides */
+  margin: var(--space-6) auto 0;
+}
+.specialty__label { font-style: italic; font-size: var(--text-sm); color: var(--color-text-soft); white-space: nowrap; }
+.tag-row {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: nowrap; justify-content: flex-start;
+  gap: var(--space-2);
+}
+.tag { white-space: nowrap; }
+@media (max-width: 900px) {
+  /* narrow screens: let the label and tags wrap to more rows so they stay legible */
+  .specialty, .tag-row { flex-wrap: wrap; }
+  .tag-row { justify-content: center; }
+}
+.tag {
+  border: 0.5px solid rgba(45, 42, 37, .18);   /* charcoal hairline */
+  border-radius: 999px;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+.tag--seed {   /* one tag pre-highlighted in a soft teal tint */
+  background: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface));
+  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  color: var(--color-primary-deep);
+}
+
+/* C) Tagline: one line, medium-dark and legible (not pale). */
+.create-tagline {
+  max-width: 48ch;
+  margin: var(--space-6) auto 0;
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+}
+
+/* D) Self-writing "input to published": two white floating boxes with a teal
+   flow arrow between them. Static placeholder for now (typing added later). */
+.selfwrite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+}
+.selfwrite__box {
+  flex: 1 1 0;
+  max-width: 26rem;
+  padding: var(--space-6);
+}
+.selfwrite__tag {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-primary-deep);
+}
+.selfwrite__tag--published {   /* soft teal pill marks the "after" box */
+  background: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface));
+  border-radius: 999px;
+  padding: 2px var(--space-2);
+}
+.selfwrite__text { margin: 0; color: var(--color-text-soft); line-height: var(--leading-normal); }
+.selfwrite__arrow { flex: 0 0 auto; color: var(--color-primary); font-size: var(--text-2xl); line-height: 1; }
+@media (max-width: 700px) {
+  .selfwrite { flex-direction: column; }
+  .selfwrite__box { width: 100%; max-width: 100%; }
+  .selfwrite__arrow { transform: rotate(90deg); }
+}
+
+/* E) Steps strip: light horizontal numbered steps; teal numerals, bold dark
+   labels; no leading zeros. Stacks on mobile. */
+.steps {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: var(--space-5) var(--space-7);
+}
+.steps__item { display: flex; align-items: baseline; gap: var(--space-2); }
+.steps__num {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+  line-height: 1;
+}
+.steps__label { font-weight: 700; font-size: var(--text-base); color: var(--color-text); }
+@media (max-width: 600px) {
+  .steps { flex-direction: column; align-items: flex-start; gap: var(--space-4); width: fit-content; margin-inline: auto; }
 }
 
 /* -------- Utility: centered text ------------------------------- */

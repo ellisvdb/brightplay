@@ -101,7 +101,7 @@
     <!-- content:carousel (brief §9) — auto-scrolling parent recommendations.
          No star ratings. Cards = words + attribution (first name / relationship /
          community). PLACEHOLDER content for now; real, consented words land later. -->
-    <section class="section" aria-labelledby="recs-title">
+    <section class="section carousel-section" aria-labelledby="recs-title">
       <div class="container">
         <h2 id="recs-title" class="visually-hidden">Parent recommendations</h2>
       </div>
@@ -212,15 +212,276 @@
               </span>
             </figcaption>
           </figure>
+          <!-- set 3 (third duplicate so the track always exceeds the viewport; hidden from assistive tech) -->
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">M</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Maya R.</span>
+                <span class="rec-card__role">Mom of a 3-year-old · Pacific Beach</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">J</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Jordan T.</span>
+                <span class="rec-card__role">Dad of twins · North Park</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">A</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Aisha K.</span>
+                <span class="rec-card__role">Early Head Start parent · City Heights</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">L</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Lena B.</span>
+                <span class="rec-card__role">Grandparent &amp; caregiver · Chula Vista</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">S</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Sam P.</span>
+                <span class="rec-card__role">Parent of a preschooler · La Mesa</span>
+              </span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
     <!-- /content:carousel -->
 
-    <!-- Phase 2 sections (feature grid, offset Polaroids, "what we create together"
-         flip-box, steps strip, "why families", FAQ, closing band, full footer) are
-         intentionally not built yet. The old band-based home was removed; recover
-         from git history if any of that copy is needed. -->
+    <!-- content:offerings (brief §11 heading + §12 three-column feature grid) -->
+    <section class="section" aria-labelledby="offerings-title">
+      <div class="container">
+        <header class="text-center">
+          <!-- PLACEHOLDER heading + subtitle. Ellis writes final. -->
+          <h2 id="offerings-title">What working together can look like</h2>
+          <p class="lede offerings__sub">Flexible ways to connect, real benefits for your family, and sessions shaped around you.</p>
+        </header>
+
+        <div class="cols cols-3 fgrid">
+
+          <!-- Column A -->
+          <div class="fcol">
+            <span class="ficon ficon--lg fcol__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/></svg></span>
+            <h3 class="fcol__title">Multiple ways to connect</h3>
+            <p class="fcol__sub">Book a session</p>
+            <ul class="opt-tiles">
+              <li class="opt-tile float-box">
+                <span class="ficon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="1"/><path d="M9 8h2M14 8h2M9 12h2M14 12h2"/><path d="M10.5 21v-3h3v3"/></svg></span>
+                <span>Office</span>
+              </li>
+              <li class="opt-tile float-box">
+                <span class="ficon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11l8-6 8 6"/><path d="M6 10v9h12v-9"/><path d="M10.5 19v-4h3v4"/></svg></span>
+                <span>In-home</span>
+              </li>
+              <li class="opt-tile float-box">
+                <span class="ficon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="20"/><path d="M12 6h6l2 2-2 2h-6"/></svg></span>
+                <span>Community</span>
+              </li>
+              <li class="opt-tile float-box">
+                <span class="ficon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="10" rx="2"/><path d="M15 10.5l6-3v9l-6-3z"/></svg></span>
+                <span>Live video</span>
+              </li>
+              <li class="opt-tile float-box">
+                <span class="ficon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.5 18A3.5 3.5 0 0 1 7 11a5 5 0 0 1 9.7 1.2A3.2 3.2 0 0 1 16.5 18z"/><path d="M12 16.5V12"/><path d="M10 13.5l2-2 2 2"/></svg></span>
+                <span>Uploaded recording</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column B -->
+          <div class="fcol">
+            <span class="ficon ficon--lg fcol__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/></svg></span>
+            <h3 class="fcol__title">Family benefits</h3>
+            <!-- PLACEHOLDER subtitle, written to the [INTENT] (the fun in functional communication). -->
+            <p class="fcol__sub">The fun side of functional communication</p>
+            <ul class="benefit-tiles">
+              <li class="benefit-tile">
+                <span class="benefit-tile__square"><span class="ficon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 5h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4v-4H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></span></span>
+                <span class="benefit-tile__label">reduced<br>frustration</span>
+              </li>
+              <li class="benefit-tile">
+                <span class="benefit-tile__square"><span class="ficon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4l1.7 4.8L18.5 10l-4.8 1.7L12 16.5l-1.7-4.8L5.5 10l4.8-1.2z"/></svg></span></span>
+                <span class="benefit-tile__label">easier<br>routines</span>
+              </li>
+              <li class="benefit-tile">
+                <span class="benefit-tile__square"><span class="ficon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 11l7-5 7 5"/><path d="M7 10v9h10v-9"/><path d="M12 17s-2-1.4-2-2.8A1.2 1.2 0 0 1 12 13a1.2 1.2 0 0 1 2 1.2C14 15.6 12 17 12 17z"/></svg></span></span>
+                <span class="benefit-tile__label">safer<br>home</span>
+              </li>
+              <li class="benefit-tile">
+                <span class="benefit-tile__square"><span class="ficon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="2.2"/><circle cx="15.5" cy="8" r="2.2"/><path d="M4.5 18v-1.5a3 3 0 0 1 3-3"/><path d="M19.5 18v-1.5a3 3 0 0 0-3-3"/><path d="M9 18v-1a3 3 0 0 1 6 0v1"/></svg></span></span>
+                <span class="benefit-tile__label">stronger<br>bonds</span>
+              </li>
+              <li class="benefit-tile">
+                <span class="benefit-tile__square"><span class="ficon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="8" width="12" height="12" rx="3"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><rect x="9.5" y="12" width="5" height="4" rx="1"/></svg></span></span>
+                <span class="benefit-tile__label">enhanced<br>independence</span>
+              </li>
+              <li class="benefit-tile">
+                <span class="benefit-tile__square"><span class="ficon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2"/></svg></span></span>
+                <span class="benefit-tile__label">time<br>saved</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column C -->
+          <div class="fcol fcol--personalized">
+            <span class="ficon ficon--lg fcol__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/></svg></span>
+            <h3 class="fcol__title">Personalized sessions</h3>
+            <p class="fcol__sub">Prioritizing your time. Your choice. Your voice.</p>
+            <!-- Placeholder nested box (premium nested effect). Ellis adds content. -->
+            <div class="fcol__nested float-box" aria-hidden="true">
+              <span class="ficon fcol__nested-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/></svg></span>
+              <span class="skeleton skeleton--lg"></span>
+              <span class="skeleton"></span>
+              <span class="skeleton skeleton--sm"></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- /content:offerings -->
+
+    <!-- content:offset (brief §16): three static staggered Polaroids, none level.
+         Real photos; scoped tilt/overlap so the composed-block Polaroid is untouched. -->
+    <section class="section offset" aria-label="Moments from real families">
+      <div class="container">
+        <div class="offset__row">
+          <figure class="bp-polaroid offset__pol offset__pol--left">
+            <div class="bp-polaroid__photo">
+              <img src="assets/images/photos/offset-mom-boy-rollercart.jpg"
+                   alt="Mom and son laughing on a ride-on cart"
+                   width="1600" height="2400" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="bp-polaroid__caption">Wheee!</figcaption>
+          </figure>
+          <figure class="bp-polaroid offset__pol offset__pol--mid">
+            <div class="bp-polaroid__photo">
+              <img src="assets/images/photos/polaroid-twomoms-feeding.jpg"
+                   alt="Two moms feeding their baby in a high chair"
+                   width="1600" height="955" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="bp-polaroid__caption">Solids!</figcaption>
+          </figure>
+          <figure class="bp-polaroid offset__pol offset__pol--right">
+            <div class="bp-polaroid__photo">
+              <img src="assets/images/photos/polaroid-kids-running.jpg"
+                   alt="Two kids running across a sunny field"
+                   width="1260" height="840" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="bp-polaroid__caption">Tag, you're it!</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- /content:offset -->
+
+    <!-- content:create (brief 13): "What we create together" horizontal service-cycle
+         with a CSS-only teal pill that auto-advances sideways (no JS). Five options;
+         the active option gets the teal pill + light content, ~2.5s each on a 12.5s loop. -->
+    <section class="section" aria-labelledby="create-title">
+      <div class="container text-center">
+        <h2 id="create-title">What we create <span class="text-teal">together</span></h2>
+        <p class="lede offerings__sub">Services we provide.</p>
+        <ul class="service-cycle float-box">
+          <li class="service-cycle__item">
+            <span class="ficon service-cycle__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l1.8 9h7.6a5.4 5.4 0 0 0 .4-9H9"/><path d="M6 4H4"/><circle cx="9.5" cy="19" r="2"/><circle cx="16" cy="19" r="2"/></svg></span>
+            <span class="service-cycle__name">Early Start</span>
+          </li>
+          <li class="service-cycle__item">
+            <span class="ficon service-cycle__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="6.5" r="2"/><circle cx="16.5" cy="9.5" r="1.6"/><path d="M6 20v-5a3 3 0 0 1 6 0a2.5 2.5 0 0 1 5 0v5"/></svg></span>
+            <span class="service-cycle__name">Project ImPACT</span>
+          </li>
+          <li class="service-cycle__item">
+            <span class="ficon service-cycle__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="13" r="4"/><circle cx="16" cy="8.5" r="2.5"/><circle cx="15.5" cy="16" r="1.5"/></svg></span>
+            <span class="service-cycle__name">Theraplay</span>
+          </li>
+          <li class="service-cycle__item">
+            <span class="ficon service-cycle__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="10" r="3.2"/><circle cx="15" cy="10" r="3.2"/><circle cx="12" cy="15" r="3.2"/></svg></span>
+            <span class="service-cycle__name">Play groups</span>
+          </li>
+          <li class="service-cycle__item">
+            <span class="ficon service-cycle__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="8" r="2"/><circle cx="12" cy="7" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 18v-4M12 17v-4M18 18v-4M3 13l3-1 6 1 6-1 3 1"/></svg></span>
+            <span class="service-cycle__name">Together</span>
+          </li>
+        </ul>
+
+        <!-- B) Specialty tags -->
+        <div class="specialty">
+          <span class="specialty__label">Focus</span>
+          <ul class="tag-row">
+            <li class="tag tag--seed">Family-centered</li>
+            <li class="tag">Play-based</li>
+            <li class="tag">Trauma-informed</li>
+            <li class="tag">Attachment-enhancing</li>
+            <li class="tag">Behavior Regulation</li>
+            <li class="tag">Communication-building</li>
+            <li class="tag">Independence</li>
+          </ul>
+        </div>
+
+        <!-- C) Tagline (placeholder copy, verbatim) -->
+        <p class="create-tagline">Engaging the body in play is essential for neurodevelopmental support and family bond.</p>
+      </div>
+    </section>
+    <!-- /content:create -->
+
+    <!-- content:selfwrite (brief D): "input to published" two-box pairing. STATIC
+         placeholder for now; typing motion added later when real copy lands. -->
+    <section class="section" aria-labelledby="selfwrite-title">
+      <div class="container">
+        <h2 id="selfwrite-title" class="visually-hidden">From input to published</h2>
+        <div class="selfwrite">
+          <div class="selfwrite__box float-box">
+            <span class="selfwrite__tag">Input</span>
+            <p class="selfwrite__text">Placeholder text. The starting input goes here, added later when the real copy lands.</p>
+          </div>
+          <span class="selfwrite__arrow" aria-hidden="true">&rarr;</span>
+          <div class="selfwrite__box float-box">
+            <span class="selfwrite__tag selfwrite__tag--published">Published</span>
+            <p class="selfwrite__text">Placeholder text. The published result goes here, added later when the real copy lands.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /content:selfwrite -->
+
+    <!-- content:steps (brief E): light horizontal numbered steps, teal numerals,
+         bold dark labels, leading zeros dropped. -->
+    <section class="section" aria-label="What to expect">
+      <div class="container">
+        <ol class="steps">
+          <li class="steps__item"><span class="steps__num">1</span><span class="steps__label">Free Chat</span></li>
+          <li class="steps__item"><span class="steps__num">2</span><span class="steps__label">Intake</span></li>
+          <li class="steps__item"><span class="steps__num">3</span><span class="steps__label">12-24 sessions</span></li>
+          <li class="steps__item"><span class="steps__num">4</span><span class="steps__label">Wrap-up</span></li>
+          <li class="steps__item"><span class="steps__num">5</span><span class="steps__label">Graduate / Extend</span></li>
+        </ol>
+      </div>
+    </section>
+    <!-- /content:steps -->
+
+    <!-- Remaining Phase 2 (later): "why families", FAQ, closing band, full footer.
+         Recover any old copy from git history if needed. -->
 
   </main>
 
