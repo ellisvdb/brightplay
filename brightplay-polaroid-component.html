@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BrightPlay — Polaroid component</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Caption hand = Gloria Hallelujah. Swap via the --bp-hand var + this href. -->
+<link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BrightPlay — Polaroid photo component
+   SHARP (square) corners on purpose — depicted physical object,
+   in deliberate contrast to the rounded UI/text boxes.
+
+   PROPORTIONS ARE LOCKED TO THE FRAME WIDTH (--bp-pol-width) via calc(),
+   so they render identically regardless of browser zoom, viewport, or
+   font size. The bottom strip has its own width-proportional height —
+   it is NOT produced by the caption text, so it can't collapse.
+
+   Geometry mirrors a real Polaroid (~88 x 107mm frame, ~79mm square image):
+     - top + sides: ~4.5% of width (thin, equal)
+     - bottom strip: ~24% of width (fat), caption sits low in it
+   Captions are TEXTURE, not copy — keep them to 1–3 words.
+   Use sparingly, on real photos only. Never full-width.
+   ============================================================ */
+
+:root{
+  --bp-paper:       #FDFCFA;
+  --bp-teal:        #2C8079;
+  --bp-teal-deep:   #1C5854;
+  --bp-shadow:      rgba(28, 88, 84, .16);
+  --bp-shadow-lift: rgba(28, 88, 84, .24);
+  --bp-pol-width:   200px;                       /* the ONE size knob — everything scales from this */
+  --bp-hand:        'Gloria Hallelujah', cursive;
+}
+
+body{ background:#F3EEE3; margin:0; padding:2.5rem 1rem; font-family:system-ui, sans-serif; }
+
+.bp-polaroid{
+  box-sizing: border-box;
+  width: var(--bp-pol-width);
+  max-width: 100%;
+  background: var(--bp-paper);
+  padding: calc(var(--bp-pol-width) * .045) calc(var(--bp-pol-width) * .045) 0;  /* thin, equal top + sides */
+  border-radius: 1px;                            /* SHARP */
+  box-shadow: 0 9px 20px var(--bp-shadow);
+  margin: 0;
+  outline: 3px solid transparent;
+  transition: transform .3s ease, box-shadow .3s ease, outline-color .2s ease;
+}
+
+.bp-polaroid__photo{
+  box-sizing: border-box;
+  aspect-ratio: 1 / 1;                           /* square window, fills the content width */
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0;
+  background: #CDE7E0;                            /* placeholder; replace with the <img> below */
+  display: flex; align-items: center; justify-content: center;
+}
+.bp-polaroid__photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+.bp-polaroid__caption{
+  box-sizing: border-box;
+  min-height: calc(var(--bp-pol-width) * .24);   /* FAT bottom strip — fixed, text-independent */
+  display: flex; align-items: flex-end; justify-content: center;  /* caption sits LOW in the strip */
+  text-align: center;
+  padding: calc(var(--bp-pol-width) * .03) calc(var(--bp-pol-width) * .045) calc(var(--bp-pol-width) * .055);
+  font-family: var(--bp-hand);
+  font-weight: 400;
+  color: var(--bp-teal-deep);
+  line-height: 1.1;
+  font-size: calc(var(--bp-pol-width) * .078);   /* scales with the frame, not the browser */
+}
+
+.bp-polaroid--left    { transform: rotate(-2.5deg); }
+.bp-polaroid--right   { transform: rotate(2deg);   }
+.bp-polaroid--straight{ transform: rotate(0);      }
+
+.bp-polaroid:hover,
+.bp-polaroid:focus-visible{
+  transform: rotate(0) translateY(-10px) scale(1.03);
+  box-shadow: 0 18px 34px var(--bp-shadow-lift);
+  outline-color: var(--bp-teal);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .bp-polaroid{ transition: none; }
+  .bp-polaroid:hover, .bp-polaroid:focus-visible{ transform: none; }
+}
+
+.bp-scatter{
+  display: flex; flex-wrap: wrap; gap: 18px;
+  align-items: flex-start; justify-content: center;
+  max-width: 720px; margin: 0 auto;
+}
+</style>
+</head>
+<body>
+
+  <div class="bp-scatter">
+
+    <!-- REAL USAGE: swap the placeholder contents for a photo:
+         <div class="bp-polaroid__photo">
+           <img src="block-tower.jpg" alt="A child placing the top block on a tall tower">
+         </div>                                                                            -->
+
+    <figure class="bp-polaroid bp-polaroid--left">
+      <div class="bp-polaroid__photo">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#1C5854" stroke-width="1.5" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>
+      </div>
+      <figcaption class="bp-polaroid__caption">First big tower</figcaption>
+    </figure>
+
+    <figure class="bp-polaroid bp-polaroid--right">
+      <div class="bp-polaroid__photo" style="background:#F4E3AE;">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#8A6B14" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="10" r="6"/><path d="M12 16v4"/></svg>
+      </div>
+      <figcaption class="bp-polaroid__caption">¡Burbujas!</figcaption>
+    </figure>
+
+    <figure class="bp-polaroid bp-polaroid--left">
+      <div class="bp-polaroid__photo" style="background:#E7DFD0;">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#7A6A50" stroke-width="1.5" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>
+      </div>
+      <figcaption class="bp-polaroid__caption">We did it!</figcaption>
+    </figure>
+
+  </div>
+
+</body>
+</html>

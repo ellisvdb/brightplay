@@ -6,18 +6,22 @@
   <title>BrightPlay — Play-based coaching for early childhood</title>
   <meta name="description" content="Play-based coaching that fits your day — and your way. Early childhood support in San Diego with Ellis van den Boogaard." />
 
-  <!-- Provisional type pairing: Newsreader (display) + Public Sans (body).
-       Swap these and the matching CSS vars to test other pairings. -->
+  <!-- Locked type system (v4): Newsreader 500 headlines + Atkinson Hyperlegible
+       Next body. Both are loaded by the @import at the top of styles.css.
+       Patrick Hand (speech bubbles) and Gloria Hallelujah (Polaroid captions)
+       are added in Phase 2 when those components land. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,450;6..72,500;6..72,600&family=Patrick+Hand&family=Public+Sans:wght@400;500;600&display=swap" />
+  <!-- Polaroid caption hand (Gloria Hallelujah). Newsreader + Atkinson
+       Hyperlegible Next come from the @import in styles.css. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" />
 
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- shell:header -->
+  <!-- shell:header — Bertie far left, links far right, mobile-safe (no wrap) -->
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="brand" href="index.html" aria-label="BrightPlay — home">
@@ -32,6 +36,7 @@
         <span class="nav-toggle__bars" aria-hidden="true"></span>
       </button>
 
+      <!-- Approach joins the nav once that page exists (brief order: Home · About · Approach · Contact). -->
       <nav class="site-nav" id="primary-nav" data-nav aria-label="Primary">
         <button class="site-nav__close" type="button" data-nav-close aria-label="Close menu">×</button>
         <ul class="site-nav__list">
@@ -44,211 +49,182 @@
   </header>
   <!-- /shell:header -->
 
-  <!-- content:hero — reveal-parallax: anchored fixed image, content slides over -->
+  <!-- content:hero (brief §6) — parallax-reveal: anchored fixed image, content slides over.
+       Hero image is KEPT and must not be replaced. -->
   <section class="hero-parallax" aria-label="BrightPlay introduction">
     <img class="hero-parallax__img"
          src="assets/images/photos/hero-mom-toddler-blocks.jpg"
          alt="A parent and curly-haired toddler sit on a striped rug, building tall towers of colorful wooden blocks together in a sunlit room."
          width="1600" height="900" />
-    <div class="hero-parallax__overlay"></div>
+    <div class="hero-parallax__overlay photo-scrim"></div>
     <div class="hero-parallax__content">
-      <h1 class="hero-parallax__title">Play that meets you where you are</h1>
-      <p class="hero-parallax__sub">coaching that fits your day — and your way</p>
-      <p class="hero-parallax__cta"><a class="btn btn--primary" href="contact.html">Let's chat</a></p>
+      <h1 class="hero-parallax__title on-photo__title">Play that meets you where you are</h1>
+      <!-- Locked tagline, kept as a smaller sub-line. -->
+      <p class="hero-parallax__sub on-photo__sub">Where play does the heavy lifting</p>
+      <p class="hero-parallax__cta"><a class="btn btn--primary btn--on-photo" href="contact.html">Let's chat</a></p>
     </div>
   </section>
   <!-- /content:hero -->
 
   <main id="main" class="has-parallax-hero">
 
-    <!-- content:what-this-is -->
-    <section class="section section--surface" id="what-is">
+    <!-- content:intro (brief §8) — composed overlap layout (approved mockup).
+         Copy in the boxes is PLACEHOLDER; structure/relationships are the point. -->
+    <section class="bp-intro">
+      <div class="bp-intro__stage">
+        <div class="bp-floatbox bp-intro__left">
+          <p class="bp-eyebrow">the day you want</p>
+          <h2 class="bp-floatbox__title">You want to enjoy it — and do more</h2>
+          <ul class="bp-bullets">
+            <li>Real moments, not more tasks</li>
+            <li>Routines that fit the day you have</li>
+            <li>A sense it’s actually working</li>
+          </ul>
+        </div>
+        <figure class="bp-polaroid bp-intro__polaroid">
+          <div class="bp-polaroid__photo">
+            <img src="assets/images/photos/polaroid-dad-shoulders.jpg"
+                 alt="A dad carrying his toddler on his shoulders outdoors">
+          </div>
+          <figcaption class="bp-polaroid__caption">Up we go!</figcaption>
+        </figure>
+        <div class="bp-floatbox bp-intro__right">
+          <p class="bp-eyebrow">where I come in</p>
+          <h2 class="bp-floatbox__title">We team up</h2>
+          <p class="bp-floatbox__body">Together we shape playful routines that fit your
+            family — built with you, not handed to you.</p>
+        </div>
+      </div>
+    </section>
+    <!-- /content:intro -->
+
+    <!-- content:carousel (brief §9) — auto-scrolling parent recommendations.
+         No star ratings. Cards = words + attribution (first name / relationship /
+         community). PLACEHOLDER content for now; real, consented words land later. -->
+    <section class="section" aria-labelledby="recs-title">
       <div class="container">
-        <div class="feature feature--circle">
-          <div>
-            <p class="eyebrow">What this is</p>
-            <h2 class="feature__title">Not another thing on your list</h2>
-            <p class="lede">Steady, playful support that fits the day you already have. With someone who sees your kid clearly, and won't make you feel you're doing it wrong.</p>
-          </div>
-          <div class="feature__media">
-            <img src="assets/images/photos/home-what.jpg"
-                 alt="A bearded father holds his small daughter close, both of them laughing, the toddler with her tongue out cheekily."
-                 width="1200" height="800" loading="lazy" />
-          </div>
+        <h2 id="recs-title" class="visually-hidden">Parent recommendations</h2>
+      </div>
+      <!-- Avatars are neutral initial-circles (not real faces); names are
+           PLACEHOLDER stand-ins — quote stays "coming soon" until real,
+           consented parent words land. No star ratings. -->
+      <div class="carousel">
+        <div class="carousel__track">
+          <!-- set 1 -->
+          <figure class="rec-card float-box">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar" aria-hidden="true">M</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Maya R.</span>
+                <span class="rec-card__role">Mom of a 3-year-old · Pacific Beach</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar" aria-hidden="true">J</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Jordan T.</span>
+                <span class="rec-card__role">Dad of twins · North Park</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar" aria-hidden="true">A</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Aisha K.</span>
+                <span class="rec-card__role">Early Head Start parent · City Heights</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar" aria-hidden="true">L</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Lena B.</span>
+                <span class="rec-card__role">Grandparent &amp; caregiver · Chula Vista</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar" aria-hidden="true">S</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Sam P.</span>
+                <span class="rec-card__role">Parent of a preschooler · La Mesa</span>
+              </span>
+            </figcaption>
+          </figure>
+          <!-- set 2 (duplicate for seamless loop; hidden from assistive tech) -->
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">M</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Maya R.</span>
+                <span class="rec-card__role">Mom of a 3-year-old · Pacific Beach</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">J</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Jordan T.</span>
+                <span class="rec-card__role">Dad of twins · North Park</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">A</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Aisha K.</span>
+                <span class="rec-card__role">Early Head Start parent · City Heights</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">L</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Lena B.</span>
+                <span class="rec-card__role">Grandparent &amp; caregiver · Chula Vista</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">S</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Sam P.</span>
+                <span class="rec-card__role">Parent of a preschooler · La Mesa</span>
+              </span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
-    <!-- /content:what-this-is -->
+    <!-- /content:carousel -->
 
-    <!-- content:focus — three-column row, CDC-style icons on sage band -->
-    <section class="section section--sage">
-      <div class="container text-center">
-        <p class="eyebrow">What we focus on</p>
-        <div class="cols cols-3">
-          <div class="lo-card">
-            <span class="lo-card__dot" aria-hidden="true"></span>
-            <span class="lo-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 96 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="30" cy="22" r="8" fill="var(--icon-fill)" stroke="currentColor" stroke-width="2.5"/>
-                <path d="M18 76V52a12 12 0 0 1 24 0v24" fill="var(--icon-fill)" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-                <circle cx="66" cy="32" r="6" fill="var(--icon-fill)" stroke="currentColor" stroke-width="2.5"/>
-                <path d="M57 76V58a9 9 0 0 1 18 0v18" fill="var(--icon-fill)" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <h3 class="lo-card__title">Connection</h3>
-            <p class="lo-card__body">Being in it together. Regulation grows here.</p>
-          </div>
-          <div class="lo-card">
-            <span class="lo-card__dot" aria-hidden="true"></span>
-            <span class="lo-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 96 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 22a8 8 0 0 1 8-8h48a8 8 0 0 1 8 8v24a8 8 0 0 1-8 8H44l-12 12V54h-8a8 8 0 0 1-8-8z" fill="var(--icon-fill)" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-                <circle cx="32" cy="34" r="3" fill="currentColor"/>
-                <circle cx="48" cy="34" r="3" fill="currentColor"/>
-                <circle cx="64" cy="34" r="3" fill="currentColor"/>
-              </svg>
-            </span>
-            <h3 class="lo-card__title">Communication</h3>
-            <p class="lo-card__body">Words, signs, AAC — every kind of voice.</p>
-          </div>
-          <div class="lo-card">
-            <span class="lo-card__dot" aria-hidden="true"></span>
-            <span class="lo-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 96 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="48" cy="40" r="30" stroke="currentColor" stroke-width="2.5"/>
-                <circle cx="48" cy="40" r="19" fill="var(--icon-fill)" stroke="currentColor" stroke-width="2.5"/>
-                <circle cx="48" cy="40" r="7" fill="currentColor"/>
-              </svg>
-            </span>
-            <h3 class="lo-card__title">Calm</h3>
-            <p class="lo-card__body">Bodies settle before words do.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /content:focus -->
+    <!-- Phase 2 sections (feature grid, offset Polaroids, "what we create together"
+         flip-box, steps strip, "why families", FAQ, closing band, full footer) are
+         intentionally not built yet. The old band-based home was removed; recover
+         from git history if any of that copy is needed. -->
 
-    <!-- content:through-line — full 5-phase spine (moved here from old approach.html) -->
-    <section class="section">
-      <div class="container">
-        <p class="eyebrow">How this works</p>
-        <h2>Doors into the same room</h2>
-        <p class="lede">The methods I use look different on paper — but they all begin in the same place and unfold in the same direction.</p>
-        <div class="through-line">
-          <div class="phase">
-            <p class="phase__label">Presence</p>
-            <p>Being there. Really there. Phone down, agenda dropped.</p>
-          </div>
-          <div class="phase">
-            <p class="phase__label">Body</p>
-            <p>Bodies regulate together before words do — rhythm, touch, breath.
-              <span class="phase__note">Theraplay lives here; EFT tapping joins in late 2026.</span>
-            </p>
-          </div>
-          <div class="phase">
-            <p class="phase__label">Connection</p>
-            <p>Eye contact. Shared attention. Ridiculous voices. Joint engagement is the soil for everything else.</p>
-          </div>
-          <div class="phase">
-            <p class="phase__label">Play</p>
-            <p>The native language. Where shared attention becomes back-and-forth.
-              <span class="phase__note">Project ImPACT and ESDM live here.</span>
-            </p>
-          </div>
-          <div class="phase">
-            <p class="phase__label">Learning</p>
-            <p>Words. Skills. They grow here — not in the chair.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /content:through-line -->
-
-    <!-- content:reframe — soft sage band for emphasis -->
-    <section class="section section--sage">
-      <div class="container">
-        <p class="eyebrow">A reframe</p>
-        <h2>Most "won't" is for a reason</h2>
-        <p class="lede">Behavior that looks like "can't" or "won't" is usually a kid who's overwhelmed, exhausted, mistrusting, or scared. Address the conditions, and the doing becomes possible.</p>
-        <p class="lede">We do less than you'd think. The less is what works.</p>
-      </div>
-    </section>
-    <!-- /content:reframe -->
-
-    <!-- content:credentials -->
-    <section class="section section--tight section--surface creds">
-      <div class="container text-center">
-        <p class="eyebrow">Trained in</p>
-        <p class="creds__lead">
-          The <strong>gold-standard early autism assessment</strong>, the <strong>leading attachment-based intervention</strong>, and the <strong>major evidence-based parent-coaching models</strong> — trauma-informed throughout.
-        </p>
-      </div>
-    </section>
-    <!-- /content:credentials -->
-
-    <!-- content:testimonials -->
-    <section class="section">
-      <div class="container text-center">
-        <p class="eyebrow">Parent words</p>
-        <div class="soon-card">
-          <p class="soon-card__title">Coming soon</p>
-          <p>Past families are putting their words together. Their stories will land here.</p>
-        </div>
-      </div>
-    </section>
-    <!-- /content:testimonials -->
-
-    <!-- content:resources -->
-    <section class="section section--surface">
-      <div class="container">
-        <p class="eyebrow">Useful places</p>
-        <h2>San Diego &amp; national resources</h2>
-        <p class="lede">Useful even if I'm not the right fit for your family.</p>
-        <div class="cols cols-2 resources-list">
-          <div>
-            <h3>San Diego</h3>
-            <ul>
-              <li><a href="https://sdrc.org/" target="_blank" rel="noopener">San Diego Regional Center</a> — early services for kids 0–3</li>
-              <li><a href="https://www.rchsd.org/" target="_blank" rel="noopener">Rady Children's Hospital</a> — developmental &amp; behavioral health</li>
-            </ul>
-          </div>
-          <div>
-            <h3>National</h3>
-            <ul>
-              <li><a href="https://www.cdc.gov/ncbddd/actearly/milestones/index.html" target="_blank" rel="noopener">CDC Milestone Tracker</a> — what to expect, when</li>
-              <li><a href="https://autismnavigator.com/" target="_blank" rel="noopener">Autism Navigator</a> — clear early-autism resources for families</li>
-              <li><a href="https://www.asha.org/" target="_blank" rel="noopener">ASHA</a> — find a speech-language therapist near you</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /content:resources -->
-
-    <!-- content:close-cta -->
-    <section class="section">
-      <div class="container">
-        <div class="close-cta close-cta--circle">
-          <div class="close-cta__media">
-            <img src="assets/images/photos/home-close.jpg"
-                 alt="A young child clings to her mother's neck from behind, the two of them quiet together on the floor near a couch."
-                 width="1200" height="800" loading="lazy" />
-          </div>
-          <div>
-            <p class="eyebrow">Let's talk</p>
-            <h2>Curious what this could look like?</h2>
-            <p class="lede">A free, no-pressure discovery call. No checklist of things you should be doing.</p>
-            <p style="margin-top: var(--space-6)">
-              <a class="btn btn--primary" href="contact.html">Let's chat</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /content:close-cta -->
   </main>
 
-  <!-- shell:footer -->
+  <!-- shell:footer (Phase 1 placeholder — full Amazon-style footer is Phase 2) -->
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <span class="site-footer__mark">BrightPlay · San Diego</span>

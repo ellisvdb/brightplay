@@ -1,268 +1,273 @@
-# BrightPlay — Project Brief
+# BrightPlay — Build Brief (v4, June 2026) · MONOCHROME
 
-> This document is the north star for the BrightPlay website. Save it as `BRIEF.md` in the project root. Paste it into any fresh Claude Code session before working on the site so the assistant has full context.
->
-> **Version note (May 2026):** This revision replaces the rigid two-column layout direction with a flexible modular layout system, reduces the site to three pages, and adds a set of named design references. Read the Design Direction and Pages sections carefully — they changed substantially.
+**Status:** This supersedes v3. Strategy, voice, and audience are unchanged. v4 folds in four things decided in design partnership since v3: (1) the locked **Polaroid photo treatment** + corner rule, (2) the **no-stars testimonial** rule, (3) the **Gloria Hallelujah** caption face, and (4) **verbatim-copy tagging** so the build never swaps Ellis's real words for generic placeholder.
 
----
+Design is optimized for smartphone viewing and fast (re)load — most parents meet BrightPlay while scrolling on their phone in a sporadic free moment. The index must be visually attractive, communicate compassion and can-do connection, and entice a free call because the parent overwhelmingly feels: **"This could be me!"**
 
-## What this site is
-
-A small, mobile-first, hand-built website (plain HTML / CSS / JS, no framework, no WordPress) for **BrightPlay** — Ellis van den Boogaard's early childhood coaching practice based in San Diego. The site replaces a paid WordPress theme that was too dark, too clinical, too constrained. We are starting from scratch, owning the code, and architecting for a Dutch-language version later.
-
-**Success = a stressed parent on a phone, with one eye available, lands on the site and within ~10 seconds feels:** *this person sees my kid, doesn't blame me, and there's something I can actually do.*
+This is a visual-design-first pass. Most body copy is placeholder; Ellis refines wording later. Build the structure, slot real text in after.
 
 ---
 
-## About Ellis (the practitioner)
+## How to read the copy tags in this brief
 
-Ellis is an early childhood coaching specialist with **two masters degrees** — an MS Ed in Applied Behavior Analysis from Purdue and an MA in Art History, with a working scientist's background (infrared reflectography, X-ray analysis of artworks, and over two decades as a professional scientific editor). 14+ years working with children and families: family literacy intervention teacher at **Words Alive!** — San Diego-based 501(c)(3) nonprofit literacy advocacy organization, working at neighborhood houses and Early/Head Start with kids 18 months and up; BCBA-trainee and program supervisor at **TERI Inc.**, **Kyo**, and **Gateway Learning Group**, managing SDRC early intervention caseloads; and the architect of clinical documentation workflows across multiple programs.
+These three markers tell the build (and any design/code pass) exactly how to treat each piece of text. **Respect them literally.**
 
-**Clinical credentials and training:**
-
-- **Evidence-based early intervention:** Project ImPACT CA (currently building national certification cases under Anna Dvortcsak), Early Start Denver Model (ESDM), PEERS® provider (from preschoolers to young adults); "picky eaters" and food sensitivity trainings
-- **Diagnostic:** ADOS®-2 and ADOS®-2 Toddler (qualified administrator)
-- **Attachment & somatic:** Theraplay Foundational + MIM (in progress under Kerri Garner's supervision, Phoenix); EFT International / Emotional Freedom Tapping (in progress under Jackie Viramontez, September 2026 target)
-- **Trauma-informed lens:** Trauma Research Foundation Certificate Program in Traumatic Stress Studies (Bessel van der Kolk's program); this is the lineage that ties the rest together
-- **Communication & coaching:** PECS-trained, Certified Special Needs Life Quality Coach, IBCCES Certified Autism Specialist
-- **Linguistic:** Certified ESL and TESOL instructor (relevant for serving immigrant families and the eventual Dutch context)
-
-Dutch citizen, bilingual Dutch/English. Strength-based, positive-reinforcement-oriented, self-described **FUNSTIGATOR**. The site should sound like her — warm, smart, not sugary, never clinical-for-its-own-sake.
-
-**Site implication:** the About page names the headline credentials in plain parent-friendly language (e.g., *"trained in the gold-standard early autism diagnostic, the leading attachment-based intervention, and the major evidence-based parent coaching models"*). A "credentials in detail" section — expandable or footer-anchored — holds the receipts for the parents and the occasional pediatrician who want them. **The site never opens with a wall of acronyms.**
+- **`[COPY]` … `[/COPY]`** — Ellis's exact words. Place as written. **Never paraphrase, shorten, or "improve" these.** If a spot needs a design decision (e.g. line breaks), keep the words and only adjust layout.
+- **`[PLACEHOLDER]` … `[/PLACEHOLDER]`** — a generic stand-in. Fill or refine later; safe to draft something reasonable in the meantime.
+- **`[INTENT: …]`** — direction for copy still to be written. Write *to* this; it is not final wording.
 
 ---
 
-## Audience
+## 0. North star (unchanged)
 
-### Primary
+The **parent is the protagonist.** A parent lands here tired, often at midnight, after a hard day or a hard evaluation, and should feel in the gut: *this person will help me inside the chaos I already have — not add another thing to my list.* Professional, trustworthy, hopeful, warm, a little playful can-do attitude. Never clinical, never preschool. Strong. Empowering. Confidence-building for parents and children alike. Warmth and joy come from real parent-child photos and small accents, not from loud color.
 
-Parents and caregivers of children **0–5** (and up to ~10 for Theraplay) with developmental concerns or diagnoses — autism, Down syndrome, speech/language delays and non-speaking children, social-emotional and regulation difficulties, ADHD presentations, trauma-informed / ACE-related behaviors. Mostly mothers, but the site must read as warmly welcoming to dads, grandparents, non-binary and LGBTQ+ caregivers; quietly inclusive **by depicting, not by declaring.**
+**Sacred rules:**
 
-### The emotional reality
-
-This parent has been told a lot of things. About what's wrong with their child. About what's wrong with *them*. About what they "should" be doing. They've tried the kitchen sink. They are exhausted, sleep-deprived worriers carrying a heavy load of guilt, shame, self-blame, and imposter feelings. Most are convinced they are messing up their child and are failing them simultaneously, even when nothing they have done deserves that weight. The site can **never imply there's a right way they're failing at.** The CAN-DO energy comes from "look what's possible from where you already are" — not "here's the program that will finally fix this."
-
-### What they need from the site
-
-- **A bone-deep conviction, fast, that they themselves can do this** — not *"maybe Ellis can help us"* but *"me, myself, and I can do this, and with Ellis at my back I will."* The site is built around the parent as protagonist of their child's story. Ellis is the steady hand, the nudge, the expertise — never the savior, never the hero. Every word, every image, every CTA should land on the parent's side of the table.
-- Confidence that Ellis actually knows her stuff (credentials framed for parents, not peers)
-- One low-friction next step: book a discovery call
-- Useful San Diego resources, even for parents who aren't a fit — pointing them somewhere good is part of the work (lives within the site, see Pages)
-
-### Not in scope for now
-
-- A "for professionals" referrer page. Stay on the downlow for now.
-- A Dutch version. Architect for it, ship in English.
-- Premium positioning. We want right-fit families for certification hours, not premium payers who've already tried twelve people.
+- **Not-another-thing-on-your-list.** Never imply "do these 12 things." Imply [COPY]we find the leverage already inside your day[/COPY].
+- **Won't-do vs can't-do reframe.** Most hard behavior is *won't*, for valid reasons (dysregulated, overwhelmed, scared). Address the conditions, the doing follows. **These exact words do not go on the page.** Always read copy from the perspective of a parent already feeling like a bad parent — carrying guilt, escape, denial, copious stress, sleeplessness, hopelessness.
+- **No peer-play claims as a core service.** Not making friendships. BrightPlay offers Theraplay / Project ImPACT / early intervention. (PEERS® is a separate offering for preschoolers to young-adult coaching — listed, not centered.)
 
 ---
 
-## Voice & tone
+## 1. Visual system
 
-**Three adjectives:** optimistic, inspired, empowered → *ready to jump in with Ellis and their kiddo.*
+### Base — near-monochrome, warm off-white
 
-**One more cue:** Ellis is a Dutch-American who walks in the SoCal rain without a coat because she misses Dutch rain. The copy should sound like that — **direct, embodied, alive.** No softening fluff. No *"we know this can be a difficult journey"* throat-clearing. The world is what it is; here's what's possible; let's go.
+- One warm off-white as the page background everywhere. Not too soft, not too hard; optimizes contrast with the white inside floating boxes and with BrightPlay's brand colors (lighter/darker teal, golden mustard, terracotta/clay) so the site looks inviting, fresh, and popping without many color accents. No colored bands.
+- A second tone, only a few percent deeper, for alternating sections — the shift should be subliminal: the eye glides past it, the brain registers "not flat." Think TwoFold. If you can consciously see a band, it's too strong.
+- **Hard constraints on the base:** no beige, no warm/cream bleed, no hint of pink, red, or orange hue in the background or its alt-tone. The off-white must read clean and cool-neutral-warm — never sandy. It must contrast cleanly with teal, golden mustard, and clay.
+- **Suggested starting values** (tune against real images later):
+  - `--color-bg: #F7F6F2` (warm off-white, the 95%)
+  - `--color-bg-alt: #F3F2EE` (subliminal alt-tone — ~2–3% deeper, same hue)
+  - `--color-surface: #FFFFFF` (floating boxes)
 
-**Tests we apply to every line of copy and every design choice:**
+### Structure comes from floating boxes, not bands
 
-1. **The zucchini-cake test** — real warmth, not performative cheer. No fake-sugar. Would a clear-eyed parent who bakes vegan zucchini cake with their kids find this honest? (And even picky eaters fall for it.)
-2. **The judged-parent test** — does this line imply a "right way" they aren't doing? If yes, cut or rewrite.
-3. **The welcome-by-depicting rule** — inclusivity shows up in images, names, examples. We do not announce it in copy.
-4. **The one-eye-on-the-phone test** — can this be parsed by a parent with *one eye available*, while blocking two kids from beating each other up with one leg, while frying an egg for "dinner," all from their phone? If not, simplify.
-5. **The "me, myself, and I can do it" test** — does this line make the parent the protagonist, with Ellis as the steady hand at their back? Or does it position Ellis as the holder of answers? Parent-first wins, every time.
+The visual rhythm is created by white **rounded** boxes with soft shadows that appear to float above the off-white — carousels, info cards, the modality grid, the FAQ, the self-writing boxes (inspired by Claude Design Beta and TwoFold). Shadow does the work color used to. Generous whitespace ("bladspiegel" — open, calm, empty-feeling).
 
----
+### Accent colors (role hierarchy)
 
-## Design direction
+- **Teal** `--color-primary: #2C8079`, **deep** `--color-primary-deep: #1C5854` — the brand color. Hover states, the moving nav underline, links, active states, hovered cursor accents, structural marks, **the Polaroid hover ring.**
+- **Golden mustard** `--color-accent: #E5BF59` — CTA buttons and highlights. The one "click me" color.
+- **Clay / terracotta** `--color-accent-soft: #D68B73` — a whisper only. Tiny dots, rare single accents. Never a surface.
+- **Charcoal text** `--color-text: #2C3135`, soft `#3A3F40`. No very light-gray body text. TwoFold goes very pale-gray on copy; we do not — parents read tired, in the dark. Body text stays dark and legible. Where TwoFold uses ultra-light gray, BrightPlay uses a **medium-light** tone: distinct enough to be noticed, easy to read in the dark by tired eyes (never very pale). Lightest gray only for tiny meta labels.
 
-### The big shift
+### Type (locked)
 
-The site is built from **flexible modular sections** — not a fixed template. Some sections are full-width single columns; some are two columns; some are **three columns** (the CDC "Learning Objectives" pattern: flat icon + short label + number, repeated three across). The layout adapts to the content, never the other way around. **Never lock the whole site into a two-column grid.**
+- **Headlines (H1–H3):** Newsreader, weight 500 (medium, never bold). *(Taste rule, not a technical lock — weight 500 holds the calm-editorial register; 700 reads loud/commercial. Newsreader is a variable font, so heavier weights cost nothing to load if ever wanted; for a single hero line, test 600 before 700.)*
+- **Body:** Atkinson Hyperlegible Next (fallback: Atkinson Hyperlegible).
+- **Speech-bubble / poster accent:** Patrick Hand — speech bubbles, one poster word. Tight leash.
+- **Polaroid captions:** Gloria Hallelujah — handwritten texture on photo captions **only.** Distinct lane from Patrick Hand: Patrick Hand = speech bubbles/poster; Gloria Hallelujah = photo captions. Two hands, never overlapping roles. (See **Photos: the Polaroid treatment** below.)
+- **Logo wordmark:** existing serif, unchanged.
 
-### Overall aesthetic
+### Photos: the Polaroid treatment (depicted physical object)
 
-Clean, contemporary, light, hopeful — and genuinely **playful**, in a grounded not-saccharine way. The blend we're after: the calm modular structure and clear iconography of the **CDC Watch Me Training** modules, warmed up with the **hand-drawn playfulness of Talking is Teaching** and the **bite-sized doable energy of Vroom**. Generous breathing room. Round images or rounded corners. Real warmth. Not slick, not corporate, not sterile-clinical.
+All small, in-content (non-full-width) photos render as **Polaroids.** A Polaroid is a *depicted physical object*, not a UI box — this is why it follows different corner rules, and the contrast is intentional: a sharp photo resting on the soft, rounded digital surface reads as a real, kept memory. It also signals "real-world person, sleeves rolled up" over "make-believe, magic-wand promises."
 
-### Named references (and what to take from each)
+**Corner rule (resolve any ambiguity by slot):**
+- **Rounded corners** — all UI and text containers: floating boxes, buttons, inputs, cards, the modality grid, FAQ, self-writing boxes.
+- **Sharp / square corners (0–1px)** — Polaroids only.
+- **No frame at all** — full-bleed / full-width images (hero, full-bleed overlays, closing image). These bleed edge-to-edge; they are neither rounded boxes nor Polaroids.
 
-- **CDC Watch Me Training** (`cdc.gov/ncbddd/watchmetraining/module1.html` and `module3.html`) — take: full-width colored section bands; the three-column "Learning Objectives" rows with simple flat two-tone figure icons + short label + number badge; the circular "scroll down to begin" cue; clean modular section rhythm; optional sticky in-page section nav.
-- **Talking is Teaching** (`talkingisteaching.org`) — take: playful hand-drawn display font for accent moments; speech-bubble motifs; simple flat warm character illustrations; "poster"-style graphic blocks. Their palette uses teal/mustard/coral — **we keep the warmth and the mustard, swap teal for sage, and use no pink.**
-- **Vroom** (`vroom.org` / the Vroom app) — take: the feeling that guidance comes in small, colorful, doable pieces — micro-content cards, never a wall of instruction. Reinforces the not-another-thing-on-your-list promise.
-- **Ellis's old WordPress hero** — take: the **parallax scrolling hero** (see below). Leave behind: the dark overlays, the rigid theme, the typos.
+**Locked Polaroid geometry** (mirrors a real Polaroid; all proportions key off one width variable so they hold at any zoom/viewport):
+- Square photo window, sharp corners.
+- Thin, **equal** top and side borders (~4.5% of width).
+- **Fat bottom strip** (~24% of width), with its own fixed height — *not* produced by the caption text, so it can never collapse.
+- Caption sits **low** in the bottom strip.
+- Soft, teal-tinted shadow underneath; on hover, the photo straightens, lifts, and gains a teal ring ("pops out of the row").
 
-### The parallax hero (homepage)
+**Caption rules:**
+- Font: Gloria Hallelujah (handwritten). Captions are **texture, not copy** — keep to 1–3 words.
+- Bilingual captions encouraged, to do double duty as warmth and a quiet signal of the multilingual, multi-community, two-country practice. Examples: [COPY]¡Burbujas![/COPY] / [COPY]Bellenblazen![/COPY] / [COPY]Bubbles![/COPY] / [COPY]Tag, you're it![/COPY]
 
-The homepage hero is a full-viewport image (the mom-and-curly-toddler-blocks photo) with the headline, subtitle, and CTA overlaid. As the parent scrolls down, the hero text rises and scrolls up *over* an anchored-feeling image, and the next section emerges beneath. The effect makes a static page feel **dynamic and alive**. Claude Code picks the technical approach (sticky container, parallax transform, etc.) and must test mobile behavior carefully — some parallax techniques misbehave on mobile, and mobile is the priority.
+**Dosage:**
+- Scatter sparingly, on **real photos only**, never full-width.
+- Don't repeat the same Polaroid layout every time photos appear — vary count/placement; avoid "two Polaroids every time."
+- **Duct tape:** one deliberate moment only (About-page hero is the natural home), never the system.
 
-### Layout system (for Claude Code)
+**Canonical implementation:** `brightplay-polaroid-component.html` — use as-is. Single size knob `--bp-pol-width`; everything else (borders, strip, caption size) derives from it via `calc()`. Keyboard-accessible, respects reduced-motion.
 
-- Build a small set of reusable section types: `full-width-band`, `one-column`, `two-column`, `three-column`, `hero-parallax`. Pages are assembled from these.
-- Three-column sections collapse gracefully to one column on mobile.
-- Full-width colored bands (sage, mustard, soft cream) separate and rhythm the page — used like the CDC orange/purple bands but in the BrightPlay palette.
-- CSS custom properties for all colors, spacing, type. One shared stylesheet.
+**Polaroid orientation:** square is the default. One exception is locked: the bubbles photo (`polaroid-bubbles-play.jpg`) is **portrait** — its composition is taller than wide, so it uses a portrait window. The component supports this by setting the photo aspect-ratio; everything else (sharp corners, fat bottom strip, caption) is unchanged.
 
-### Color
+### Full-bleed discipline
 
-**Sage and soft greens** as the spine, echoing the Theraplay office. Warm off-whites and creams as base. **Mustard** as the warm accent for buttons, CTAs, highlights, and the mascot. Possibly one more soft warm secondary (clay/terracotta) — TBD. **Hard no: any pink, anywhere.** Colored full-width bands draw from sage / mustard / cream.
+The index uses **exactly two** full-bleed (frameless, edge-to-edge) image moments. Everything else that's a photo is a Polaroid. This keeps the page calm, fast on mobile, and stops it reading like a slideshow.
 
-### Typography
+1. **Hero** — full-height, top of Home only (mom + curly toddler, blocks).
+2. **Closing band** — a wide cropped *band* (not full-height) that repeats before the footer on every page **except Contact** (the recurring sign-off; dad + sons reading).
 
-A three-role system, to be finalized in collaboration:
+The former mid-page balloons full-bleed is **removed** from Home (relocated to the Approach page as a static element). Any other non-hero photo is a Polaroid, or — if a big image is truly wanted — a cropped *band*, never another full-height full-bleed.
 
-1. **Headline serif** — distinctive but warm. Fraunces is the current frontrunner (also seen: Newsreader, Crimson Pro). For display headlines.
-2. **Body sans** — clean, humanist, highly readable on phones. TBD. Not Inter, not Roboto, not Arial.
-3. **Playful display accent** — a hand-drawn / friendly display font for select playful moments (speech-bubble text, section accents, poster-style callouts), à la Talking is Teaching. Used **sparingly** — seasoning, not the meal. TBD; may be unnecessary if Fraunces's softer optical settings carry enough personality.
+### Mascot — Bertie (locked, do not recolor)
 
-### Imagery & illustration
-
-- Round images or rounded corners for non-full-width photos
-- Natural, candid, **home-taken-feeling** real photos — not glossy stock-handshake imagery
-- Diverse abilities, ethnicities, sexes/genders, ages, races represented across the site
-- Mom-and-curly-toddler-blocks image as the **homepage parallax hero**
-- **Flat icon system** — simple, two-tone figure icons in the CDC style for three-column "what we do / how it works" rows
-- **Speech bubbles and simple flat character illustrations** as a recurring playful motif
-- **Kid-doodle accents** — light watermark, authentic-feeling child drawings (head-feet figures, family drawings, a beginner bike or kid-on-a-bike). Used sparingly. Alternative use: a *crowded wall pattern* of doodles as a super-faded transparent overlay on one section, the way a kid's bedroom wall fills with drawings over time.
+- Bertie replaces the TwoFold logo, pushed to the far-left edge of the frame with small padding.
+- Bertie may cameo elsewhere — floating near a section, and in the footer (animated waving).
+- Bertie's coloring is committed and never changes.
 
 ### Mobile-first, non-negotiable
 
-Designed for the phone first, desktop second. Every layout decision starts at a 375px viewport and grows up. Three-column sections collapse to one column. The parallax hero must be tested on mobile specifically.
+Every layout starts at 375px and grows up. Three/four-column rows collapse to one. Nav must not wrap awkwardly on a phone. The parallax hero must be tested on mobile specifically.
 
 ---
 
-## Pages
+## 2. Pages (now four)
 
-**Three pages for now.** The site is deliberately small. Content that might later become its own page currently folds into one of these three. The layout system is built so pages can split out later (Approach, Services, Resources) without a rebuild.
+1. **Home** — the index described in detail below.
+2. **About** — Ellis's story, the human, training framed for parents not peers. Not a CV.
+3. **Approach** — (new, 4th nav item, sits before Contact) — the modalities / protocols, explained via an interactive "template-selection"-style tile grid (archetypal modality image + word beneath, teal cursor on hover; see Claude Design Beta and the Polaroid carousel, contrasting teal + uplifting image-deck hover selection), each clicking through to detail. Working name "Approach."
+4. **Contact** — discovery-call booking (Calendly free embed), email, office location.
 
-1. **Home** — the parallax hero (curly-toddler image, one-line promise, one CTA). Then, assembled from modular sections: a short "what BrightPlay is" block; a three-column "how it works / what we focus on" row (CDC-style icons); the modality through-line (presence → body-first → connection → play → learning); a quiet credentials strip in plain language; a testimonials section (placeholder — "Parent words coming soon"); a few useful San Diego / national resource links; and a soft closing CTA. **The "what" and "how" content lives here.**
-2. **About** — Ellis's story, the why, the human. Training framed for parents, not peers. The **"Ellis & Kids" banner image** lives on this page. Warmth and personality. Some "how I work" content can also live here. Not a CV.
-3. **Contact** — the discovery-call booking calendar (Calendly free tier embed), email, location note. For now, **other odds and ends park here** until they earn their own page.
-
----
-
-## The modality through-line
-
-This is the spine of the Approach content (which lives on Home and/or About) and the secret framing of the whole site:
-
-> **Presence → body-first → connection → play → learning.**
-
-It starts with being in the moment — really *in it* — with the kid, with each other. That's where the bonding and the healing happen, and that's the only soil in which the rest can grow. Everything downstream is doors into the same room: Theraplay regulates through rhythm and touch. EFT tapping regulates the nervous system directly. Project ImPACT and ESDM build joint engagement through play. PEERS scaffolds peer connection. They are **not separate services**.
-
-**Why this matters more, not less, in the AI era:** all (early) childhood intervention is, fundamentally, about human-to-human connection — which in the AI-saturated reality already arriving will become exponentially more important, not less. A trustworthy adult patiently showing up, no matter what happened in the session before or the minute before. Easy-going, flexible, pivoting, encouraging, inspiring. The screen can't be that. We can.
-
-### The won't-do / can't-do reframe
-
-Most challenging behaviors are not *can't do* — they are *won't do*, and **usually for valid reasons.** The kid is dysregulated, overwhelmed, mistrusting, exhausted, hungry, scared. Once we address the conditions, the doing becomes possible. **More is said than done — but the doing is what counts.** This is a stance the site communicates without ever lecturing about it.
-
-### The not-another-thing-on-your-list promise
-
-A parent landing here should feel — immediately, in the gut — *this person will help me inside the chaos I already have, not add another to-do.* The site should never imply *"do these 12 things and your child will thrive."* It should imply *"we'll find the leverage already inside your existing day."* This is one of the strongest differentiators from every other coach and clinic out there. Hold it sacred.
+**Nav order:** Home · About · Approach · Contact — pushed to the far right of the frame, equal padding to Bertie on the left. Must hold on mobile without wrapping.
 
 ---
 
-## Image inventory
+## 3. Home / index — section by section
 
-### Authentic, Ellis's own
-- Magnifying-glass girl (DSSC student)
-- Face-paint lion girl (DSSC student)
-- Ellis-and-Max with mustaches and beret holding Max's painting
-- Black mom + two boys with paper pig drawings (DSSC — confirm)
-- "Ellis & Kids" banner (the minion-and-crafts banner from the old WP footer) — goes on the About page; Ellis will upload it to the project
-- Brainy-brain mascot (logo asset)
+Numbers in (parentheses) map to Ellis's TwoFold walkthrough notes. TwoFold is visual inspiration only — rebuild every pattern clean and minimal in BrightPlay's own system; do not copy its code.
 
-### Stock or found, recut by Ellis
-- Mom + curly toddler with blocks (homepage parallax hero)
-- Toddler-with-balloon-hair + mom in orange hoodie
-- Dad with laughing Down-syndrome toddler (circle crop, lovely)
-- Two-moms feeding Asian toddler in high chair (from Pexels — needs the full-res original recovered via reverse image search)
+### Nav (1–4)
 
-### Gaps to fill later
-- Authentic AAC moments
-- More diverse abilities and ethnicities
-- Possibly: real shots of Ellis working with families when comfortable / consented
+- No promo banner above the nav.
+- Bertie far left (small padding). Nav links far right (equal padding).
+- Hover-following underline: a teal stripe that moves to follow the cursor across nav items (replaces a fixed active-state line). *(Fancy — Phase 3.)*
+
+### Hero (6) — KEEP
+
+- The existing parallax-reveal hero: mom + curly-haired toddler, blocks (the edited version with the blue mat removed). File: `assets/images/photos/hero-mom-toddler-blocks.jpg` — already in the repo, correctly positioned; **do not replace.** Content slides up over the fixed image. Mobile-safe.
+- Text overlay + one golden-mustard CTA: [COPY]Let's chat[/COPY] (or [COPY]Book a discovery call[/COPY]).
+- Tagline for the overlay: [COPY]Where play does the heavy lifting[/COPY] *(locked tagline from the branding sessions — confirm placement; Bertie-barbell visual is its extensible asset.)*
+- *(Fancy, Phase 3: a light "shine" sweep rolling across the CTA to draw the eye.)*
+
+### Parallax reveal block (8)
+
+- After the hero, the **WHAT THIS IS** content. Heading: [COPY]Not another thing on your list[/COPY]. Sub-copy: [COPY]Steady, playful support that fits the day you already have. With someone who sees your kid clearly, and won't make you feel you're doing it wrong.[/COPY]
+- Second image (dad + child playing / hugging). Text more centered, 3-column middle layout. This is the panel that pulls up over its image — the first copy parents read after landing. Visually appealing, active, inspiring copy + photo.
+
+### Scrolling recommendation carousel (9)
+
+- A horizontal auto-scrolling marquee of parent recommendations that pauses, and the hovered card lifts slightly on cursor-over. Floating white rounded shadowed cards. Content: [PLACEHOLDER]Parent words coming soon[/PLACEHOLDER] for now. (See the TwoFold recommendations carousel.)
+- **No star ratings on-site.** (Already skipped from TwoFold — see §3 closing list.) Stars on one's own site carry no credible signal and import an Amazon/Yelp register that clashes with a warm, relationship-based practice. Trust comes from **specificity**, not a number.
+- Each card = a real parent's words + attribution: **first name, relationship, and community** (e.g. "Mom of a 3-year-old, Pacific Beach" / "Early Head Start parent"). Specific + attributed beats rated + anonymous.
+- Any aggregate **rating** signal lives **off-site**, where it can't be curated: link a Google Business profile — "See all reviews on Google →". That's the honest place for stars.
+- **Consent + child privacy:** collect explicit written consent for each testimonial; first name of the parent is fine, but do not name or pinpoint a specific child's diagnosis or situation. That care is itself part of the trustworthy signal.
+- Professional references (other clinicians, teachers) are a separate, credible category — peer endorsement reads as trustworthy on its own, no stars needed.
+
+### Full-bleed image + overlay (10) — REMOVED FROM INDEX
+
+- **Decision:** the index carries only **two** full-bleed moments (see "Full-bleed discipline" in §1). This mid-page balloons full-bleed is **cut from Home** to avoid full-bleed overload and keep the page calm and light on mobile.
+- The balloons image relocates to the **Approach page** as a static element (placement TBD — square Polaroid or wide band, decide when building Approach). Now in hand: `approach-balloons.jpg`.
+
+### Section heading (11)
+
+- Replace TwoFold's "Built for how clinicians actually work" with a parent-facing H1 + subtitle. [PLACEHOLDER]Ellis writes final[/PLACEHOLDER].
+
+### Three-column feature grid (12) — teal & mustard, not orange
+
+- **Column A** — [COPY]Multiple ways to connect[/COPY] / [COPY]Book a session[/COPY]. Dynamic option tiles: Office (apartment/office-building icon), In-home (house-with-door icon), Community (library/park-sign icon), Live video (video-camera icon), Uploaded recording (cloud-with-up-arrow icon).
+- **Column B** — [COPY]Family benefits[/COPY] / [PLACEHOLDER]subtitle TBD[/PLACEHOLDER] [INTENT: something about the fun in functional communication]. Keep the rounded-square icon tiles, five of them, evenly spaced, centered text in two lines each (for symmetry):
+  - parent+kid+speech-bubble → [COPY]reduced frustration[/COPY] *([INTENT: revisit toward strength-based wording])*
+  - toothbrush+sparkle → [COPY]easier routines[/COPY]
+  - teddy bear inside a home frame → [COPY]safer home[/COPY]
+  - parent+two-kids-hug → [COPY]stronger bonds[/COPY]
+  - backpack → [COPY]enhanced independence[/COPY]
+- **Column C** — [COPY]Personalized sessions[/COPY] / [COPY]Prioritizing your time. Your choice. Your voice.[/COPY] Family icon TBD; placeholder for now. Keep the lettered-block element, all teal (not orange); letters are placeholders. *(EFT tapping note to be woven in here later.)*
+
+### Two-image offset block (16)
+
+- Above the "Why families" block: **two or three Polaroids** (sharp corners — see Polaroid treatment), one left, one right, set slightly diagonally (not on the same horizontal line). Suggested: mom + boy outside on the roller-cart laughing (left); an action-play photo with a child using an AAC device (right); if a third reads well *and* there's enough white space, a grandparent playing/laughing with a child.
+- *(Polaroid dosage applies: don't make every photo-moment an identical pair — vary it.)*
+
+### "What we create together" — modality flip-box (13)
+
+- H1 [COPY]What we create together[/COPY] with **together** in brand teal; subtitle [COPY]Services we provide.[/COPY] A floating white rounded box with an auto-flipping horizontal overlay (teal or mustard, not dark) that moves a stripe under each item for its dwell time. Items + icons:
+  1. **Early Start** — baby-carriage/stroller icon
+  2. **Project ImPACT** — single continuous-stroke parent-arch → child-arch with two dot heads (adult bending protectively over the little one, like a mother hen spreading her wings)
+  3. **Theraplay** — floating-bubbles icon
+  4. **Play groups** — handprint-ring icon (2–3 overlapping tiny paint handprints)
+  5. *(last)* — three-people-arms-out icon (placeholder; uniform style later)
+- Specialty floating-bubble tags (keep word, maybe italic): [COPY]Family-centered, Play-based, Trauma-informed, Attachment-enhancing, Behavior Regulation, Communication-building, Independence[/COPY].
+- Tagline below (medium-dark, legible, not pale). Two options Ellis wrote — keep both for selection:
+  - [COPY]Engaging the body in play is essential for neurodevelopmental support and family bond.[/COPY]
+  - [COPY]Full-body play facilitates family bond and neurodevelopmental regulation for caregivers and kids alike.[/COPY]
+  - [INTENT: "facilitate" may read a touch upscale — pick whichever lands warmer, or blend.]
+
+### Self-writing boxes (input → published)
+
+- Keep the self-typing box pattern. Content TBD (likely a family's session-1 presentation → Project ImPACT exit). [PLACEHOLDER]fill with copy that fits the header[/PLACEHOLDER].
+
+### Steps strip (sections 01–03 style)
+
+- Light horizontal-stripe numbered steps, drop the leading zeros, teal numerals + dark bold labels: [COPY]1 Free chat · 2 Intake · 3 12–24 sessions · 4 Wrap-up · 5 Graduate / Extend[/COPY].
+
+### "Why families choose BrightPlay" (14)
+
+- Keep the four white-box layout. Replace "clinicians" → "Families." Tiles: [COPY]Strength-based, Collaborative, Honest, Effective[/COPY] (rest placeholder). Button in brand colors: [COPY]Book free chat[/COPY].
+
+### "Your data, our responsibility" + FAQ (18)
+
+- Keep the FAQ accordion look. Image: boy with Down syndrome in the vintage helmet, in a Polaroid. Maybe 2 images — switch it up; don't show two Polaroids every time. Drop the HIPAA/HITRUST badges.
+- H-line: [COPY]Your data, our responsibility[/COPY].
+- FAQ items — Ellis's own draft questions (placeholder wording she edits later; keep her phrasing as the starting point, don't replace with generic). Left column top→bottom, then right column:
+  1. [COPY]Is BrightPlay HIPAA compliant?[/COPY]
+  2. [COPY]Do you provide a BAA?[/COPY] [INTENT: yes — may receive/share PHI from San Diego Regional Center (SDRC) or pediatrician.]
+  3. [COPY]Does BrightPlay share PHI with 3rd parties?[/COPY] [INTENT: depending on program, yes — e.g. healthcare provider / SDRC reports.]
+  4. [COPY]Are session recordings stored?[/COPY] [INTENT: yes, depending on protocol; only with your approval, for progress reports and supervision.]
+  5. [COPY]Where is my data stored?[/COPY]
+  6. [COPY]Is my data used for training?[/COPY] [INTENT: leave AI out of the answer.]
+- Answers are placeholders Ellis finalizes later. Match the medium-dark, legible font (not pale gray).
+- Security-details link in brand colors with an arrow.
+- **[FLAG — verify before publishing:** Your own FAQ answers say BrightPlay will *receive and share PHI* (BAA, SDRC/provider reports, stored recordings). So "HIPAA-compliant" is a load-bearing claim, not marketing dressing — and the right move is to make the compliance genuinely real (signed BAAs in place, compliant storage for any recordings/PHI, documented data location) *before* the claim goes live, rather than to soften the wording. Handling PHI is exactly the point at which the storage question stops being optional. Not legal advice — but this one's worth getting right with someone who is.**]**
+
+### Closing band (16/22) — the recurring sign-off (full-bleed #2)
+
+- A **wide, broad band** (cropped letterbox strip, not full-height) of the dad reading with his three sons, de-brightened (not blurred), with a text box over it. [INTENT: getting time back at the end of your days, to connect and enjoy each other — [COPY]it's the moments that count, not the milestones[/COPY].]
+- **This is a recurring element:** it sits right before the footer and **repeats on every page EXCEPT Contact** (Contact's job is the Calendly embed + signup form; a big image competes there). It becomes the site's signature sign-off — every page lands the same warm way.
+- Treatment: full-bleed band (no frame), broad strip. This is one of the **only two** full-bleed moments site-wide.
+- *Note:* `close-dad-reading-sons.jpg` is the current pick; Ellis prefers an African American example eventually — the full-bleed set is the part still skewing white, so this is the priority swap.
+
+### Footer (17–18) — Amazon-style vertical columns
+
+See TwoFold's footer; build exactly that pattern.
+
+- **Column 1:** Bertie + BrightPlay, blurb [PLACEHOLDER]fill with best-fit approach text for now; our technology is HIPAA-compliant[/PLACEHOLDER] *(same HIPAA flag as above applies)*, button [COPY]Let's talk →[/COPY].
+- **Column 2 — Services:** [COPY]Office, In-Home, Community, Video Calls, Asynchronous[/COPY]. Then, after white space — **Partners:** [COPY]For Individuals, For Caregivers, For Groups[/COPY].
+- **Column 3 — Specialties:** [COPY]Early Start, Project ImPACT, Theraplay, Play Groups, PEERS®, Emotional Freedom Tapping[/COPY] (balance column weights; if the last is too long, write [COPY]EFT[/COPY]).
+- **Column 4 — Resources:** [COPY]Blog, Newsletter sign up[/COPY] [INTENT: needs to be a form; could live under the Contact page] + 4 links (local / CDC — [PLACEHOLDER]fill[/PLACEHOLDER]). No underlines under any links (see TwoFold/Amazon). Second header **Help:** [COPY]CDC Milestones, SDRC link, teen crisis line, NAMI[/COPY], a women's-shelter / community resource.
+- **Bottom bar:** rule + © + year + [COPY]by WonderlandWebDesign[/COPY] · [COPY]info@brightplay.org[/COPY] (not underlined) · Privacy Policy · *(Terms of Service commented out for now).*
+
+**Skipped from TwoFold:** the "free for a week" banner (1), the **review-stars bubble (5)**, the "used by over / company logos" strip (8), the FAQ telehealth block (16). The Premium Quality block (15) is parked for possible reuse on the Approach page, not Home.
 
 ---
 
-## Logo
+## 4. Phased build plan (crash-safe)
 
-Current logo: brainy-brain mascot (cartoon brain with glasses and waving arms, transparent background). Wordmark not yet designed.
+Recent crashing is almost certainly the dense, half-built canvas straining the renderer. The cure is building in small bites, not all 18 sections at once. Ellis re-uploads images at the start of Phase 1 (they live in her uploads, not in Claude's memory between sessions).
 
-**Direction:** brain mascot on top, wordmark **curved underneath in a 1/3 arc that reads like a smile.** Capitalization undecided — `brightplay`, `BrightPlay`, or `brightPlay`. Font undecided. To be designed in a focused session.
+- **Phase 1 — the spine (build first):** nav (Bertie left, links right) · parallax-reveal hero (curly-toddler image) · the "not another thing on your list" reveal block · the recommendation carousel. Get the monochrome base, the floating-box look, the type, and the hero feeling right before anything else.
+- **Phase 2 — the body:** three/four-column feature grid (12) · two-image or three-Polaroid offset blocks · "what we create together" flip-box · steps strip · "why families" · FAQ · all full-page images with overlay + text, including the closing image · footer.
+- **Phase 3 — the fancy (add last, scaffolded):** hover-following nav underline · CTA shine sweep · auto-flipping overlay stripe. Nice-to-haves and the most likely to misbehave, so they go on at the end, one at a time. *(Likely after the other pages — About, Approach, Contact — are built first.)*
 
-Treat the brain as a recurring character, not a rigid logomark. It can wave from a footer, peek from a corner, hold a doodle. Light, playful, never the main event. The mascot was designed with arms specifically so she can pose — seasonal variants (summer sunglasses, winter hat, flower behind one ear, pumpkin in October) are part of the brand language. Subtle CSS animation on the homepage only: a tiny wave on load, a slow blink every several seconds. Restraint is the whole magic.
-
-Color: **keep the mascot's current coloring as built (committed to git).** A shift toward mustard is a *possible* future revisit only if the final site context calls for it — not a to-do. The mascot stays as Ellis and Claude Code made it unless Ellis explicitly decides otherwise.
-
-Name: TBD; *Bertie* is the current frontrunner. Naming can wait — the mascot doesn't need a name to start building.
+Approach page is built after Home Phase 1–2 land, reusing the same components.
 
 ---
 
-## Tech stack & structure
+## 5. Image slots (re-upload at build time)
 
-- Plain HTML, CSS, JS — no framework, no build step (yet)
-- Fully readable file structure: one HTML file per page, one shared CSS file (with CSS custom properties for theme), small JS only where needed (mobile nav, parallax hero, scroll reveal)
-- Reusable modular section types (see Layout system above): `hero-parallax`, `full-width-band`, `one-column`, `two-column`, `three-column`
-- Folder structure:
-  ```
-  /
-  ├── index.html        (Home)
-  ├── about.html
-  ├── contact.html
-  ├── /assets/
-  │   ├── /css/styles.css
-  │   ├── /js/main.js
-  │   ├── /images/  (with /logo, /photos, /doodles, /icons subfolders)
-  │   └── /fonts/   (if self-hosting)
-  └── BRIEF.md
-  ```
-- Git-tracked from day one. Commit often.
-- Architecture leaves room for an `/nl/` sibling directory later for the Dutch version. Content lives in clearly delimited sections to make translation copy-paste easy. Same flexibility lets Approach / Services / Resources split into their own pages later.
-- Hosting target: Cloudflare Pages or Netlify free tier. Both push from Git.
-- Booking: Calendly embed (free tier) on the contact page. Reevaluate for Cal.com later if open-source matters more than friction.
-- **Out of scope for this site:** client portals, video hosting, voice-to-text notes, anything that touches PHI. Those live in a separate (future) `portal.brightplay.org` subdomain, built on a HIPAA-compliant SaaS like SimplePractice or Sessions Health — not custom code.
+Labeled placeholders until the real files are dropped in. Ellis re-uploads.
 
----
-
-## Future / phase 2
-
-- EFT International certification → September 2026 → add to Approach content
-- PEERS for Preschoolers offerings (group)
-- Parent events and workshops
-- **Testimonial outreach to 3–5 past ABA families** — two-channel (Tally form + printed handout using the "Big Ask" banner image as header). Three questions: *what your child can do now, what you can do/feel differently as a parent, what another family should know.* Permission checkbox at the bottom. Site launches with a "Parent words coming soon" placeholder; testimonials populate as they come in.
-- Splitting Approach / Services / Resources into their own pages as content grows
-- Amsterdam: `/nl/` mirror of the site, Dutch-language content
-- Possibly: a writing / blog section if Ellis wants a public voice
-- Eventually: HIPAA-compliant client portal at `portal.brightplay.org` (rented, not built)
-
----
-
-## Copy starters (Ellis's own lines, worth riffing on)
-
-Phrases Ellis wrote, captured as voice samples and starting points — not final copy. Honest evaluation against the parent-as-protagonist framing:
-
-| Line | Verdict |
+| Slot | Treatment |
 |---|---|
-| ***Play-based coaching that fits your day — and your way.*** | **Keep. Newly crafted, May 2026.** "Fits your day" delivers the not-another-thing promise; "and your way" delivers the parent-as-protagonist promise. The pause and the soft rhyme make it stick. Strong candidate for hero subtitle or secondary tagline. |
-| *Play speaks louder than words.* | **Keep, and protect.** Riff on *actions speak louder than words.* Honors non-verbal and vocal-verbal kids. Quiet thesis for the whole practice. One of Ellis's strongest lines. |
-| *Playful parents — Happy kids.* | **Keep.** Parent-first, clean rhythm, scannable on phone. Subtitle energy. |
-| *You Are Capable Of So Much More Than You Can Imagine!* | Bones are right — names the parent as capable. Tighten — *"You can do more than you've been told"* lands harder, because it answers the specific judgment these parents carry. |
-| *When Families Learn Effective Strategies, Communication Is Child's Play* | Pun lands ("child's play"). But the conditional structure (*when you learn X, then Y happens*) subtly positions Ellis as holder-of-knowledge, parent as learner. Old frame. Rework to put the parent in the driver's seat while keeping the pun. |
-| *Early Childhood [Intervention] Coaching That Sparks Joy In Every Connection* | **Rework.** Drop *intervention* (per the note below) and drop *joy* (Marie Kondo "spark joy" baggage — still culturally heavy in 2026). **Keep *sparks*** as the verb — it ties to *bright* in BrightPlay, making the brand do the work. Direction: *"Sparks something bright."* / *"BrightPlay sparks."* / *"Sparking the bright in every connection."* The verb stays; the rest gets rebuilt. |
+| HERO: edited mom + curly-haired toddler, blocks (blue mat removed) | Full-bleed (no frame) |
+| Dad + child playing/hugging (parallax reveal block) | Full-bleed (no frame) |
+| Mom + kid, balloons (full-bleed overlay block) | Full-bleed (no frame) |
+| Mom + boy on roller-cart, laughing (offset pair, left) | **Polaroid** (sharp) |
+| Child using AAC device, action play (offset pair, right) | **Polaroid** (sharp) |
+| Boy with Down syndrome, vintage helmet (data/FAQ block) | **Polaroid** (sharp) |
+| Dad reading with three sons (closing full-bleed) | Full-bleed (no frame) — diversify the set later |
+| Modality archetype images for the Approach tiles (uniform style, TBD) | Tile art (per Approach pattern) |
+| A grandparent playing with a kid | **Polaroid** (sharp) |
+| A bubbles play image | **Polaroid** (sharp) — caption candidate [COPY]¡Burbujas![/COPY] |
+| Kids running outside | **Polaroid** (sharp) — caption candidate [COPY]Tag, you're it![/COPY] (Gloria Hallelujah) |
 
----
-
-## A note on the word "intervention"
-
-**Ellis's call: don't use the word *intervention* on the site at all.** The clinical/SEO argument for keeping it (parents searching for "early intervention" might find the site that way) is real, but loses to the more important argument: the word makes parents feel like they are being *intervened on*. It's the language of the system that has made them feel small. Use *coaching*, *support*, *play-based work*, *early childhood support* — language that puts the parent in the driver's seat. The page-title/SEO trade-off is consciously accepted.
-
----
-
-## Working agreements with Claude
-
-- **The brief is the boss.** When in doubt, re-read this document.
-- **Apply the five tests** (zucchini-cake, judged-parent, welcome-by-depicting, one-eye-on-the-phone, "me-myself-and-I-can-do-it") to every meaningful decision.
-- **Flexible sections, never a locked grid.** Build from the modular section types. Some content wants three columns; let it have them.
-- **Commit often.** Every meaningful change → git commit with a clear message.
-- **Show, don't tell.** When proposing a design direction, build it and let Ellis react to something real rather than describing it in the abstract.
-- **Mobile first, always.**
-- **Default to less.** Every section, every word, every animation has to earn its space.
+**Rule of thumb:** all non-full-width photos = Polaroids (sharp); all full-width photos = full-bleed (no frame); all UI/text boxes = rounded. All real photos: candid, home-feeling, diverse across ability / ethnicity / age / family shape — explicitly LGBTQ-friendly and visibly so. Final background values and color scheme get tuned against the chosen images.

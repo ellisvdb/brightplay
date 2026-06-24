@@ -11,9 +11,9 @@
 :root {
 
   /* ---- Colour · SPINE = TEAL (active) -------------------- */
-  --color-bg:           #FAF8F4;  /* ivory — page background, the 60% */
-  --color-surface:      #FFFFFF;  /* cards */
-  --color-band-warm:    #EFEDE6;  /* warm neutral — alternating section band */
+  --color-bg:           #FCFBF7;  /* calm warm-neutral — flat page fill; every page inherits, zero markup (warmth TBD vs photos) */
+  --color-bg-whisper:   #FAF9F4;  /* ~1% deeper, SAME hue — near-invisible subliminal alternation */
+  --color-surface:      #FFFFFF;  /* floating boxes & Polaroids */
 
   --color-primary:      #2C8079;  /* coastal teal — nav, links, structure */
   --color-primary-deep: #1C5854;  /* deep teal — colour bands, colour headings */
@@ -75,10 +75,10 @@
      the page <head>. Swap the var when the real font lands. */
   --font-accent: 'Patrick Hand', 'Comic Sans MS', cursive;
 
-  /* Derived colour shades (computed from the spine) */
-  --color-soft:        color-mix(in srgb, var(--color-primary) 10%, var(--color-bg));  /* soft surfaces / image placeholders */
-  --color-line:        color-mix(in srgb, var(--color-primary) 45%, var(--color-bg));  /* visible / dashed borders */
-  --color-border:      color-mix(in srgb, var(--color-primary) 22%, transparent);      /* subtle hairline */
+  /* Derived shades — neutral/warm only, NO teal tint (v4: two tones, no green) */
+  --color-soft:        var(--color-bg-whisper);          /* placeholder surfaces — warm, never teal */
+  --color-line:        rgba(45, 42, 37, .28);            /* neutral charcoal — dashed / visible borders */
+  --color-border:      rgba(45, 42, 37, .18);            /* neutral charcoal hairline — boxes only */
   --color-accent-deep: color-mix(in srgb, var(--color-accent) 62%, #000);              /* darker gold — hover / number */
 
   /* Granular type scale (component sizes) */
@@ -188,7 +188,14 @@ p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
   background: var(--color-bg);
 }
 .section--tight { padding-block: var(--space-7); }
-.section--surface { background: var(--color-band-warm); }
+
+/* Automatic subliminal alternation: every other <section> in any <main>
+   breathes one hair deeper (#FCF9EC). Structural (nth-of-type), so new
+   sections and brand-new pages alternate on their own — zero per-page
+   markup. nth-of-type outranks .section's base fill on specificity. */
+main > section:nth-of-type(even) { background: var(--color-bg-whisper); }
+/* Manual override for one-off cases. */
+.section--whisper { background: var(--color-bg-whisper); }
 
 /* -------- Skip link -------------------------------------------- */
 .skip-link {
@@ -204,7 +211,6 @@ p  { margin: 0 0 var(--space-4); max-width: var(--measure); }
   background: color-mix(in srgb, var(--color-bg) 92%, transparent);
   backdrop-filter: saturate(140%) blur(8px);
   -webkit-backdrop-filter: saturate(140%) blur(8px);
-  border-bottom: 1px solid var(--color-border);
 }
 .site-header__inner {
   display: flex; align-items: center; justify-content: space-between;
@@ -340,61 +346,66 @@ body.nav-open { overflow: hidden; }
   object-position: center;
 }
 
-/* Dark radial vignette concentrated at the upper text area.
-   Strong opacity at the text center for legibility; fades to
-   near-transparent everywhere else so the photo's natural detail
-   and contrast read crisp. Charcoal (--color-text) as the ink. */
+/* Hero overlay is positioned only; the dark scrim comes from the
+   reusable .photo-scrim (added in markup) so hero + closing band
+   share one treatment. */
 .hero-parallax__overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 55% 32% at 50% 18%,
-    color-mix(in srgb, var(--color-text) 55%, transparent) 0%,
-    color-mix(in srgb, var(--color-text) 32%, transparent) 45%,
-    color-mix(in srgb, var(--color-text) 8%, transparent) 80%,
-    transparent 100%
-  );
   pointer-events: none;
 }
 
 /* Text sits in the clean white-wall gap between the figures —
-   centered horizontally, ~16% from top so it lands above mom's
-   hair and well clear of the toddler / block towers. */
+   centered horizontally, high in the calmer top of the image. */
 .hero-parallax__content {
   position: absolute;
-  top: 16%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   width: min(90%, 36ch);
   padding-inline: var(--gutter);
   text-align: center;
-  color: var(--color-text);
   z-index: 2;
 }
 
-/* Pure white + black shadows below are deliberate: this text sits
-   over photography, not over a token surface, so it stays literal. */
+/* Hero-specific layout only; colour + shadow come from .on-photo__*. */
 .hero-parallax__title {
-  color: #fff;
-  text-shadow:
-    0 2px 14px rgba(0, 0, 0, 0.40),
-    0 1px 3px rgba(0, 0, 0, 0.30);
   margin: 0 0 var(--space-4);
   max-width: none;
 }
-
 .hero-parallax__sub {
-  color: rgba(255, 255, 255, 0.96);
   font-family: var(--font-body);
   font-size: var(--text-xl);
-  text-shadow:
-    0 1px 10px rgba(0, 0, 0, 0.40),
-    0 1px 3px rgba(0, 0, 0, 0.28);
   margin: 0 0 var(--space-6);
   max-width: none;
 }
-
 .hero-parallax__cta { margin: 0; }
+
+/* ============================================================
+   Reusable — text floating over a FULL-BLEED photo (hero now,
+   closing band later). TRUE white text + a strong, neutral dark
+   scrim + a soft shadow so letters pop over busy areas, fully
+   independent of the warm page base. Darker, never blurred.
+   Usage: put .photo-scrim on an absolutely-positioned overlay that
+   covers the image; add .on-photo__title / .on-photo__sub to the
+   text and .btn--on-photo to the CTA. ======================== */
+.photo-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 66% 48% at 50% 20%,
+      rgba(0, 0, 0, .60) 0%, rgba(0, 0, 0, .32) 46%, rgba(0, 0, 0, 0) 80%),
+    linear-gradient(180deg,
+      rgba(0, 0, 0, .36) 0%, rgba(0, 0, 0, .10) 40%, rgba(0, 0, 0, 0) 72%);
+}
+.on-photo__title,
+.on-photo__sub {
+  color: #FFFFFF;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, .45);
+}
+.btn--on-photo { box-shadow: 0 6px 18px rgba(0, 0, 0, .30); }
+.btn--on-photo:hover { box-shadow: 0 9px 22px rgba(0, 0, 0, .34); }
 
 /* When a fixed hero is present, <main> sits z-1 with a 100svh
    margin so the hero is visible until the reader scrolls. Each
@@ -409,7 +420,7 @@ main.has-parallax-hero {
 /* Mobile: portrait crop pulls the figures' heads higher up, so
    bias the text a touch further toward the top of the gap. */
 @media (max-width: 600px) {
-  .hero-parallax__content { top: 14%; }
+  .hero-parallax__content { top: 9%; }
 }
 
 /* Reduced motion: drop the fixed-positioning trick and render the
@@ -537,22 +548,13 @@ main.has-parallax-hero {
   object-fit: cover;
 }
 
-/* -------- Modular section bands -------------------------------
-   Full-width colored bands per the brief's CDC-style rhythm.
-   Use sparingly — bands earn their place when the content shifts
-   emphasis. Default sections stay on the cream page background. */
-.section--sage {
-  background: var(--color-soft);
-}
-.section--mustard {
-  background: color-mix(in srgb, var(--color-accent-soft) 35%, var(--color-bg) 65%);
-}
-.section--ink {
-  background: var(--color-primary-deep);
-  color: var(--color-on-primary);
-}
-.section--ink h2,
-.section--ink h3 { color: var(--color-on-primary); }
+/* -------- Retired section tints (v4 milky) --------------------
+   Tone variation now comes ONLY from the milky base + the automatic
+   whisper alternation (defined up by .section). The old tint/band
+   classes (surface / sage / alt / mustard / ink) no longer paint a
+   background — left as harmless no-ops so existing about/contact
+   markup keeps working untouched. No section ever gets its own
+   colored fill, border, shadow, or divider line. */
 
 /* -------- Column grids (one / two / three) --------------------
    The .cols-N pattern is the layout system promised in the brief.
@@ -789,6 +791,138 @@ main.has-parallax-hero {
   font-style: italic;
 }
 
+/* ==============================================================
+   v4 HOME — Phase 1 components (monochrome spine)
+   Structure comes from white floating boxes + soft shadow, never
+   colored bands. Generous whitespace.
+   ============================================================== */
+
+/* -------- Floating box primitive ------------------------------
+   White rounded box that floats above the milky base. Faint charcoal
+   hairline on boxes only (never on Polaroids). Used by carousel cards. */
+.float-box {
+  background: var(--color-surface);
+  border: 0.5px solid rgba(45, 42, 37, .18);
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(28, 88, 84, .10);
+}
+
+/* -------- Composed intro block (overlap layout, approved mockup) --
+   Three layers below the hero: left box BEHIND (z1) < Polaroid
+   MIDDLE (z2) < right box IN FRONT (z3). Polaroid tilted +3deg,
+   overlapping both boxes. Stacks vertically below 680px. Used
+   as-is from Ellis's finalized mockup — proportions are the point. */
+.bp-intro{ background:transparent;   /* inherits the section tone (milky base / whisper) — no own gradient */
+  padding:clamp(48px,8vw,80px) 20px; }
+.bp-intro__stage{ max-width:660px; margin:0 auto; display:flex; flex-direction:column;
+  align-items:center; gap:20px; }
+.bp-floatbox{ background:#fff; border:0.5px solid rgba(45,42,37,.18); border-radius:22px;
+  box-shadow:0 8px 24px rgba(28,88,84,.10); padding:22px 24px 24px; }
+.bp-eyebrow{ font-family:'Atkinson Hyperlegible Next',sans-serif; font-size:12px;
+  letter-spacing:.09em; text-transform:uppercase; color:#C08A73; margin:0 0 10px; }
+.bp-floatbox__title{ font-family:'Newsreader',serif; font-weight:500; font-size:22px;
+  line-height:1.15; color:#1C5854; margin:0 0 12px; }
+.bp-floatbox__body{ font-family:'Atkinson Hyperlegible Next',sans-serif; font-size:15px;
+  line-height:1.6; color:#54534d; margin:0; }
+.bp-bullets{ list-style:none; margin:0; padding:0; }
+.bp-bullets li{ position:relative; padding-left:18px; margin-bottom:9px;
+  font-family:'Atkinson Hyperlegible Next',sans-serif; font-size:15px; line-height:1.5; color:#54534d; }
+.bp-bullets li::before{ content:""; position:absolute; left:0; top:9px; width:7px; height:7px;
+  border-radius:50%; background:#2C8079; }
+.bp-polaroid{ width:258px; max-width:78vw; margin:0; background:#fff; border-radius:2px;
+  box-shadow:0 12px 32px rgba(28,88,84,.18); padding:13px 13px 0; }
+.bp-polaroid__photo{ aspect-ratio:1/1; overflow:hidden; border-radius:1px; }
+.bp-polaroid__photo img{ width:100%; height:100%; object-fit:cover; object-position:43% 50%;
+  display:block; }
+.bp-polaroid__caption{ height:60px; display:flex; align-items:center; justify-content:center;
+  font-family:'Gloria Hallelujah',cursive; font-size:19px; color:#2D2A26; }
+@media (min-width:680px){
+  .bp-intro__stage{ display:block; position:relative; min-height:380px; }
+  .bp-intro__left{ position:absolute; left:0; top:43px; width:226px; z-index:1; }
+  .bp-intro__polaroid{ position:absolute; left:50%; top:24px;
+    transform:translateX(-50%) rotate(3deg); z-index:2; }
+  .bp-intro__right{ position:absolute; right:0; top:180px; width:236px; z-index:3; }
+}
+@media (max-width:679px){
+  .bp-floatbox{ width:100%; max-width:360px; }
+}
+
+/* -------- Recommendation carousel (brief §9) ------------------
+   CSS-only auto-scroll marquee. The track holds the cards twice;
+   translateX(-50%) loops seamlessly. Pauses on hover; the hovered
+   card lifts. Reduced-motion → no animation, manual scroll. */
+.carousel {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.carousel__track {
+  display: flex;
+  align-items: stretch;            /* every card stretches to the tallest = equal height */
+  gap: 16px;                       /* cards ~16px apart — just over the Polaroid border width */
+  width: max-content;
+  padding-block: var(--space-5);   /* vertical room so the hover lift's shadow isn't clipped */
+  animation: bp-marquee 52s linear infinite;
+}
+.carousel:hover .carousel__track,
+.carousel:focus-within .carousel__track { animation-play-state: paused; }
+@keyframes bp-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.rec-card {
+  flex: 0 0 clamp(220px, 24vw, 250px);   /* narrower → 3–4 visible at once */
+  margin: 6px 0;                          /* kill the <figure> UA default margin:1em 40px (the real gap culprit); 6px block = hover-shadow room */
+  min-height: 200px;                      /* short quotes gain whitespace, never shrink */
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  transition: transform var(--duration-base) var(--ease-out),
+              box-shadow var(--duration-base) var(--ease-out);
+}
+.rec-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(28, 88, 84, .14);
+}
+.rec-card__quote {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  margin: 0;
+}
+/* Bottom row pinned via margin-top:auto so it stays put as the quote
+   area grows. Avatar is a neutral initial-circle — never a real face. */
+.rec-card__person {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: auto;
+}
+.rec-card__avatar {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);   /* filled brand teal #2C8079 */
+  color: var(--color-bg);             /* light initials #FFFDF3 */
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  line-height: 1;
+}
+.rec-card__meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.rec-card__name { font-weight: 600; font-size: var(--text-sm); color: var(--color-text); }
+.rec-card__role { font-size: var(--text-xs); color: var(--color-text-soft); }
+@media (prefers-reduced-motion: reduce) {
+  .carousel { overflow-x: auto; }
+  .carousel__track { animation: none; }
+  .rec-card:hover { transform: none; }
+}
+
 /* -------- Utility: centered text ------------------------------- */
 .text-center { text-align: center; }
 .text-center .eyebrow { margin-inline: auto; }
@@ -799,7 +933,6 @@ main.has-parallax-hero {
   z-index: 1;
   padding-block: var(--space-7);
   padding-top: calc(var(--space-10) + var(--space-7));
-  border-top: 1px solid var(--color-border);
   background: var(--color-bg);
   color: var(--color-text-soft);
   font-size: var(--text-sm);
