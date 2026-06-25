@@ -1705,7 +1705,108 @@ main.has-parallax-hero {
 .text-center { text-align: center; }
 .text-center .eyebrow { margin-inline: auto; }
 
-/* -------- Footer ----------------------------------------------- */
+/* -------- Closing band (full-bleed editorial) -----------------
+   Wide cropped photo edge-to-edge with LEFT-side text overlay.
+   Taller than a placard so the book at the bottom of the photo
+   stays visible. The scrim is a SOFT pool concentrated where the
+   text sits (left), so the photo stays warm and bright; white
+   text carries its own contrast via text-shadow. */
+.closing-band {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  /* Definitive crop fix: lock the band's aspect ratio to the IMAGE'S
+     own aspect (1530:1076). The full composition fits with NO crop at
+     any viewport — all four kids' eyes AND the book are visible, none
+     at the edges. Band grows as tall as needed; that's intentional. */
+  aspect-ratio: 1530 / 1076;
+  background: #1f1c18;                     /* warm dark base while image is loading */
+  overflow: hidden;
+}
+.closing-band__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Band aspect matches image — image fills exactly; object-position
+     is effectively a no-op. Centered is the safe default for any tiny
+     sub-pixel rounding. */
+  object-position: 50% 50%;
+  display: block;
+}
+.closing-band__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Soft warm-charcoal pool ONLY where the text sits — peak 36%
+     on the left (a notch darker than the previous 28%), fading to
+     transparent toward the middle/right. */
+  background: radial-gradient(
+    ellipse 58% 100% at 20% 50%,
+    rgba(45, 42, 37, 0.36) 0%,
+    rgba(45, 42, 37, 0.14) 50%,
+    transparent 80%
+  );
+}
+.closing-band__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;                 /* text now LEFT */
+  padding: var(--space-6) clamp(var(--space-5), 5vw, var(--space-8));
+  text-align: left;
+}
+.closing-band__headline {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  color: #fff;
+  margin: 0 0 var(--space-3);
+  line-height: 1.08;
+  max-width: 14ch;
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.55),
+    0 1px 3px rgba(0, 0, 0, 0.40);
+}
+.closing-band__sub {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.96);
+  margin: 0;
+  line-height: 1.35;
+  max-width: 26ch;
+  text-shadow:
+    0 1px 10px rgba(0, 0, 0, 0.50),
+    0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* Mobile: pool nudged a touch darker and re-centered on the left
+   side since the figures occupy more of the visible band. The band
+   still uses the image's aspect ratio (no height override here). */
+@media (max-width: 700px) {
+  .closing-band__scrim {
+    background: radial-gradient(
+      ellipse 100% 90% at 28% 55%,
+      rgba(45, 42, 37, 0.48) 0%,
+      rgba(45, 42, 37, 0.22) 50%,
+      transparent 85%
+    );
+  }
+  .closing-band__content {
+    padding: var(--space-5);
+    justify-content: center;
+  }
+  .closing-band__headline { max-width: 12ch; }
+  .closing-band__sub { max-width: 22ch; }
+}
+
+/* -------- Footer (Amazon-style multi-column, warm milky base) ---
+   Three columns on top (Brand · Site · Connect) + a thin bottom
+   bar with copyright on the left and credits/Privacy on the right.
+   Same warm bg as the page — explicitly NOT a dark band. */
 .site-footer {
   position: relative;
   z-index: 1;
@@ -1716,11 +1817,163 @@ main.has-parallax-hero {
   font-size: var(--text-sm);
 }
 .site-footer__inner {
-  display: flex; flex-direction: column; gap: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
 }
-.site-footer__mark { color: var(--color-primary-deep); }
-@media (min-width: 768px) {
-  .site-footer__inner { flex-direction: row; justify-content: space-between; align-items: center; }
+
+/* Top columns — FOUR direct children of .site-footer__cols, so they
+   become four grid cells on desktop. Stacked groups (Site+Partners,
+   Connect+Resources) live INSIDE one cell each via .site-footer__col
+   so the second header sits directly BELOW the first — never spread
+   into extra columns. */
+.site-footer__cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+@media (min-width: 760px) {
+  .site-footer__cols {
+    grid-template-columns: repeat(4, 1fr);   /* equal widths */
+    gap: var(--space-5) var(--space-6);
+  }
+}
+
+/* Column 4 (far right): brand block — Bertie + wordmark, indented
+   blurb, solid teal pill CTA. */
+.site-footer__brand-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+.site-footer__brand-col .brand { color: var(--color-text); }
+.site-footer__blurb {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+  margin: 0;
+  padding-left: var(--space-4);            /* small indent so the blurb doesn't sit flush under Bertie */
+  max-width: 32ch;
+  line-height: 1.5;
+}
+
+/* Teal solid PILL button — calmer than the page-level mustard CTAs,
+   reads as a real footer button, not an underlined text link. */
+.site-footer__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(28, 88, 84, 0.16);
+  transition:
+    background-color var(--duration-quick) var(--ease-out),
+    transform var(--duration-quick) var(--ease-out);
+}
+.site-footer__cta:hover,
+.site-footer__cta:focus-visible {
+  background: var(--color-primary-deep);
+}
+.site-footer__cta-arrow {
+  display: inline-block;
+  transition: transform var(--duration-quick) var(--ease-out);
+}
+.site-footer__cta:hover .site-footer__cta-arrow,
+.site-footer__cta:focus-visible .site-footer__cta-arrow {
+  transform: translateX(3px);
+}
+
+/* Link columns. Two stacked navs sit one above the other in the
+   SAME column with a clear vertical gap so headers never collide. */
+.site-footer__col {
+  display: flex;
+  flex-direction: column;
+}
+.site-footer__col nav + nav {
+  margin-top: var(--space-7);              /* clearer gap between stacked groups */
+}
+
+/* Bold serif headers — Newsreader display, mid weight, capitals
+   left as-is (Title Case), small letterspacing. */
+.site-footer__heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-base);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-text);
+  margin: 0 0 var(--space-3);
+  line-height: 1.2;
+}
+.site-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.site-footer__links a {
+  color: var(--color-text-soft);
+  text-decoration: none;
+  font-weight: 400;                        /* explicit: nothing in the list reads bold */
+  font-size: var(--text-sm);
+  line-height: 1.35;
+  overflow-wrap: break-word;               /* long items wrap inside the column */
+  transition: color var(--duration-quick) var(--ease-out);
+}
+.site-footer__links a:hover,
+.site-footer__links a:focus-visible {
+  color: var(--color-primary);
+}
+.site-footer .is-placeholder {
+  /* Clearly generic — link doesn't go anywhere meaningful yet */
+  font-style: italic;
+  opacity: 0.78;
+}
+
+/* Bottom bar */
+.site-footer__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+}
+.site-footer__copyright,
+.site-footer__credits {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-soft);
+}
+.site-footer__credits {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.site-footer__credits a {
+  color: var(--color-text-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 0.25em;
+}
+.site-footer__credits a:hover,
+.site-footer__credits a:focus-visible { color: var(--color-primary); }
+
+/* Mobile (single-col grid already from the base rule): bottom bar
+   wraps cleanly and aligns to the start so wrapped lines stack. */
+@media (max-width: 759px) {
+  .site-footer__bar { justify-content: flex-start; }
 }
 
 /* -------- Utilities -------------------------------------------- */

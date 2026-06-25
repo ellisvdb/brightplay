@@ -651,16 +651,127 @@
     </section>
     <!-- /content:why-families -->
 
-<!-- Remaining Phase 2 (later): FAQ, closing band, full footer.
+    <!-- content:close-band — full-bleed editorial closing band.
+         Wide cropped image + soft RIGHT-SIDE scrim pool (warm charcoal,
+         low opacity) so the photo stays warm and bright; white text
+         carries its own contrast via a gentle text-shadow. Two text
+         candidates rendered together so Ellis can pick. No CTA yet. -->
+    <section class="closing-band" aria-labelledby="close-band-title">
+      <img class="closing-band__img"
+           src="assets/images/photos/close-dad-reading-sons.jpg"
+           alt="A father reads a picture book on a couch with three of his sons gathered close around him."
+           width="1530" height="1076"
+           loading="lazy" decoding="async" />
+      <div class="closing-band__scrim" aria-hidden="true"></div>
+      <div class="closing-band__content">
+        <h2 id="close-band-title" class="closing-band__headline">Play leads the way</h2>
+        <p class="closing-band__sub">Because play speaks louder than words</p>
+      </div>
+    </section>
+    <!-- /content:close-band -->
+
+<!-- Remaining Phase 2 (later): FAQ, full footer.
          Recover any old copy from git history if needed. -->
 
   </main>
 
-  <!-- shell:footer (Phase 1 placeholder — full Amazon-style footer is Phase 2) -->
+  <!-- shell:footer — multi-column on the warm milky base (not a dark block). -->
   <footer class="site-footer">
     <div class="container site-footer__inner">
-      <span class="site-footer__mark">BrightPlay · San Diego</span>
-      <span>© <span data-year>2026</span> Ellis van den Boogaard</span>
+
+      <div class="site-footer__cols">
+
+        <!-- COLUMN 1 — Site + Partners (two stacked groups) -->
+        <div class="site-footer__col">
+          <nav aria-label="Site">
+            <h3 class="site-footer__heading">Site</h3>
+            <ul class="site-footer__links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="#" class="is-placeholder">Approach</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Partners">
+            <h3 class="site-footer__heading">Partners</h3>
+            <ul class="site-footer__links">
+              <li><a href="#" class="is-placeholder">For Individuals</a></li>
+              <li><a href="#" class="is-placeholder">For Caregivers</a></li>
+              <li><a href="#" class="is-placeholder">For Groups</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- COLUMN 2 — Specialties (EFT first; rest sorted shortest -> longest).
+             All href="#" placeholders for now; will anchor-link to each
+             modality's section on the Approach page in a later pass. -->
+        <div class="site-footer__col">
+          <nav aria-label="Specialties">
+            <h3 class="site-footer__heading">Specialties</h3>
+            <ul class="site-footer__links">
+              <li><a href="#" class="is-placeholder">EFT</a></li>
+              <li><a href="#" class="is-placeholder">Theraplay</a></li>
+              <li><a href="#" class="is-placeholder">Early Start</a></li>
+              <li><a href="#" class="is-placeholder">Playgroups</a></li>
+              <li><a href="#" class="is-placeholder">PEERS&reg;</a></li>
+              <li><a href="#" class="is-placeholder">Project ImPACT</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- COLUMN 3 — Connect + Resources (two stacked groups).
+             All Resources entries are PLACEHOLDER links until verified URLs
+             and numbers land in a later pass. Do NOT invent phone numbers
+             or URLs here. -->
+        <div class="site-footer__col">
+          <nav aria-label="Connect">
+            <h3 class="site-footer__heading">Connect</h3>
+            <ul class="site-footer__links">
+              <li><a href="#" class="is-placeholder">Blog</a></li>
+              <li><a href="contact.html">Free Chat</a></li>
+              <li><a href="#" class="is-placeholder">Newsletter</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Resources">
+            <h3 class="site-footer__heading">Resources</h3>
+            <ul class="site-footer__links">
+              <li><a href="#" class="is-placeholder">SDRC</a></li>
+              <li><a href="#" class="is-placeholder">NAMI</a></li>
+              <li><a href="#" class="is-placeholder">Suicide Hotline</a></li>
+              <li><a href="#" class="is-placeholder">Domestic Violence</a></li>
+              <li><a href="#" class="is-placeholder">CDC Milestones</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- COLUMN 4 — Brand (FAR RIGHT): Bertie + wordmark, indented blurb,
+             solid teal pill CTA. -->
+        <div class="site-footer__brand-col">
+          <a class="brand" href="index.html" aria-label="BrightPlay — home">
+            <span class="brand__mark" aria-hidden="true">
+              <img src="assets/images/logo/bertie-mascot.png" alt="" width="56" height="34" />
+            </span>
+            <span class="brand__name">BrightPlay</span>
+          </a>
+          <p class="site-footer__blurb">Collaborative parent coaching. Protecting your PHI is our priority. BAA and HIPAA compliant.</p>
+          <a class="site-footer__cta" href="contact.html">
+            Let's Talk
+            <span class="site-footer__cta-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="site-footer__bar">
+        <p class="site-footer__copyright">&copy; <span data-year>2026</span> by Wonderland Web Design</p>
+        <p class="site-footer__credits">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="mailto:info@brightplay.org">info@brightplay.org</a>
+        </p>
+      </div>
+
     </div>
   </footer>
   <!-- /shell:footer -->
