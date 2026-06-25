@@ -1097,13 +1097,31 @@ main.has-parallax-hero {
 .service-cycle:hover .service-cycle__item,
 .service-cycle:focus-within .service-cycle__item { animation-play-state: paused; }
 @keyframes sc-advance {
-  0%   { background: transparent;          color: color-mix(in srgb, var(--color-text) 42%, var(--color-bg)); }
-  4%   { background: var(--color-primary); color: var(--color-bg); }   /* teal pill, light content */
-  18%  { background: var(--color-primary); color: var(--color-bg); }
-  20%  { background: transparent;          color: color-mix(in srgb, var(--color-text) 42%, var(--color-bg)); }
-  100% { background: transparent;          color: color-mix(in srgb, var(--color-text) 42%, var(--color-bg)); }
+  /* v5: teal pill lightened a hair — 88% primary mixed with 12% white. */
+  0%   { background: transparent;                                            color: color-mix(in srgb, var(--color-text) 42%, var(--color-bg)); }
+  4%   { background: color-mix(in srgb, var(--color-primary) 88%, #fff);     color: var(--color-bg); }   /* teal pill, light content */
+  18%  { background: color-mix(in srgb, var(--color-primary) 88%, #fff);     color: var(--color-bg); }
+  20%  { background: transparent;                                            color: color-mix(in srgb, var(--color-text) 42%, var(--color-bg)); }
+  100% { background: transparent;                                            color: color-mix(in srgb, var(--color-text) 42%, var(--color-bg)); }
 }
 .service-cycle__icon { width: 20px; height: 20px; color: inherit; }
+/* Clay number badge — stays clay as the teal sweep passes (own bg + own
+   color override the item's animated bg/color). First clay use on site. */
+.service-cycle__step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);   /* #D68B73 — constant */
+  color: var(--color-on-primary);         /* warm white digit — constant */
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-sm);
+  line-height: 1;
+}
 .service-cycle__name {
   font-family: var(--font-display);
   font-weight: var(--weight-display);
@@ -1237,6 +1255,17 @@ main.has-parallax-hero {
   .selfwrite__arrow { transform: rotate(90deg); }
 }
 
+/* "How it works" compact stack — tightens vertical rhythm INSIDE the
+   block (band, Focus tags, tagline, IO boxes) AND between the two
+   sections, without changing those components anywhere else on the
+   site. Scoped via the .bp-howstack wrapper class only. */
+.bp-howstack { padding-block: var(--space-6); }
+.bp-howstack + .bp-howstack { padding-top: 0; }
+.bp-howstack .service-cycle  { margin-top: var(--space-5); }
+.bp-howstack .specialty      { margin-top: var(--space-4); }
+.bp-howstack .create-tagline { margin-top: var(--space-4); }
+.bp-howstack .selfwrite      { margin-top: 0; }
+
 /* E) Steps strip: light horizontal numbered steps; teal numerals, bold dark
    labels; no leading zeros. Stacks on mobile. */
 .steps {
@@ -1256,6 +1285,290 @@ main.has-parallax-hero {
 @media (max-width: 600px) {
   .steps { flex-direction: column; align-items: flex-start; gap: var(--space-4); width: fit-content; margin-inline: auto; }
 }
+
+/* -------- Why families choose BrightPlay (TF parity) ----------
+   FOUR-IN-A-ROW grid above 700px; 2x2 on phones <700px. Each card is
+   a smaller .float-box with a nested whisper-tinted inner mockup, so
+   the shading/spacing rhythm matches the rest of the site. Outer
+   meta titles (Transparent / Collaborative / Practical / Effective)
+   align at the same bottom height across all four cards. */
+.why-families { padding-block: var(--space-9); }
+.why-families__title { margin-bottom: var(--space-7); }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* phones: 2x2 */
+  gap: var(--space-4);
+  align-items: stretch;                    /* equal card heights → bottom-aligned titles */
+}
+@media (min-width: 700px) {
+  .why-grid { grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
+}
+.why-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+  gap: var(--space-4);
+}
+.why-card__visual {
+  background: var(--color-bg-whisper);
+  border: 0.5px solid var(--color-border);
+  border-radius: 16px;
+  padding: var(--space-4);
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;                                 /* push meta to bottom of card */
+}
+.why-card__meta { display: flex; flex-direction: column; gap: 4px; }
+.why-card__name {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.15;
+}
+.why-card__sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* BOX 1: doc-mock — teal dot on HONEST, bold clay Verified */
+.doc-mock {
+  background: var(--color-surface);
+  border: 0.5px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+.doc-mock__label {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  color: var(--color-primary-deep);
+}
+.doc-mock__dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  margin-right: 8px;
+}
+.doc-mock__lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.doc-mock__lines li { display: flex; align-items: center; gap: var(--space-2); }
+.doc-mock__field {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-strong);
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  min-width: 76px;
+}
+.doc-mock__line {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--color-text) 12%, var(--color-bg-whisper));
+}
+.doc-mock__verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-accent-soft);
+  font-family: var(--font-display);
+  font-weight: 700;                        /* bold */
+  font-size: var(--text-sm);
+  margin: 0;
+}
+.doc-mock__check { width: 16px; height: 16px; flex-shrink: 0; stroke-width: 2.4; }
+
+/* BOX 2: ear visual — small ear circle on the RIGHT, diagonal arcs
+   above-right, clay popup on the LEFT slightly below center. The
+   --ear modifier turns the visual into a positioning context. */
+.why-card__visual--ear {
+  position: relative;
+  display: block;
+  padding: var(--space-3);
+  overflow: hidden;
+}
+.ear-mock__svg {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  transform: translateY(-50%);
+  width: 70%;
+  max-width: 220px;
+  height: auto;
+  color: var(--color-primary);             /* arc strokes via currentColor */
+}
+@keyframes ear-pulse {
+  0%   { opacity: 0; }
+  22%  { opacity: 0.95; }
+  62%  { opacity: 0.30; }
+  100% { opacity: 0; }
+}
+.ear-arc { animation: ear-pulse 1.8s ease-in-out infinite; }
+.ear-arc--3 { animation-delay: 0s; }       /* outer first — soundwave arrives */
+.ear-arc--2 { animation-delay: 0.35s; }    /* middle — closer to ear */
+.ear-arc--1 { animation-delay: 0.7s; }     /* inner last — at the ear */
+@media (prefers-reduced-motion: reduce) {
+  .ear-arc { animation: none; opacity: 0.55; }
+}
+.ear-popup {
+  position: absolute;
+  left: 8%;
+  top: 60%;                                /* slightly below center */
+  transform: translateY(-50%);
+  max-width: 56%;
+  margin: 0;
+  padding: 8px 12px;
+  background: color-mix(in srgb, var(--color-accent-soft) 82%, transparent);
+  color: #fff;                             /* white text pops on clay */
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  box-shadow: 0 4px 12px rgba(28, 88, 84, 0.10);
+}
+.ear-popup em { font-style: italic; }
+
+/* BOX 3: practical-mock — tiles only (title+sub now in outer meta).
+   Tiles pop in staggered on load (forwards animation; held visible). */
+.practical-mock__tiles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.practical-tile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px var(--space-3);
+  background: var(--color-surface);
+  border: 0.5px solid var(--color-border);
+  border-radius: 10px;
+  opacity: 0;
+  animation: tile-pop 0.5s ease-out forwards;
+}
+.practical-tile:nth-child(1) { animation-delay: 0.20s; }
+.practical-tile:nth-child(2) { animation-delay: 0.40s; }
+.practical-tile:nth-child(3) { animation-delay: 0.60s; }
+.practical-tile:nth-child(4) { animation-delay: 0.80s; }
+@keyframes tile-pop {
+  0%   { opacity: 0; transform: translateY(8px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .practical-tile { opacity: 1; animation: none; transform: none; }
+}
+.practical-tile__icon {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+.practical-tile__icon svg { width: 100%; height: 100%; }
+.practical-tile__label {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-strong);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+/* BOX 4: chat-mock — sequenced reveal.
+   Order: Mom (mustard) → BP1 → BP2 → BP3 (teal). */
+.chat-mock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  justify-content: flex-start;
+}
+.chat-mock__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  opacity: 0;
+  animation: chat-in 0.42s ease-out forwards;
+}
+.chat-mock__row--out { justify-content: flex-end; }
+.chat-mock__row--mom { animation-delay: 0.2s; }
+.chat-mock__row--bp1 { animation-delay: 2.2s; }   /* ~2s after Mom */
+.chat-mock__row--bp2 { animation-delay: 3.2s; }   /* ~1s later */
+.chat-mock__row--bp3 { animation-delay: 4.2s; }   /* ~1s later */
+@keyframes chat-in {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-mock__row { opacity: 1; animation: none; transform: none; }
+}
+.chat-mock__avatar {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.chat-mock__avatar--mom {
+  background: var(--color-accent);         /* mustard */
+  color: var(--color-on-accent);           /* charcoal */
+  font-weight: 700;                        /* bold for max contrast */
+}
+.chat-mock__bubble {
+  max-width: 82%;
+  margin: 0;
+  padding: 8px 12px;
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 0.5px solid var(--color-border);
+  border-radius: 14px;
+}
+.chat-mock__bubble--in  { border-top-left-radius: 6px; }
+.chat-mock__bubble--out {
+  border-top-right-radius: 6px;
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
+}
+.chat-mock__bubble--mom {
+  background: var(--color-accent);         /* mustard */
+  color: var(--color-on-accent);           /* charcoal — high contrast */
+  font-weight: 600;                        /* heavier weight on mustard */
+  border-color: color-mix(in srgb, var(--color-accent) 75%, #000);
+  border-top-left-radius: 6px;
+}
+
+/* CTA below the grid */
+.why-families__cta { margin-top: var(--space-7); }
 
 /* -------- Utility: centered text ------------------------------- */
 .text-center { text-align: center; }
