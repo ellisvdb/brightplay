@@ -208,6 +208,42 @@ main > section:nth-of-type(even) { background: var(--color-bg-whisper); }
 }
 .skip-link:focus { left: var(--gutter); top: var(--space-3); z-index: 100; }
 
+/* -------- Utility bar (slim strip above the main nav) ----------
+   Common therapy/family-practice pattern: tap-to-call phone on the
+   left; right side reserved for email/location later. Not sticky —
+   scrolls away naturally; the main nav below stays sticky. Slim by
+   design (~36px) but the link's hit area covers the full bar height.
+   The bar paints above the fixed parallax hero via z-index 11. */
+.site-utility {
+  position: relative;
+  z-index: 11;
+  background: var(--color-bg-whisper);     /* a hair deeper than page bg */
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-soft);
+  font-size: var(--text-xs);
+}
+.site-utility__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 36px;
+  padding-block: 6px;
+}
+.site-utility__phone {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 0;                          /* expand hit area without thickening the bar */
+  color: inherit;
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color var(--duration-quick) var(--ease-out);
+}
+.site-utility__phone:hover,
+.site-utility__phone:focus-visible { color: var(--color-primary); }
+.site-utility__right { /* empty placeholder for now (email / location later) */ }
+
 /* -------- Header / brand --------------------------------------- */
 .site-header {
   position: sticky; top: 0; z-index: 10;
@@ -1293,7 +1329,13 @@ main.has-parallax-hero {
    has identical dimensions across the cards that show one (Box 1 +
    Box 4); Box 2 and Box 3 expose the card's white interior directly
    via .why-card__visual--open. Outer meta titles bottom-aligned. */
-.why-families { padding-block: var(--space-9); }
+.why-families {
+  padding-block: var(--space-9);
+  /* Bottom gap to closing-band needs to read = the visible gap above
+     the block (selfwrite tight bottom + why-families top) — that's
+     ~8rem above, so bump the bottom from 6rem to 8rem. */
+  padding-bottom: var(--space-10);
+}
 .why-families__title { margin-bottom: var(--space-7); }
 .why-families > .container,
 .why-families .container {
@@ -1715,11 +1757,14 @@ main.has-parallax-hero {
   position: relative;
   z-index: 1;
   width: 100%;
-  /* Definitive crop fix: lock the band's aspect ratio to the IMAGE'S
-     own aspect (1530:1076). The full composition fits with NO crop at
-     any viewport — all four kids' eyes AND the book are visible, none
-     at the edges. Band grows as tall as needed; that's intentional. */
-  aspect-ratio: 1530 / 1076;
+  /* Hold BOTH crops at once. Aspect 19/10 (1.9:1) is wider than the
+     image (1.42:1) so cover overflows vertically by ~25% of image
+     height. With object-position Y=40% (set on the img below), that
+     overflow splits ~10% top + ~15% bottom — top just above the
+     boys' eyes and the dad's head; bottom right at the white-pants
+     line above the book. Faces + book stay fully in frame. */
+  aspect-ratio: 19 / 10;
+  margin-top: var(--space-8);              /* breathing space above the band */
   background: #1f1c18;                     /* warm dark base while image is loading */
   overflow: hidden;
 }
@@ -1729,10 +1774,11 @@ main.has-parallax-hero {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Band aspect matches image — image fills exactly; object-position
-     is effectively a no-op. Centered is the safe default for any tiny
-     sub-pixel rounding. */
-  object-position: 50% 50%;
+  /* Y=40% splits the ~25% vertical overflow into ~10% trimmed at the
+     TOP (above the boys' eyes / dad's head) and ~15% trimmed at the
+     BOTTOM (the dad's white pants/lap below the book). Holds both
+     crops simultaneously without sacrificing one for the other. */
+  object-position: 50% 40%;
   display: block;
 }
 .closing-band__scrim {
@@ -1811,7 +1857,11 @@ main.has-parallax-hero {
   position: relative;
   z-index: 1;
   padding-block: var(--space-7);
-  padding-top: calc(var(--space-10) + var(--space-7));
+  /* Was calc(space-10 + space-7) = 11rem to compensate for the parallax
+     hero when no closing-band existed. Now there's a tall closing-band
+     between why-families and the footer, so this gap is dead space.
+     Cut it ~50% so the columns sit closer to the closing image. */
+  padding-top: var(--space-9);
   background: var(--color-bg);
   color: var(--color-text-soft);
   font-size: var(--text-sm);
@@ -1837,7 +1887,13 @@ main.has-parallax-hero {
 @media (min-width: 760px) {
   .site-footer__cols {
     grid-template-columns: repeat(4, 1fr);   /* equal widths */
-    gap: var(--space-5) var(--space-6);
+    /* Was 2rem (var(--space-6)). Last pass set it to 1.33rem (~33%);
+       Ellis didn't see the cols visibly tighten, so cutting to 1rem
+       (50% reduction) using a token and an explicit column-gap so the
+       rule is unambiguous. Row gap unchanged (only matters when the
+       grid wraps — it doesn't at 760px+). */
+    row-gap: var(--space-5);
+    column-gap: var(--space-4);
   }
 }
 
@@ -1850,6 +1906,10 @@ main.has-parallax-hero {
   gap: var(--space-4);
 }
 .site-footer__brand-col .brand { color: var(--color-text); }
+/* Bertie ~+21% over the original (10% bump on top of the previous 10%)
+   ONLY in the footer; header Bertie stays untouched. 62*1.1=68.2 → 68;
+   38*1.1=41.8 → 42. */
+.site-footer__brand-col .brand__mark { width: 68px; height: 42px; }
 .site-footer__blurb {
   font-family: var(--font-body);
   font-size: var(--text-sm);
@@ -1861,12 +1921,16 @@ main.has-parallax-hero {
 }
 
 /* Teal solid PILL button — calmer than the page-level mustard CTAs,
-   reads as a real footer button, not an underlined text link. */
+   reads as a real footer button, not an underlined text link.
+   COMPACT: hugs its content (Let's Talk + arrow) with just enough
+   padding. Aligned to the RIGHT of the brand column with a small
+   inward nudge so the right curve lands roughly under the "y" in
+   "priority" — pill sits inside the blurb's text block, not overhanging. */
 .site-footer__cta {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 22px;
+  gap: 8px;
+  padding: 9px 16px;                       /* tighter pill that hugs its content */
   border-radius: var(--radius-pill);
   background: var(--color-primary);
   color: var(--color-on-primary);
@@ -1875,6 +1939,8 @@ main.has-parallax-hero {
   font-size: var(--text-sm);
   text-decoration: none;
   box-shadow: 0 2px 8px rgba(28, 88, 84, 0.16);
+  align-self: flex-end;                    /* right-align inside the brand column */
+  margin-right: 6px;                       /* pull in so right curve lands under the "y" in "priority" */
   transition:
     background-color var(--duration-quick) var(--ease-out),
     transform var(--duration-quick) var(--ease-out);
@@ -1936,8 +2002,8 @@ main.has-parallax-hero {
   color: var(--color-primary);
 }
 .site-footer .is-placeholder {
-  /* Clearly generic — link doesn't go anywhere meaningful yet */
-  font-style: italic;
+  /* Clearly generic — link doesn't go anywhere meaningful yet.
+     No italics in the footer; placeholder is signaled by softer opacity only. */
   opacity: 0.78;
 }
 

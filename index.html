@@ -21,6 +21,19 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- shell:utility — slim strip ABOVE the main nav. Tel link styled
+       as plain text so it reads clean, but it's a real tel: link for
+       tap-to-call on phones. Right side empty for now (room for email /
+       location later). Not sticky — scrolls away naturally; the main
+       nav below stays sticky. -->
+  <div class="site-utility">
+    <div class="container site-utility__inner">
+      <a class="site-utility__phone" href="tel:+18582242377">+1 858 224 2377</a>
+      <span class="site-utility__right" aria-hidden="true"></span>
+    </div>
+  </div>
+  <!-- /shell:utility -->
+
   <!-- shell:header — Bertie far left, links far right, mobile-safe (no wrap) -->
   <header class="site-header">
     <div class="container site-header__inner">
@@ -695,9 +708,9 @@
           <nav aria-label="Partners">
             <h3 class="site-footer__heading">Partners</h3>
             <ul class="site-footer__links">
-              <li><a href="#" class="is-placeholder">For Individuals</a></li>
-              <li><a href="#" class="is-placeholder">For Caregivers</a></li>
-              <li><a href="#" class="is-placeholder">For Groups</a></li>
+              <li><a href="#" class="is-placeholder">Caregivers</a></li>
+              <li><a href="#" class="is-placeholder">Groups</a></li>
+              <li><a href="#" class="is-placeholder">Individuals</a></li>
             </ul>
           </nav>
         </div>
@@ -709,12 +722,12 @@
           <nav aria-label="Specialties">
             <h3 class="site-footer__heading">Specialties</h3>
             <ul class="site-footer__links">
-              <li><a href="#" class="is-placeholder">EFT</a></li>
-              <li><a href="#" class="is-placeholder">Theraplay</a></li>
               <li><a href="#" class="is-placeholder">Early Start</a></li>
-              <li><a href="#" class="is-placeholder">Playgroups</a></li>
+              <li><a href="#" class="is-placeholder">EFT</a></li>
               <li><a href="#" class="is-placeholder">PEERS&reg;</a></li>
+              <li><a href="#" class="is-placeholder">Playgroups</a></li>
               <li><a href="#" class="is-placeholder">Project ImPACT</a></li>
+              <li><a href="#" class="is-placeholder">Theraplay</a></li>
             </ul>
           </nav>
         </div>
@@ -735,11 +748,11 @@
           <nav aria-label="Resources">
             <h3 class="site-footer__heading">Resources</h3>
             <ul class="site-footer__links">
-              <li><a href="#" class="is-placeholder">SDRC</a></li>
-              <li><a href="#" class="is-placeholder">NAMI</a></li>
-              <li><a href="#" class="is-placeholder">Suicide Hotline</a></li>
-              <li><a href="#" class="is-placeholder">Domestic Violence</a></li>
               <li><a href="#" class="is-placeholder">CDC Milestones</a></li>
+              <li><a href="#" class="is-placeholder">Domestic Violence</a></li>
+              <li><a href="#" class="is-placeholder">NAMI</a></li>
+              <li><a href="#" class="is-placeholder">SDRC</a></li>
+              <li><a href="#" class="is-placeholder">Suicide Hotline</a></li>
             </ul>
           </nav>
         </div>
