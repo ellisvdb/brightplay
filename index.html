@@ -19,6 +19,185 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
+
+  <!-- ============================================================
+       BRIGHTPLAY INTRO  —  fixed full-screen overlay (z-index 9999)
+       that plays once per session, then fades to reveal the nav +
+       parallax hero underneath. Homepage only. Skippable via
+       click / key / scroll / Skip button. Respects reduced-motion.
+       Arc:  Too much -> Tiny openings -> Together -> This counts
+       Self-contained: does NOT touch the site design tokens or hero.
+       ============================================================ -->
+  <style>
+    /* Intro-scoped variables — kept off :root so the global token
+       layer in styles.css is untouched. */
+    #bp-intro{
+      --bp-bg:#F7F6F2;
+      --intro-beat: 2000ms;   /* time each beat holds on screen */
+      --intro-fade: 600ms;    /* cross-fade duration */
+      position:fixed; inset:0; z-index:9999;
+      background:var(--bp-bg);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+      margin:0; padding:0;
+      transition:opacity 700ms ease, visibility 700ms ease;
+    }
+    #bp-intro *{box-sizing:border-box;margin:0;padding:0}
+    #bp-intro.bp-done{ opacity:0; visibility:hidden; pointer-events:none; }
+
+    #bp-intro .bp-beat{
+      position:absolute; inset:0;
+      opacity:0;
+      transition:opacity var(--intro-fade) ease;
+      display:flex; align-items:center; justify-content:center;
+    }
+    #bp-intro .bp-beat.bp-on{ opacity:1; }
+
+    #bp-intro .bp-beat img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      /* slow, gentle push in — "still video" feel */
+      transform:scale(1.06);
+      transition:transform calc(var(--intro-beat) + var(--intro-fade)) ease-out;
+    }
+    #bp-intro .bp-beat.bp-on img{ transform:scale(1.12); }
+
+    /* darkening scrim so white text always reads; beat 1 a touch moodier,
+       beat 4 the brightest — reinforces the "dawn breaking" arc */
+    #bp-intro .bp-beat::after{
+      content:""; position:absolute; inset:0;
+      background:rgba(20,22,20,0.42);
+    }
+    #bp-intro #bp-beat1::after{ background:rgba(18,20,22,0.52); }
+    #bp-intro #bp-beat4::after{ background:rgba(20,22,20,0.30); }
+
+    #bp-intro .bp-word{
+      position:relative; z-index:2;
+      font-family:'Newsreader', Georgia, serif;
+      font-weight:500;
+      color:#FAF8F4;
+      font-size:clamp(2.4rem, 9vw, 5.5rem);
+      line-height:1.05;
+      text-align:center;
+      padding:0 8vw;
+      opacity:0;
+      transform:translateY(14px);
+      transition:opacity var(--intro-fade) ease, transform var(--intro-fade) ease;
+      text-shadow:0 2px 24px rgba(0,0,0,0.35);
+    }
+    #bp-intro .bp-beat.bp-on .bp-word{ opacity:1; transform:translateY(0); }
+
+    /* skip control */
+    #bp-skip{
+      position:absolute; top:20px; right:22px; z-index:3;
+      font-family:'Newsreader', Georgia, serif;
+      font-size:0.95rem; letter-spacing:.02em;
+      color:rgba(255,255,255,0.85);
+      background:rgba(0,0,0,0.18);
+      border:1px solid rgba(255,255,255,0.35);
+      border-radius:999px;
+      padding:7px 16px;
+      cursor:pointer;
+      opacity:0; transition:opacity 500ms ease .8s;
+    }
+    #bp-intro.bp-ready #bp-skip{ opacity:1; }
+    #bp-skip:hover{ background:rgba(0,0,0,0.32); }
+
+    /* If the visitor prefers reduced motion: no pushes, no fades between
+       beats — we just show the final frame briefly, then reveal the site. */
+    @media (prefers-reduced-motion: reduce){
+      #bp-intro .bp-beat, #bp-intro .bp-beat img, #bp-intro .bp-word{ transition:none; }
+      #bp-intro .bp-beat img{ transform:none; }
+      #bp-intro .bp-beat.bp-on img{ transform:none; }
+    }
+  </style>
+
+  <div id="bp-intro" aria-hidden="true">
+    <button id="bp-skip" type="button">Skip</button>
+
+    <div class="bp-beat" id="bp-beat1">
+      <img src="assets/images/intro/beat1-too-much.jpg" alt="">
+      <p class="bp-word">Too much.</p>
+    </div>
+    <div class="bp-beat" id="bp-beat2">
+      <img src="assets/images/intro/beat2-tiny-openings.jpg" alt="">
+      <p class="bp-word">Tiny openings.</p>
+    </div>
+    <div class="bp-beat" id="bp-beat3">
+      <img src="assets/images/intro/beat3-together.jpg" alt="">
+      <p class="bp-word">Together.</p>
+    </div>
+    <div class="bp-beat" id="bp-beat4">
+      <img src="assets/images/intro/beat4-this-counts.jpg" alt="">
+      <p class="bp-word">This counts.</p>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var intro = document.getElementById('bp-intro');
+    if (!intro) return;
+
+    var KEY = 'bp_intro_seen';
+    var reduce = window.matchMedia &&
+                 window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Play once per browser session. Comment the next 4 lines out while
+    // you're testing so it runs on every refresh.
+    var seen = false;
+    try { seen = sessionStorage.getItem(KEY) === '1'; } catch (e) {}
+    if (seen) { finish(true); return; }
+    try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+
+    var beats = ['bp-beat1', 'bp-beat2', 'bp-beat3', 'bp-beat4'];
+    var BEAT = 2000;   // keep in sync with --intro-beat
+    var timers = [];
+    var i = 0;
+
+    document.body.style.overflow = 'hidden';   // lock scroll during intro
+    intro.classList.add('bp-ready');
+
+    function show(n) {
+      beats.forEach(function (id, k) {
+        document.getElementById(id).classList.toggle('bp-on', k === n);
+      });
+    }
+
+    function run() {
+      show(0);
+      for (var b = 1; b < beats.length; b++) {
+        timers.push(setTimeout(show.bind(null, b), BEAT * b));
+      }
+      timers.push(setTimeout(function () { finish(false); }, BEAT * beats.length));
+    }
+
+    function finish(instant) {
+      timers.forEach(clearTimeout);
+      document.body.style.overflow = '';
+      if (instant) { intro.remove(); return; }
+      intro.classList.add('bp-done');
+      setTimeout(function () { if (intro && intro.parentNode) intro.remove(); }, 750);
+    }
+
+    // Reduced motion: hold the final, brightest frame ~1s, then reveal.
+    if (reduce) {
+      show(beats.length - 1);
+      timers.push(setTimeout(function () { finish(false); }, 1000));
+    } else {
+      run();
+    }
+
+    // Any tap, click, key, or scroll skips straight to the site.
+    document.getElementById('bp-skip').addEventListener('click', function () { finish(false); });
+    intro.addEventListener('click', function () { finish(false); });
+    window.addEventListener('keydown', function () { finish(false); }, { once: true });
+    window.addEventListener('wheel', function () { finish(false); }, { once: true, passive: true });
+    window.addEventListener('touchmove', function () { finish(false); }, { once: true, passive: true });
+  })();
+  </script>
+  <!-- /BRIGHTPLAY INTRO -->
+
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- shell:header — Bertie + wordmark FAR LEFT, links anchored RIGHT,
