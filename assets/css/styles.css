@@ -208,42 +208,6 @@ main > section:nth-of-type(even) { background: var(--color-bg-whisper); }
 }
 .skip-link:focus { left: var(--gutter); top: var(--space-3); z-index: 100; }
 
-/* -------- Utility bar (slim strip above the main nav) ----------
-   Common therapy/family-practice pattern: tap-to-call phone on the
-   left; right side reserved for email/location later. Not sticky —
-   scrolls away naturally; the main nav below stays sticky. Slim by
-   design (~36px) but the link's hit area covers the full bar height.
-   The bar paints above the fixed parallax hero via z-index 11. */
-.site-utility {
-  position: relative;
-  z-index: 11;
-  background: var(--color-bg-whisper);     /* a hair deeper than page bg */
-  border-bottom: 1px solid var(--color-border);
-  color: var(--color-text-soft);
-  font-size: var(--text-xs);
-}
-.site-utility__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  min-height: 36px;
-  padding-block: 6px;
-}
-.site-utility__phone {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 0;                          /* expand hit area without thickening the bar */
-  color: inherit;
-  text-decoration: none;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  transition: color var(--duration-quick) var(--ease-out);
-}
-.site-utility__phone:hover,
-.site-utility__phone:focus-visible { color: var(--color-primary); }
-.site-utility__right { /* empty placeholder for now (email / location later) */ }
-
 /* -------- Header / brand --------------------------------------- */
 .site-header {
   position: sticky; top: 0; z-index: 10;
@@ -251,8 +215,14 @@ main > section:nth-of-type(even) { background: var(--color-bg-whisper); }
   backdrop-filter: saturate(140%) blur(8px);
   -webkit-backdrop-filter: saturate(140%) blur(8px);
 }
+/* Match the why-families container width + padding so Bertie sits
+   on the same horizontal grid as the HONEST card below. */
+.site-header .container {
+  max-width: 88rem;
+  padding-inline: var(--space-5);
+}
 .site-header__inner {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center;
   gap: var(--space-4);
   padding-block: var(--space-3);
 }
@@ -279,6 +249,30 @@ main > section:nth-of-type(even) { background: var(--color-bg-whisper); }
   font-size: var(--text-xl);
   letter-spacing: var(--tracking-tight);
   font-weight: var(--weight-display);
+}
+
+/* Phone in the nav row — plain-text styled tap-to-call link. Always
+   visible. On mobile sits right after the brand (pushed right via
+   margin-left: auto); on desktop sits after the nav links. */
+.site-header__phone {
+  color: inherit;
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  margin-left: auto;                       /* mobile: push right; desktop override below */
+  transition: color var(--duration-quick) var(--ease-out);
+}
+.site-header__phone:hover,
+.site-header__phone:focus-visible { color: var(--color-primary); }
+
+/* Shift Bertie further LEFT at wider viewports so his right hand
+   aligns with the left edge of the HONEST card in why-families below.
+   Math: card_padding (16px) - brand_mark_width (56px) = -40px. Only
+   safe to apply when the container has room (>= 1440px ≈ 88rem + 32). */
+@media (min-width: 1440px) {
+  .site-header .brand { margin-left: -40px; }
 }
 
 /* -------- Nav (mobile-first slide-in, desktop inline) ---------- */
@@ -324,6 +318,7 @@ main > section:nth-of-type(even) { background: var(--color-bg-whisper); }
     position: static; inset: auto;
     transform: none; padding: 0; background: transparent;
     flex-direction: row; align-items: center; gap: var(--space-6);
+    margin-left: auto;                     /* anchor the links group to the right */
   }
   .site-nav__close { display: none; }
   .site-nav__list { flex-direction: row; gap: var(--space-6); }
@@ -333,7 +328,24 @@ main > section:nth-of-type(even) { background: var(--color-bg-whisper); }
     color: var(--color-text-soft);
   }
   .site-nav__link:hover { color: var(--color-text); }
-  .site-nav__link[aria-current="page"] { color: var(--color-text); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 0.4em; text-decoration-thickness: 2px; }
+  /* Active page: persistent BRIGHT TEAL underline (was mustard). */
+  .site-nav__link[aria-current="page"] {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary);
+    text-underline-offset: 0.4em;
+    text-decoration-thickness: 2px;
+  }
+  /* Hover on non-active links: transient teal underline. */
+  .site-nav__link:not([aria-current="page"]):hover,
+  .site-nav__link:not([aria-current="page"]):focus-visible {
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary);
+    text-underline-offset: 0.4em;
+    text-decoration-thickness: 2px;
+  }
+  /* Phone sits directly after the nav (no auto margin at desktop). */
+  .site-header__phone { margin-left: 0; }
 }
 
 /* Prevent body scroll when mobile nav is open */

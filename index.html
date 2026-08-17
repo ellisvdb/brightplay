@@ -21,20 +21,9 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- shell:utility — slim strip ABOVE the main nav. Tel link styled
-       as plain text so it reads clean, but it's a real tel: link for
-       tap-to-call on phones. Right side empty for now (room for email /
-       location later). Not sticky — scrolls away naturally; the main
-       nav below stays sticky. -->
-  <div class="site-utility">
-    <div class="container site-utility__inner">
-      <a class="site-utility__phone" href="tel:+18582242377">+1 858 224 2377</a>
-      <span class="site-utility__right" aria-hidden="true"></span>
-    </div>
-  </div>
-  <!-- /shell:utility -->
-
-  <!-- shell:header — Bertie far left, links far right, mobile-safe (no wrap) -->
+  <!-- shell:header — Bertie + wordmark FAR LEFT, links anchored RIGHT,
+       phone at the FAR RIGHT (tap-to-call). Mobile: nav collapses to a
+       toggle; phone stays visible and reachable. -->
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="brand" href="index.html" aria-label="BrightPlay — home">
@@ -44,20 +33,22 @@
         <span class="brand__name">BrightPlay</span>
       </a>
 
-      <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" data-nav-toggle>
-        <span class="visually-hidden">Open menu</span>
-        <span class="nav-toggle__bars" aria-hidden="true"></span>
-      </button>
-
-      <!-- Approach joins the nav once that page exists (brief order: Home · About · Approach · Contact). -->
       <nav class="site-nav" id="primary-nav" data-nav aria-label="Primary">
         <button class="site-nav__close" type="button" data-nav-close aria-label="Close menu">×</button>
         <ul class="site-nav__list">
           <li><a class="site-nav__link" href="index.html" aria-current="page">Home</a></li>
           <li><a class="site-nav__link" href="about.html">About</a></li>
+          <li><a class="site-nav__link" href="approach.html">Approach</a></li>
           <li><a class="site-nav__link" href="contact.html">Contact</a></li>
         </ul>
       </nav>
+
+      <a class="site-header__phone" href="tel:+18582242377">+1 858 224 2377</a>
+
+      <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" data-nav-toggle>
+        <span class="visually-hidden">Open menu</span>
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
     </div>
   </header>
   <!-- /shell:header -->
