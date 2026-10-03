@@ -146,16 +146,17 @@
     var reduce = window.matchMedia &&
                  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Play once per browser session. Comment the next 4 lines out while
-    // you're testing so it runs on every refresh.
+    // Play only on a visitor's FIRST visit ever (remembered on their device).
+    // To see it again while testing: open a private window, or run
+    // localStorage.removeItem('bp_intro_seen') in the browser console.
+    var timers = [];   // declared up front: finish() needs it even on a repeat visit
     var seen = false;
-    try { seen = sessionStorage.getItem(KEY) === '1'; } catch (e) {}
+    try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
     if (seen) { finish(true); return; }
-    try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
 
     var beats = ['bp-beat1', 'bp-beat2', 'bp-beat3', 'bp-beat4'];
     var BEAT = 2000;   // keep in sync with --intro-beat
-    var timers = [];
     var i = 0;
 
     document.body.style.overflow = 'hidden';   // lock scroll during intro
@@ -215,7 +216,7 @@
        toggle; phone stays visible and reachable. -->
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="brand" href="index.html" aria-label="BrightPlay — home">
+      <a class="brand" href="index.html" aria-label="BrightPlay home">
         <img class="brand__logo" src="assets/images/logo/brightplay-logo-header.svg" alt="" width="164" height="52" />
       </a>
 
@@ -224,12 +225,13 @@
         <ul class="site-nav__list">
           <li><a class="site-nav__link" href="index.html" aria-current="page">Home</a></li>
           <li><a class="site-nav__link" href="about.html">About</a></li>
-          <li><a class="site-nav__link" href="approach.html">Approach</a></li>
           <li><a class="site-nav__link" href="contact.html">Contact</a></li>
+          <li class="site-nav__item--client"><a class="site-nav__link" href="client.html">Client portal</a></li>
         </ul>
       </nav>
 
       <a class="site-header__phone" href="tel:+18582242377">+1 858 224 2377</a>
+      <a class="site-header__client" href="client.html">Client portal</a>
 
       <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" data-nav-toggle>
         <span class="visually-hidden">Open menu</span>

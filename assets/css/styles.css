@@ -211,6 +211,13 @@ main > section:nth-of-type(even) { background: var(--color-bg-whisper); }
 /* -------- Header / brand --------------------------------------- */
 .site-header {
   position: sticky; top: 0; z-index: 10;
+}
+/* The frosted-glass look lives on a pseudo-element: a backdrop-filter
+   on the header itself would trap the fixed mobile menu inside the
+   header's box, leaving the menu see-through over the page. */
+.site-header::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
   background: color-mix(in srgb, var(--color-bg) 92%, transparent);
   backdrop-filter: saturate(140%) blur(8px);
   -webkit-backdrop-filter: saturate(140%) blur(8px);
@@ -2075,4 +2082,28 @@ main.has-parallax-hero {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* -------- Client portal link (top right) ------------------------
+   Desktop: a quiet pill after the phone number. Mobile: lives inside
+   the slide-in menu instead, so the header row stays uncluttered. */
+.site-header__client {
+  display: none;
+  align-items: center;
+  padding: 0.45rem 1rem;
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  color: var(--color-primary-deep);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color var(--duration-quick) var(--ease-out), color var(--duration-quick) var(--ease-out);
+}
+.site-header__client:hover,
+.site-header__client:focus-visible,
+.site-header__client[aria-current="page"] { background: var(--color-primary); color: var(--color-on-primary); }
+@media (min-width: 768px) {
+  .site-header__client { display: inline-flex; }
+  .site-nav__item--client { display: none; }
 }
