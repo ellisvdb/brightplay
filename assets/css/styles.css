@@ -271,8 +271,15 @@ main > section:nth-of-type(even) { background: var(--color-bg-whisper); }
    aligns with the left edge of the HONEST card in why-families below.
    Math: card_padding (16px) - brand_mark_width (56px) = -40px. Only
    safe to apply when the container has room (>= 1440px ≈ 88rem + 32). */
-@media (min-width: 1440px) {
-  .site-header .brand { margin-left: -40px; }
+/* Header logo: the spark-on-the-i wordmark (Bertie now lives in the
+   footer only). The SVG carries its own soft glow and a one-time
+   "light on" animation; it respects prefers-reduced-motion. */
+.brand__logo {
+  display: block;
+  height: 52px; width: auto;
+}
+@media (max-width: 640px) {
+  .brand__logo { height: 44px; }
 }
 
 /* -------- Nav (mobile-first slide-in, desktop inline) ---------- */

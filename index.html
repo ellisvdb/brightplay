@@ -16,6 +16,9 @@
        Hyperlegible Next come from the @import in styles.css. -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" />
 
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
@@ -175,6 +178,13 @@
     function finish(instant) {
       timers.forEach(clearTimeout);
       document.body.style.overflow = '';
+      // Replay the header logo's "light on" moment now that the page is
+      // visible (it would otherwise play unseen behind the intro).
+      var logo = document.querySelector('.brand__logo');
+      if (logo && !logo.dataset.lit) {
+        logo.dataset.lit = '1';
+        logo.src = logo.getAttribute('src').split('#')[0] + '#lit';
+      }
       if (instant) { intro.remove(); return; }
       intro.classList.add('bp-done');
       setTimeout(function () { if (intro && intro.parentNode) intro.remove(); }, 750);
@@ -206,10 +216,7 @@
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="brand" href="index.html" aria-label="BrightPlay — home">
-        <span class="brand__mark" aria-hidden="true">
-          <img src="assets/images/logo/bertie-mascot.png" alt="" width="56" height="34" />
-        </span>
-        <span class="brand__name">BrightPlay</span>
+        <img class="brand__logo" src="assets/images/logo/brightplay-logo-header.svg" alt="" width="164" height="52" />
       </a>
 
       <nav class="site-nav" id="primary-nav" data-nav aria-label="Primary">
