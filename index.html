@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BrightPlay — Play-based coaching for early childhood</title>
-  <meta name="description" content="Play-based coaching that fits your day — and your way. Early childhood support in San Diego with Ellis van den Boogaard." />
+  <title>BrightPlay | Play-based Parent Coaching in San Diego</title>
+  <meta name="description" content="Play-based parent coaching in San Diego. Where play becomes connection — coaching for the people who know them best." />
 
   <!-- Locked type system (v4): Newsreader 500 headlines + Atkinson Hyperlegible
        Next body. Both are loaded by the @import at the top of styles.css.
@@ -25,8 +25,11 @@
 
   <!-- ============================================================
        BRIGHTPLAY INTRO  —  fixed full-screen overlay (z-index 9999)
-       that plays once per session, then fades to reveal the nav +
-       parallax hero underneath. Homepage only. Skippable via
+       that fades to reveal the nav + parallax hero underneath.
+       DEV: currently plays on EVERY page load — the once-per-visitor
+       localStorage gate is commented out in the script below and must
+       be restored before launch (see the TODO there).
+       Homepage only. Skippable via
        click / key / scroll / Skip button. Respects reduced-motion.
        Arc:  Too much -> Tiny openings -> Together -> This counts
        Self-contained: does NOT touch the site design tokens or hero.
@@ -146,14 +149,29 @@
     var reduce = window.matchMedia &&
                  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    var timers = [];   // declared up front: finish() needs it even on a repeat visit
+
+    // ----------------------------------------------------------------
+    // DEV MODE — the intro plays on EVERY page load so copy can be
+    // reviewed repeatedly. The once-per-visitor gate below is
+    // intentionally commented out, NOT removed.
+    //
+    // TODO (BEFORE LAUNCH): restore once-per-visitor behaviour by
+    // un-commenting the four lines below. Nothing else needs to
+    // change — `KEY` and `timers` are already declared above.
+    // Verify after restoring: first load plays the intro, a reload
+    // skips straight to the site, and
+    // localStorage.removeItem('bp_intro_seen') makes it play again.
+    //
     // Play only on a visitor's FIRST visit ever (remembered on their device).
     // To see it again while testing: open a private window, or run
     // localStorage.removeItem('bp_intro_seen') in the browser console.
-    var timers = [];   // declared up front: finish() needs it even on a repeat visit
-    var seen = false;
-    try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
-    if (seen) { finish(true); return; }
-    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+    //
+    // var seen = false;
+    // try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
+    // if (seen) { finish(true); return; }
+    // try { localStorage.setItem(KEY, '1'); } catch (e) {}
+    // ----------------------------------------------------------------
 
     var beats = ['bp-beat1', 'bp-beat2', 'bp-beat3', 'bp-beat4'];
     var BEAT = 2000;   // keep in sync with --intro-beat
@@ -216,8 +234,11 @@
        toggle; phone stays visible and reachable. -->
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="brand" href="index.html" aria-label="BrightPlay home">
+      <!-- Descriptor sits UNDER the logo. The slogan never appears here —
+           it lives in the footer (and on the printed card) only. -->
+      <a class="brand brand--stacked" href="index.html" aria-label="BrightPlay home">
         <img class="brand__logo" src="assets/images/logo/brightplay-logo-header.svg" alt="" width="164" height="52" />
+        <span class="brand__descriptor">Parent Coaching &middot; San Diego</span>
       </a>
 
       <nav class="site-nav" id="primary-nav" data-nav aria-label="Primary">
@@ -249,10 +270,13 @@
          width="1600" height="900" />
     <div class="hero-parallax__overlay photo-scrim"></div>
     <div class="hero-parallax__content">
-      <h1 class="hero-parallax__title on-photo__title">Play that meets you where you are</h1>
-      <!-- Locked tagline, kept as a smaller sub-line. -->
-      <p class="hero-parallax__sub on-photo__sub">Where play does the heavy lifting</p>
-      <p class="hero-parallax__cta"><a class="btn btn--primary btn--on-photo" href="contact.html">Let's chat</a></p>
+      <h1 class="hero-parallax__title on-photo__title">Where play becomes connection.</h1>
+      <p class="hero-parallax__sub on-photo__sub">Coaching for the people who know them best.</p>
+      <p class="hero-parallax__cta"><a class="btn btn--primary btn--on-photo" href="contact.html">Schedule an introduction</a></p>
+      <p class="hero-parallax__micro on-photo__sub">A complimentary 15-minute conversation.</p>
+      <!-- Secondary link. Points at the page body until the Approach page
+           exists; swap the href when it lands. -->
+      <p class="hero-parallax__secondary"><a class="hero-parallax__link" href="#main">Explore our approach &rarr;</a></p>
     </div>
   </section>
   <!-- /content:hero -->
@@ -655,6 +679,9 @@
 
         <!-- C) Tagline (placeholder copy, verbatim) -->
         <p class="create-tagline">Engaging the body in play is essential for neurodevelopmental support and family bond.</p>
+
+        <!-- Mid-page primary CTA — same label as the hero and footer buttons. -->
+        <p class="midpage-cta"><a class="btn btn--primary" href="contact.html">Schedule an introduction</a></p>
       </div>
     </section>
     <!-- /content:create -->
@@ -855,11 +882,21 @@
            loading="lazy" decoding="async" />
       <div class="closing-band__scrim" aria-hidden="true"></div>
       <div class="closing-band__content">
-        <h2 id="close-band-title" class="closing-band__headline">Play leads the way</h2>
-        <p class="closing-band__sub">Because play speaks louder than words</p>
+        <h2 id="close-band-title" class="closing-band__headline">Play speaks louder than words.</h2>
+        <p class="closing-band__sub">A reach. A glance. A shared giggle. Your child always has so much to say.</p>
       </div>
     </section>
     <!-- /content:close-band -->
+
+    <!-- content:bottom-cta — closing line + the primary button, third and
+         last appearance of the same label. -->
+    <section class="section bottom-cta" aria-label="Get in touch">
+      <div class="container text-center">
+        <p class="bottom-cta__line">Every family&rsquo;s story is different. We&rsquo;d love to hear yours.</p>
+        <p class="bottom-cta__btn"><a class="btn btn--primary" href="contact.html">Schedule an introduction</a></p>
+      </div>
+    </section>
+    <!-- /content:bottom-cta -->
 
 <!-- Remaining Phase 2 (later): FAQ, full footer.
          Recover any old copy from git history if needed. -->
@@ -946,8 +983,10 @@
             <span class="brand__name">BrightPlay</span>
           </a>
           <p class="site-footer__blurb">Collaborative parent coaching. Everything shared stays confidential.</p>
+          <!-- Slogan lives here (and on the printed card) — never in the header. -->
+          <p class="site-footer__slogan">Curious by Nature. Connected by Play.</p>
           <a class="site-footer__cta" href="contact.html">
-            Let's Talk
+            Schedule an introduction
             <span class="site-footer__cta-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </div>

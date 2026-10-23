@@ -289,6 +289,26 @@ main > section:nth-of-type(even) { background: var(--color-bg-whisper); }
   .brand__logo { height: 44px; }
 }
 
+/* Stacked brand lockup: logo on top, descriptor directly beneath it.
+   Set in title case on purpose — no uppercase transform. */
+.brand--stacked {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+.brand__descriptor {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--color-text-soft);
+  white-space: nowrap;
+  padding-left: 2px;
+}
+@media (max-width: 640px) {
+  .brand__descriptor { font-size: 0.7rem; letter-spacing: 0.04em; }
+}
+
 /* -------- Nav (mobile-first slide-in, desktop inline) ---------- */
 .nav-toggle {
   background: transparent; border: 0; padding: var(--space-2);
@@ -445,6 +465,27 @@ body.nav-open { overflow: hidden; }
   max-width: none;
 }
 .hero-parallax__cta { margin: 0; }
+
+/* Microcopy sitting just under the hero button, then the quieter
+   secondary link below it. */
+.hero-parallax__micro {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  margin: var(--space-3) 0 0;
+}
+.hero-parallax__secondary { margin: var(--space-5) 0 0; }
+.hero-parallax__link {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 2px;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+  transition: border-color var(--duration-quick) var(--ease-out);
+}
+.hero-parallax__link:hover,
+.hero-parallax__link:focus-visible { border-bottom-color: #fff; }
 
 /* ============================================================
    Reusable — text floating over a FULL-BLEED photo (hero now,
@@ -1282,6 +1323,9 @@ main.has-parallax-hero {
   color: var(--color-text);
 }
 
+/* Mid-page primary CTA, under the How-it-works tagline. */
+.midpage-cta { margin: var(--space-6) 0 0; }
+
 /* D) Self-writing "input to published": two white floating boxes with a teal
    flow arrow between them. Static placeholder for now (typing added later). */
 .selfwrite {
@@ -1855,6 +1899,20 @@ main.has-parallax-hero {
     0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
+/* Bottom-of-page CTA — the quiet closing line plus the third and last
+   appearance of the primary button. Sits between the communication
+   band and the footer. */
+.bottom-cta__line {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  max-width: 34ch;
+  margin: 0 auto;
+}
+.bottom-cta__btn { margin: var(--space-6) 0 0; }
+
 /* Mobile: pool nudged a touch darker and re-centered on the left
    side since the figures occupy more of the visible band. The band
    still uses the image's aspect ratio (no height override here). */
@@ -1944,6 +2002,17 @@ main.has-parallax-hero {
   padding-left: var(--space-4);            /* small indent so the blurb doesn't sit flush under Bertie */
   max-width: 32ch;
   line-height: 1.5;
+}
+/* Slogan — footer (and printed card) only, never the header. */
+.site-footer__slogan {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-base);
+  color: var(--color-primary);
+  margin: calc(var(--space-4) * -0.5) 0 0;
+  padding-left: var(--space-4);            /* same indent as the blurb above */
+  max-width: 32ch;
+  line-height: 1.3;
 }
 
 /* Teal solid PILL button — calmer than the page-level mustard CTAs,
