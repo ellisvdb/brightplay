@@ -152,33 +152,33 @@
     var timers = [];   // declared up front: finish() needs it even on a repeat visit
 
     // ----------------------------------------------------------------
-    // DEV MODE — the intro plays on EVERY page load so copy can be
+    // DEV MODE — the intro AUTO-PLAYS on every page load so copy can be
     // reviewed repeatedly. The once-per-visitor gate below is
     // intentionally commented out, NOT removed.
     //
+    // The gate only decides whether the intro plays BY ITSELF on load.
+    // The hero replay button works either way, so re-enabling this does
+    // not disable replay.
+    //
     // TODO (BEFORE LAUNCH): restore once-per-visitor behaviour by
-    // un-commenting the four lines below. Nothing else needs to
-    // change — `KEY` and `timers` are already declared above.
-    // Verify after restoring: first load plays the intro, a reload
-    // skips straight to the site, and
-    // localStorage.removeItem('bp_intro_seen') makes it play again.
+    // un-commenting the two lines below. Nothing else needs to change —
+    // `KEY`, `timers` and `autoplay` are all declared already.
+    // Verify after restoring: first load plays the intro, a reload skips
+    // straight to the site, the replay button still works, and
+    // localStorage.removeItem('bp_intro_seen') restores the first-load
+    // behaviour.
     //
     // Play only on a visitor's FIRST visit ever (remembered on their device).
     // To see it again while testing: open a private window, or run
     // localStorage.removeItem('bp_intro_seen') in the browser console.
     //
-    // var seen = false;
-    // try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
-    // if (seen) { finish(true); return; }
+    var autoplay = true;
+    // try { if (localStorage.getItem(KEY) === '1') autoplay = false; } catch (e) {}
     // try { localStorage.setItem(KEY, '1'); } catch (e) {}
     // ----------------------------------------------------------------
 
     var beats = ['bp-beat1', 'bp-beat2', 'bp-beat3', 'bp-beat4'];
     var BEAT = 2000;   // keep in sync with --intro-beat
-    var i = 0;
-
-    document.body.style.overflow = 'hidden';   // lock scroll during intro
-    intro.classList.add('bp-ready');
 
     function show(n) {
       beats.forEach(function (id, k) {
@@ -194,8 +194,52 @@
       timers.push(setTimeout(function () { finish(false); }, BEAT * beats.length));
     }
 
+    // The overlay is DETACHED rather than destroyed when the intro ends:
+    // the `intro` reference survives, so start() can re-append the same
+    // node for a replay.
+    function detach() {
+      if (intro.parentNode) intro.parentNode.removeChild(intro);
+    }
+
+    function skip() { finish(false); }
+
+    // The skip listeners are {once:true}, so they are consumed by each
+    // play and must be re-armed for every subsequent replay.
+    function armSkip() {
+      window.addEventListener('keydown', skip, { once: true });
+      window.addEventListener('wheel', skip, { once: true, passive: true });
+      window.addEventListener('touchmove', skip, { once: true, passive: true });
+    }
+    function disarmSkip() {
+      window.removeEventListener('keydown', skip);
+      window.removeEventListener('wheel', skip);
+      window.removeEventListener('touchmove', skip);
+    }
+
+    // Play (or replay) the sequence from the first beat. Safe to call
+    // while a play is already in flight — it resets rather than stacks.
+    function start() {
+      timers.forEach(clearTimeout);
+      timers = [];
+      if (!intro.parentNode) document.body.appendChild(intro);
+      intro.classList.remove('bp-done');
+      intro.classList.add('bp-ready');
+      document.body.style.overflow = 'hidden';   // lock scroll during intro
+      void intro.offsetWidth;                    // reflow so the re-append animates
+      // Reduced motion: hold the final, brightest frame ~1s, then reveal.
+      if (reduce) {
+        show(beats.length - 1);
+        timers.push(setTimeout(function () { finish(false); }, 1000));
+      } else {
+        run();
+      }
+      armSkip();
+    }
+
     function finish(instant) {
       timers.forEach(clearTimeout);
+      timers = [];
+      disarmSkip();
       document.body.style.overflow = '';
       // Replay the header logo's "light on" moment now that the page is
       // visible (it would otherwise play unseen behind the intro).
@@ -204,25 +248,41 @@
         logo.dataset.lit = '1';
         logo.src = logo.getAttribute('src').split('#')[0] + '#lit';
       }
-      if (instant) { intro.remove(); return; }
+      if (instant) { detach(); return; }
       intro.classList.add('bp-done');
-      setTimeout(function () { if (intro && intro.parentNode) intro.remove(); }, 750);
+      timers.push(setTimeout(detach, 750));
     }
 
-    // Reduced motion: hold the final, brightest frame ~1s, then reveal.
-    if (reduce) {
-      show(beats.length - 1);
-      timers.push(setTimeout(function () { finish(false); }, 1000));
+    // Any tap, click, key, or scroll skips straight to the site. These two
+    // live on the overlay itself, so they survive detach/re-append.
+    document.getElementById('bp-skip').addEventListener('click', skip);
+    intro.addEventListener('click', skip);
+
+    // Hero replay control — re-triggers the sequence on demand, always,
+    // regardless of `autoplay` / the once-per-visitor gate.
+    //
+    // IMPORTANT: this script is inline and NOT deferred, so it runs while
+    // the parser is still partway down the page. #bp-intro sits above it
+    // and resolves immediately, but the replay button lives further down
+    // in the hero and does not exist yet — querying for it here would
+    // return null. Wait for DOMContentLoaded before wiring it up.
+    function wireReplay() {
+      var replay = document.querySelector('[data-intro-replay]');
+      if (!replay) return;
+      replay.addEventListener('click', function () {
+        replay.classList.remove('is-spinning');
+        void replay.offsetWidth;                 // restart the icon spin
+        replay.classList.add('is-spinning');
+        start();                                 // full sequence, from beat 1
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', wireReplay);
     } else {
-      run();
+      wireReplay();
     }
 
-    // Any tap, click, key, or scroll skips straight to the site.
-    document.getElementById('bp-skip').addEventListener('click', function () { finish(false); });
-    intro.addEventListener('click', function () { finish(false); });
-    window.addEventListener('keydown', function () { finish(false); }, { once: true });
-    window.addEventListener('wheel', function () { finish(false); }, { once: true, passive: true });
-    window.addEventListener('touchmove', function () { finish(false); }, { once: true, passive: true });
+    if (autoplay) { start(); } else { finish(true); }
   })();
   </script>
   <!-- /BRIGHTPLAY INTRO -->
@@ -278,6 +338,20 @@
            exists; swap the href when it lands. -->
       <p class="hero-parallax__secondary"><a class="hero-parallax__link" href="#main">Explore our approach &rarr;</a></p>
     </div>
+
+    <!-- Understated replay control. Sits in the hero's top-left, below
+         the sticky header so it never crowds the logo or the nav.
+         Re-triggers the intro sequence; see the intro script above. -->
+    <button class="hero-replay" type="button" data-intro-replay
+            aria-label="Replay the opening sequence">
+      <svg class="hero-replay__icon" viewBox="0 0 24 24" aria-hidden="true"
+           fill="none" stroke="currentColor" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+        <!-- ~300° arc, gap at the top-left, arrowhead on the arc's head -->
+        <path d="M12 5a7 7 0 1 1-5.94 3.5" />
+        <path d="M9.6 3.1 12 5 10.1 7.4" />
+      </svg>
+    </button>
   </section>
   <!-- /content:hero -->
 

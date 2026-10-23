@@ -487,6 +487,72 @@ body.nav-open { overflow: hidden; }
 .hero-parallax__link:hover,
 .hero-parallax__link:focus-visible { border-bottom-color: #fff; }
 
+/* Replay control — understated glass disc in the hero's top-left.
+   `top` clears the sticky header (logo + descriptor + padding ≈ 95px)
+   so it never crowds the brand or the nav. Only reachable at the top
+   of the page: <main> rises over the fixed hero on scroll. */
+.hero-replay {
+  position: absolute;
+  top: clamp(6.75rem, 11vh, 8.5rem);
+  left: var(--gutter);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.10);
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+  backdrop-filter: blur(6px) saturate(130%);
+  color: #fff;
+  opacity: 0.34;                           /* deliberately faint at rest */
+  cursor: pointer;
+  transition:
+    opacity var(--duration-quick) var(--ease-out),
+    background-color var(--duration-quick) var(--ease-out),
+    border-color var(--duration-quick) var(--ease-out),
+    transform var(--duration-quick) var(--ease-out);
+}
+.hero-replay:hover,
+.hero-replay:focus-visible {
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.hero-replay:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
+}
+.hero-replay:active { transform: scale(0.94); }
+.hero-replay__icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+/* One calm turn of the icon when the intro is re-triggered. */
+.hero-replay.is-spinning .hero-replay__icon {
+  animation: hero-replay-spin 620ms var(--ease-out);
+}
+@keyframes hero-replay-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-replay.is-spinning .hero-replay__icon { animation: none; }
+}
+/* Shorter header on phones, so the disc can sit a little higher. */
+@media (max-width: 640px) {
+  .hero-replay {
+    top: clamp(5.5rem, 10vh, 7rem);
+    width: 36px;
+    height: 36px;
+  }
+  .hero-replay__icon { width: 16px; height: 16px; }
+}
+
 /* ============================================================
    Reusable — text floating over a FULL-BLEED photo (hero now,
    closing band later). TRUE white text + a strong, neutral dark
