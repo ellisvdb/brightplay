@@ -602,6 +602,15 @@ main.has-parallax-hero {
   main.has-parallax-hero { margin-top: 0; }
 }
 
+/* Phones: serve a stable, static hero rather than the fixed reveal.
+   Same collapse as reduced-motion above, so small-screen scrolling
+   stays smooth and the image never pins behind the content. Desktop
+   (above 640px) keeps the reveal. */
+@media (max-width: 640px) {
+  .hero-parallax { position: relative; }
+  main.has-parallax-hero { margin-top: 0; }
+}
+
 /* -------- Section placeholders --------------------------------- */
 .placeholder {
   padding: var(--space-5);
