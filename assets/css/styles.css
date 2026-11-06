@@ -211,6 +211,16 @@ main > section:nth-of-type(even) { background: var(--color-bg-whisper); }
 /* -------- Header / brand --------------------------------------- */
 .site-header {
   position: sticky; top: 0; z-index: 10;
+  /* Drop shadow under the sticky header, Amen-style: darkest at the
+     very top (near-black teal) just under the bar, then widening and
+     fading as it falls. Tinted from the deep teal (#1C5854) toward
+     black at the top, never gray. A box-shadow (not backdrop-filter)
+     does NOT trap the fixed mobile menu. */
+  box-shadow:
+    0 3px 6px -1px rgba(9, 32, 30, 0.34),
+    0 9px 16px -3px rgba(15, 48, 45, 0.24),
+    0 20px 34px -8px rgba(22, 68, 64, 0.16),
+    0 34px 60px -22px rgba(28, 88, 84, 0.12);
 }
 /* The frosted-glass look lives on a pseudo-element: a backdrop-filter
    on the header itself would trap the fixed mobile menu inside the
