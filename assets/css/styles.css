@@ -2271,3 +2271,5 @@ main.has-parallax-hero {
 
 /* "what families notice" heading above the parent quotes */
 .carousel-section .bp-eyebrow { display:block; width:100%; text-align:center; margin:0 auto 28px; }
+/* The balloons polaroid is pre-cropped close on the static hair and the laugh; show it centered. */
+.bp-intro__polaroid .bp-polaroid__photo img[src*="polaroid-balloons-static"] { object-position: center; }
