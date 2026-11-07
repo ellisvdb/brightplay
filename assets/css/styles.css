@@ -2273,3 +2273,18 @@ main.has-parallax-hero {
 .carousel-section .bp-eyebrow { display:block; width:100%; text-align:center; margin:0 auto 28px; }
 /* The balloons polaroid is pre-cropped close on the static hair and the laugh; show it centered. */
 .bp-intro__polaroid .bp-polaroid__photo img[src*="polaroid-balloons-static"] { object-position: center; }
+
+/* -------- Getting started: three steps under the coaching intro -------- */
+.bp-start__title { font-family:'Newsreader',serif; font-weight:500; color:#1C5854; margin:0 0 36px; }
+.bp-start .bp-eyebrow { display:block; text-align:center; }
+.bp-steps { list-style:none; margin:0 auto; padding:0; max-width:1000px;
+  display:grid; grid-template-columns:1fr; gap:22px; }
+.bp-step { position:relative; padding-top:44px; }
+.bp-step__num { position:absolute; top:-18px; left:30px; width:40px; height:40px; border-radius:50%;
+  background:#C08A73; color:#fff; display:grid; place-items:center;
+  font-family:'Newsreader',serif; font-size:22px; box-shadow:0 4px 12px rgba(28,88,84,.15); }
+.bp-step__title { font-family:'Newsreader',serif; font-weight:500; font-size:23px; line-height:1.2;
+  color:#1C5854; margin:0 0 10px; }
+.bp-start__cta { margin-top:40px; }
+@media (min-width:900px) { .bp-steps { grid-template-columns:repeat(3, 1fr); gap:26px; } }
+.bp-start .bp-eyebrow, .bp-start__cta { width:100%; margin-left:auto; margin-right:auto; text-align:center; }
