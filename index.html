@@ -387,176 +387,6 @@
     </section>
     <!-- /content:intro -->
 
-    <!-- content:carousel (brief §9) — auto-scrolling parent recommendations.
-         No star ratings. Cards = words + attribution (first name / relationship /
-         community). PLACEHOLDER content for now; real, consented words land later. -->
-    <section class="section carousel-section" aria-labelledby="recs-title">
-      <div class="container">
-        <h2 id="recs-title" class="visually-hidden">Parent recommendations</h2>
-      </div>
-      <!-- Avatars are neutral initial-circles (not real faces); names are
-           PLACEHOLDER stand-ins — quote stays "coming soon" until real,
-           consented parent words land. No star ratings. -->
-      <div class="carousel">
-        <div class="carousel__track">
-          <!-- set 1 -->
-          <figure class="rec-card float-box">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar" aria-hidden="true">M</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Maya R.</span>
-                <span class="rec-card__role">Mom of a 3-year-old · Pacific Beach</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar" aria-hidden="true">J</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Jordan T.</span>
-                <span class="rec-card__role">Dad of twins · North Park</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar" aria-hidden="true">A</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Aisha K.</span>
-                <span class="rec-card__role">Early Head Start parent · City Heights</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar" aria-hidden="true">L</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Lena B.</span>
-                <span class="rec-card__role">Grandparent &amp; caregiver · Chula Vista</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar" aria-hidden="true">S</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Sam P.</span>
-                <span class="rec-card__role">Parent of a preschooler · La Mesa</span>
-              </span>
-            </figcaption>
-          </figure>
-          <!-- set 2 (duplicate for seamless loop; hidden from assistive tech) -->
-          <figure class="rec-card float-box" aria-hidden="true">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar">M</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Maya R.</span>
-                <span class="rec-card__role">Mom of a 3-year-old · Pacific Beach</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box" aria-hidden="true">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar">J</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Jordan T.</span>
-                <span class="rec-card__role">Dad of twins · North Park</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box" aria-hidden="true">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar">A</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Aisha K.</span>
-                <span class="rec-card__role">Early Head Start parent · City Heights</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box" aria-hidden="true">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar">L</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Lena B.</span>
-                <span class="rec-card__role">Grandparent &amp; caregiver · Chula Vista</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box" aria-hidden="true">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar">S</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Sam P.</span>
-                <span class="rec-card__role">Parent of a preschooler · La Mesa</span>
-              </span>
-            </figcaption>
-          </figure>
-          <!-- set 3 (third duplicate so the track always exceeds the viewport; hidden from assistive tech) -->
-          <figure class="rec-card float-box" aria-hidden="true">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar">M</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Maya R.</span>
-                <span class="rec-card__role">Mom of a 3-year-old · Pacific Beach</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box" aria-hidden="true">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar">J</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Jordan T.</span>
-                <span class="rec-card__role">Dad of twins · North Park</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box" aria-hidden="true">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar">A</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Aisha K.</span>
-                <span class="rec-card__role">Early Head Start parent · City Heights</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box" aria-hidden="true">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar">L</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Lena B.</span>
-                <span class="rec-card__role">Grandparent &amp; caregiver · Chula Vista</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="rec-card float-box" aria-hidden="true">
-            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
-            <figcaption class="rec-card__person">
-              <span class="rec-card__avatar">S</span>
-              <span class="rec-card__meta">
-                <span class="rec-card__name">Sam P.</span>
-                <span class="rec-card__role">Parent of a preschooler · La Mesa</span>
-              </span>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-    <!-- /content:carousel -->
-
     <!-- content:offerings (brief §11 heading + §12 three-column feature grid) -->
     <section class="section" aria-labelledby="offerings-title">
       <div class="container">
@@ -942,6 +772,176 @@
       </div>
     </section>
     <!-- /content:why-families -->
+
+    <!-- content:carousel (brief §9) — auto-scrolling parent recommendations.
+         No star ratings. Cards = words + attribution (first name / relationship /
+         community). PLACEHOLDER content for now; real, consented words land later. -->
+    <section class="section carousel-section" aria-labelledby="recs-title">
+      <div class="container">
+        <h2 id="recs-title" class="visually-hidden">Parent recommendations</h2>
+      </div>
+      <!-- Avatars are neutral initial-circles (not real faces); names are
+           PLACEHOLDER stand-ins — quote stays "coming soon" until real,
+           consented parent words land. No star ratings. -->
+      <div class="carousel">
+        <div class="carousel__track">
+          <!-- set 1 -->
+          <figure class="rec-card float-box">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar" aria-hidden="true">M</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Maya R.</span>
+                <span class="rec-card__role">Mom of a 3-year-old · Pacific Beach</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar" aria-hidden="true">J</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Jordan T.</span>
+                <span class="rec-card__role">Dad of twins · North Park</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar" aria-hidden="true">A</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Aisha K.</span>
+                <span class="rec-card__role">Early Head Start parent · City Heights</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar" aria-hidden="true">L</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Lena B.</span>
+                <span class="rec-card__role">Grandparent &amp; caregiver · Chula Vista</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar" aria-hidden="true">S</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Sam P.</span>
+                <span class="rec-card__role">Parent of a preschooler · La Mesa</span>
+              </span>
+            </figcaption>
+          </figure>
+          <!-- set 2 (duplicate for seamless loop; hidden from assistive tech) -->
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">M</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Maya R.</span>
+                <span class="rec-card__role">Mom of a 3-year-old · Pacific Beach</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">J</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Jordan T.</span>
+                <span class="rec-card__role">Dad of twins · North Park</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">A</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Aisha K.</span>
+                <span class="rec-card__role">Early Head Start parent · City Heights</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">L</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Lena B.</span>
+                <span class="rec-card__role">Grandparent &amp; caregiver · Chula Vista</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">S</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Sam P.</span>
+                <span class="rec-card__role">Parent of a preschooler · La Mesa</span>
+              </span>
+            </figcaption>
+          </figure>
+          <!-- set 3 (third duplicate so the track always exceeds the viewport; hidden from assistive tech) -->
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">M</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Maya R.</span>
+                <span class="rec-card__role">Mom of a 3-year-old · Pacific Beach</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">J</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Jordan T.</span>
+                <span class="rec-card__role">Dad of twins · North Park</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">A</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Aisha K.</span>
+                <span class="rec-card__role">Early Head Start parent · City Heights</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">L</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Lena B.</span>
+                <span class="rec-card__role">Grandparent &amp; caregiver · Chula Vista</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="rec-card float-box" aria-hidden="true">
+            <blockquote class="rec-card__quote">Parent words coming soon</blockquote>
+            <figcaption class="rec-card__person">
+              <span class="rec-card__avatar">S</span>
+              <span class="rec-card__meta">
+                <span class="rec-card__name">Sam P.</span>
+                <span class="rec-card__role">Parent of a preschooler · La Mesa</span>
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- /content:carousel -->
 
     <!-- content:close-band — full-bleed editorial closing band.
          Wide cropped image + soft RIGHT-SIDE scrim pool (warm charcoal,
