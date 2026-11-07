@@ -1031,8 +1031,9 @@ main.has-parallax-hero {
 .bp-polaroid__caption{ height:75px; display:flex; align-items:center; justify-content:center;
   font-family:'Gloria Hallelujah',cursive; font-size:24px; color:#2D2A26; }
 @media (min-width:680px){
-  .bp-intro__stage{ display:block; position:relative; min-height:475px; }
-  .bp-intro__left{ position:absolute; left:0; top:54px; width:283px; z-index:1; }
+  .bp-intro__stage{ display:block; position:relative; min-height:475px; max-width:900px; }
+  /* Wider left box with extra right padding so its text clears the tilted polaroid. */
+  .bp-intro__left{ position:absolute; left:0; top:54px; width:310px; z-index:1; padding-right:44px; }
   .bp-intro__polaroid{ position:absolute; left:50%; top:30px;
     transform:translateX(-50%) rotate(3deg); z-index:2; }
   .bp-intro__right{ position:absolute; right:0; top:225px; width:295px; z-index:3; }
