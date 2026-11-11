@@ -2308,3 +2308,4 @@ main.has-parallax-hero {
 /* Hero headline: one sentence per line. */
 .hero-line { display:block; white-space:nowrap; }
 .hero-parallax__content { width: min(92%, 760px); }
+.hero-parallax .hero-parallax__micro { font-size: 1.0625rem; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.70), 0 0 16px rgba(0,0,0,.55); }
