@@ -2304,3 +2304,7 @@ main.has-parallax-hero {
 .hero-parallax .on-photo__title { text-shadow: 0 2px 4px rgba(0,0,0,.35), 0 0 28px rgba(0,0,0,.40); }
 .hero-parallax .on-photo__sub { text-shadow: 0 1px 3px rgba(0,0,0,.60), 0 0 18px rgba(0,0,0,.50); font-weight: 500; }
 .hero-parallax__content { top: max(10%, 130px); }
+
+/* Hero headline: one sentence per line. */
+.hero-line { display:block; white-space:nowrap; }
+.hero-parallax__content { width: min(92%, 760px); }
