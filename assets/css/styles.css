@@ -2309,3 +2309,34 @@ main.has-parallax-hero {
 .hero-line { display:block; white-space:nowrap; }
 .hero-parallax__content { width: min(92%, 760px); }
 .hero-parallax .hero-parallax__micro { font-size: 1.0625rem; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.70), 0 0 16px rgba(0,0,0,.55); }
+
+/* Hero layout, Nov 11: the photo starts below the header so the full
+   top of the image (mom's hair) shows; text sits low over the figures:
+   headline above, sub line across mom's knee to the boy's jeans, button
+   on the mat between the blocks. Desktop and tablet only. */
+:root { --hdr: 88px; }
+@media (min-width: 641px) {
+  .hero-parallax__img,
+  .hero-parallax__overlay.photo-scrim {
+    inset: auto;
+    top: var(--hdr); left: 0;
+    width: 100%; height: calc(100% - var(--hdr));
+  }
+  .hero-parallax__img { object-position: 50% 0; }
+  .hero-parallax__overlay.photo-scrim {
+    background: radial-gradient(ellipse 62% 46% at 50% 66%, rgba(0,0,0,.30) 0%, rgba(0,0,0,.12) 55%, rgba(0,0,0,0) 85%);
+  }
+  .hero-parallax__content {
+    top: calc(var(--hdr) + (100% - var(--hdr)) * var(--hero-text-top, .44));
+    width: 100%; max-width: none; padding-inline: 0;
+  }
+  .hero-parallax .hero-parallax__sub {
+    font-size: clamp(1.375rem, 2.15vw, 2.125rem);
+    font-weight: 700;
+    white-space: nowrap;
+    margin: 0 0 var(--hero-btn-gap, 9vh);
+    text-shadow: 0 1px 3px rgba(0,0,0,.65), 0 0 22px rgba(0,0,0,.55);
+  }
+}
+
+@media (min-width: 641px) { .hero-parallax .hero-parallax__cta { max-width: none; } }

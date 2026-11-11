@@ -37,3 +37,14 @@
     if (e.target.matches('a')) close();
   });
 })();
+
+/* Header height as a CSS variable, so the fixed hero photo can start
+   right below the header. */
+(function () {
+  var h = document.querySelector('.site-header');
+  if (!h) return;
+  function setHdr() { document.documentElement.style.setProperty('--hdr', h.offsetHeight + 'px'); }
+  setHdr();
+  window.addEventListener('resize', setHdr);
+  window.addEventListener('load', setHdr);
+})();
