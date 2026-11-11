@@ -2365,3 +2365,36 @@ main.has-parallax-hero {
     top: min(calc(var(--imgH) * .755), calc(100% - 76px));
   }
 }
+
+/* Hero round 3 (Ellis's marked-up print): one narrow stacked column
+   between mom's tower and the boy's hands. Headline on four lines,
+   sub line stacked around a serif ampersand, button on the mat.
+   --colX: column center as a fraction of the photo width. */
+.hero-subline, .hero-amp { display: block; }
+.hero-amp {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: 1.35em; line-height: 1.05;
+}
+@media (min-width: 641px) {
+  .hero-parallax { --colX: .47; --imgW: max(100vw, calc(var(--imgH) * 1.7778)); }
+  .hero-parallax .hero-parallax__title,
+  .hero-parallax .hero-parallax__sub,
+  .hero-parallax .hero-parallax__cta {
+    left: calc(50% + var(--imgW) * (var(--colX) - .5));
+    right: auto; transform: translateX(-50%);
+    width: max-content;
+  }
+  .hero-parallax .hero-parallax__title {
+    top: calc(var(--imgH) * .14);
+    font-size: clamp(2.75rem, calc(var(--imgH) * .085), 5.5rem);
+    line-height: 1.0;
+  }
+  .hero-parallax .hero-parallax__sub {
+    top: calc(var(--imgH) * .575);
+    font-size: clamp(1.25rem, calc(var(--imgH) * .036), 2rem);
+    line-height: 1.25;
+  }
+  .hero-parallax .hero-parallax__cta {
+    top: min(calc(var(--imgH) * .80), calc(100% - 66px));
+  }
+}
