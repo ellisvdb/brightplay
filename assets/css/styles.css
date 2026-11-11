@@ -5,7 +5,7 @@
    swaps TEAL↔SAGE in one block without touching components.
    ============================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400;1,6..72,500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* -------- Token layer (BrightPlay brief) ----------------------- */
 :root {
@@ -2340,3 +2340,28 @@ main.has-parallax-hero {
 }
 
 @media (min-width: 641px) { .hero-parallax .hero-parallax__cta { max-width: none; } }
+
+/* Hero text placement, round 2: positions track the photo itself
+   (image height = cover height, anchored at the top), so the headline
+   starts at mom's nose, the sub line sits at knee height and the
+   button rests on the mat, at any desktop or tablet width. */
+@media (min-width: 641px) {
+  .hero-parallax { --imgH: max(calc(100svh - var(--hdr)), 56.25vw); }
+  .hero-parallax__content {
+    top: var(--hdr); bottom: 0; left: 0;
+    transform: none; width: 100%;
+  }
+  .hero-parallax .hero-parallax__title {
+    position: absolute; left: 0; right: 0; margin: 0;
+    top: calc(var(--imgH) * .241 - .3em);
+    font-weight: 700; letter-spacing: -0.01em;
+  }
+  .hero-parallax .hero-parallax__sub {
+    position: absolute; left: 0; right: 0; margin: 0;
+    top: calc(var(--imgH) * .625);
+  }
+  .hero-parallax .hero-parallax__cta {
+    position: absolute; left: 0; right: 0;
+    top: min(calc(var(--imgH) * .755), calc(100% - 76px));
+  }
+}
