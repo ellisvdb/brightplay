@@ -2288,3 +2288,19 @@ main.has-parallax-hero {
 .bp-start__cta { margin-top:40px; }
 @media (min-width:900px) { .bp-steps { grid-template-columns:repeat(3, 1fr); gap:26px; } }
 .bp-start .bp-eyebrow, .bp-start__cta { width:100%; margin-left:auto; margin-right:auto; text-align:center; }
+
+/* -------- Hero: lighter, brighter (Nov 2026) --------------------------
+   The small white lines under the button are gone, so the hero needs far
+   less shade. Lighter scrim for the hero ONLY (the closing band keeps the
+   shared .photo-scrim), plus a gentle lift of the photo itself. */
+.hero-parallax__img { filter: brightness(1.17) saturate(1.04); }
+.hero-parallax__overlay.photo-scrim {
+  background:
+    radial-gradient(ellipse 60% 42% at 50% 22%,
+      rgba(0, 0, 0, .30) 0%, rgba(0, 0, 0, .12) 50%, rgba(0, 0, 0, 0) 80%);
+}
+/* With a lighter scrim, give the hero text its own soft shadow so it stays
+   readable over the bright window, and keep the headline clear of the header. */
+.hero-parallax .on-photo__title { text-shadow: 0 2px 4px rgba(0,0,0,.35), 0 0 28px rgba(0,0,0,.40); }
+.hero-parallax .on-photo__sub { text-shadow: 0 1px 3px rgba(0,0,0,.60), 0 0 18px rgba(0,0,0,.50); font-weight: 500; }
+.hero-parallax__content { top: max(10%, 130px); }
