@@ -2443,3 +2443,7 @@ main.has-parallax-hero {
 @media (min-width: 641px) and (max-width: 1140px) {
   .hero-parallax__img { object-position: 40% 0; }
 }
+
+/* New hero photo (Nov 12): already bright with a blue sky, so no
+   brightening filter. */
+.hero-parallax__img { filter: none; }
