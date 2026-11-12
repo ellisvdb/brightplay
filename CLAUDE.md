@@ -31,3 +31,5 @@ dot of the i) should replace the current header logo for now.
 - Theraplay wording: "based on Theraplay® principles" (Ellis is under supervision,
   not yet certified), with the Theraplay Institute service-mark footnote.
 - No HIPAA/BAA claims until her tools are actually set up for it.
+
+- Never delete photos or the three-polaroid section (content:offset, below "What working together can look like") from the homepage. Ellis may change the photos and captions inside the polaroids, and may prune text boxes, but the polaroid section stays unless she explicitly says to remove it.
