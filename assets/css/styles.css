@@ -2447,3 +2447,19 @@ main.has-parallax-hero {
 /* New hero photo (Nov 12): already bright with a blue sky, so no
    brightening filter. */
 .hero-parallax__img { filter: none; }
+
+/* Hero CTA: deep teal pill, bold white text; a thin gold glow appears
+   on hover/focus, echoing the spark in the logo. */
+@media (min-width: 641px) {
+  .hero-parallax .btn--on-photo {
+    background: var(--color-primary-deep); color: #fff;
+    font-weight: 700; font-size: 1.1875rem; letter-spacing: .01em;
+    padding: 16px 32px; box-shadow: none;
+    transition: box-shadow var(--duration-quick) var(--ease-out), background-color var(--duration-quick) var(--ease-out);
+  }
+  .hero-parallax .btn--on-photo:hover,
+  .hero-parallax .btn--on-photo:focus-visible {
+    background: #174A46;
+    box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent), 0 0 18px 2px rgba(229,191,89,.45);
+  }
+}
