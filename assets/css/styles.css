@@ -2466,3 +2466,7 @@ main.has-parallax-hero {
 
 /* Intro bullets: avoid a lone word on the last line. */
 .bp-intro .bp-bullets li { text-wrap: pretty; }
+
+/* Eyebrows: darker clay and bold so they read clearly in any light
+   (old #C08A73 was too faint on cream). */
+.bp-eyebrow { color: #9A5A3F; font-weight: 700; font-size: 16px; }
