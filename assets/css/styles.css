@@ -2643,3 +2643,6 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 .bp-meet__polaroid .bp-polaroid__photo img { object-position: center; }
 .bp-ways .bp-meet { gap: 22px 36px; }
 .bp-floatbox__title, .bp-ways__card-title, .bp-step__title, .why-card__name { color: #1C5854; }
+
+/* Ellis Polaroid: larger so the face reads clearly, still modest. */
+.bp-meet__polaroid { width: 270px; max-width: 72vw; padding: 14px 14px 52px; }
