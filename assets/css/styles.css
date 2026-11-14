@@ -5,7 +5,7 @@
    swaps TEAL↔SAGE in one block without touching components.
    ============================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400;1,6..72,500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,700&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* -------- Token layer (BrightPlay brief) ----------------------- */
 :root {
@@ -2592,3 +2592,54 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 }
 
 .btn--primary, .hero-parallax .btn--on-photo, .bp-meet__pill, .site-footer__cta { white-space: nowrap; }
+
+/* ============================================================
+   ONE HEADING SYSTEM (Nov 14). Two levels, defined once:
+   --h-section : every section title (one per block on the page)
+   --h-card    : every title inside a box, card or step
+   Change a value here and every matching heading follows.
+   ============================================================ */
+:root {
+  --h-section-size: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  --h-section-weight: 500;
+  --h-card-size: 1.625rem;
+  --h-card-weight: 500;
+}
+.bp-kinds__title,
+.bp-ways__title,
+.bp-start__title,
+.why-families__title,
+.closing-band__headline {
+  font-family: var(--font-display);
+  font-size: var(--h-section-size);
+  font-weight: var(--h-section-weight);
+  line-height: 1.12;
+  letter-spacing: -0.005em;
+}
+.bp-kinds__title, .bp-ways__title, .bp-start__title, .why-families__title { color: #1C5854; }
+
+.bp-floatbox__title,
+.bp-ways__card-title,
+.bp-step__title,
+.why-card__name {
+  font-family: var(--font-display);
+  font-size: var(--h-card-size);
+  font-weight: var(--h-card-weight);
+  line-height: 1.2;
+}
+
+/* "Wonderfully one of a kind." : bigger and bold, still below the title */
+.bp-kinds__kicker {
+  font-size: clamp(1.625rem, 1.25rem + 1.5vw, 2.25rem);
+  font-weight: 700; font-style: italic;
+}
+
+/* Ellis as a Polaroid, like the balloons photo */
+.bp-meet__polaroid {
+  flex: 0 0 auto; width: 210px; max-width: 60vw;
+  padding: 12px 12px 44px; transform: rotate(-3deg);
+  box-shadow: 0 14px 34px rgba(28,88,84,.22);
+}
+.bp-meet__polaroid .bp-polaroid__photo img { object-position: center; }
+.bp-ways .bp-meet { gap: 22px 36px; }
+.bp-floatbox__title, .bp-ways__card-title, .bp-step__title, .why-card__name { color: #1C5854; }
