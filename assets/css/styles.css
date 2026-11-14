@@ -2566,3 +2566,29 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 
 /* Meet strip photo 50% larger (84px to 126px). */
 .bp-meet__photo { width: 126px; height: 126px; }
+
+/* ============================================================
+   ONE PILL BUTTON STYLE, SITEWIDE (Nov 14). Every pill button
+   looks and responds exactly like the hero "Book an introduction":
+   deep teal, bold white text, gold spark glow on hover/focus.
+   ============================================================ */
+.btn--primary,
+.hero-parallax .btn--on-photo,
+.bp-meet__pill,
+.site-footer__cta {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--color-primary-deep); color: #fff;
+  border: 0; border-radius: var(--radius-pill);
+  font-family: var(--font-body); font-weight: 700; font-size: 1.1875rem; letter-spacing: .01em;
+  padding: 16px 32px; text-decoration: none; box-shadow: none;
+  transition: box-shadow var(--duration-quick) var(--ease-out), background-color var(--duration-quick) var(--ease-out);
+}
+.btn--primary:hover, .btn--primary:focus-visible,
+.hero-parallax .btn--on-photo:hover, .hero-parallax .btn--on-photo:focus-visible,
+.bp-meet__pill:hover, .bp-meet__pill:focus-visible,
+.site-footer__cta:hover, .site-footer__cta:focus-visible {
+  background: #174A46; color: #fff;
+  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent), 0 0 18px 2px rgba(229,191,89,.45);
+}
+
+.btn--primary, .hero-parallax .btn--on-photo, .bp-meet__pill, .site-footer__cta { white-space: nowrap; }
