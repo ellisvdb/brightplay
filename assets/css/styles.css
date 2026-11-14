@@ -2563,3 +2563,6 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
   .bp-ways .bp-meet { flex-wrap: nowrap; max-width: 900px; }
   .bp-meet__line { max-width: 27em; }
 }
+
+/* Meet strip photo 50% larger (84px to 126px). */
+.bp-meet__photo { width: 126px; height: 126px; }
