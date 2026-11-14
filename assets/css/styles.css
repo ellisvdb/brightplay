@@ -2554,3 +2554,12 @@ main.has-parallax-hero {
 
 /* Small registered-trademark mark */
 sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .05em; }
+
+/* Meet strip now sits above the "Two ways" heading. */
+.bp-ways .bp-meet { margin: 0 auto clamp(48px, 6vw, 72px); }
+.bp-meet__photo { width: 84px; height: 84px; background: #E9DED3; }
+
+@media (min-width: 701px) {
+  .bp-ways .bp-meet { flex-wrap: nowrap; max-width: 900px; }
+  .bp-meet__line { max-width: 27em; }
+}
