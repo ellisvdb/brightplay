@@ -2502,3 +2502,55 @@ main.has-parallax-hero {
 @media (max-width: 600px) {
   .bp-kinds__icons { grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
 }
+
+/* Personalities section: center the kicker; five icons in one row,
+   wrapping centered (3 + 2) on phones. */
+.bp-kinds__kicker, .bp-kinds__title, .bp-kinds__types, .bp-kinds__body { margin-left: auto; margin-right: auto; }
+.bp-kinds__kicker { max-width: none; }
+.bp-kinds__icons { grid-template-columns: repeat(5, 1fr); max-width: 1000px; }
+@media (max-width: 600px) {
+  .bp-kinds__icons { display: flex; flex-wrap: wrap; justify-content: center; column-gap: 0; }
+  .bp-kinds__item { flex: 0 0 33.333%; }
+}
+
+/* -------- Two ways of working together + meet strip -------- */
+.bp-ways { padding: clamp(40px, 6vw, 72px) var(--gutter, 24px) clamp(64px, 9vw, 104px); }
+.bp-ways__inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+.bp-ways__title {
+  font-family: var(--font-display); font-weight: 500; color: #1C5854;
+  font-size: clamp(1.875rem, 1.4rem + 2vw, 2.625rem); line-height: 1.15; margin: 0 0 clamp(28px, 4vw, 44px);
+}
+.bp-ways__cards { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2.5vw, 32px); text-align: left; }
+.bp-ways__card {
+  background: #fff; border: 1px solid rgba(44,49,53,.10); border-radius: 22px;
+  padding: clamp(24px, 3vw, 36px); box-shadow: 0 10px 30px -18px rgba(28,88,84,.35);
+}
+.bp-ways__icon { color: #1C5854; display: inline-flex; margin-bottom: 14px; }
+.bp-ways__card-title { font-family: var(--font-display); font-weight: 500; color: #1C5854; font-size: 1.5rem; margin: 0 0 10px; }
+.bp-ways__card p { font-size: 1.125rem; line-height: 1.6; color: var(--color-text); margin: 0; text-wrap: pretty; }
+.bp-meet {
+  display: flex; align-items: center; justify-content: center; gap: 18px 22px; flex-wrap: wrap;
+  margin: clamp(32px, 4.5vw, 48px) auto 0; max-width: 860px;
+}
+.bp-meet__photo {
+  flex: 0 0 auto; width: 76px; height: 76px; border-radius: 50%; overflow: hidden;
+  display: grid; place-items: center; background: #E9DED3; color: #9A5A3F;
+  font-family: var(--font-display); font-size: 2rem; font-weight: 500;
+  box-shadow: 0 0 0 3px #fff, 0 4px 14px rgba(0,0,0,.10);
+}
+.bp-meet__photo img { width: 100%; height: 100%; object-fit: cover; }
+.bp-meet__line { margin: 0; font-size: 1.125rem; line-height: 1.5; color: var(--color-text); max-width: 34em; text-align: left; text-wrap: pretty; }
+.bp-meet__pill {
+  flex: 0 0 auto; display: inline-flex; align-items: center; padding: .6rem 1.4rem;
+  border: 1.5px solid #1C5854; border-radius: 999px; color: #1C5854; font-weight: 700;
+  text-decoration: none; transition: background-color .2s, color .2s;
+}
+.bp-meet__pill:hover, .bp-meet__pill:focus-visible { background: #1C5854; color: #fff; }
+@media (max-width: 700px) {
+  .bp-ways__cards { grid-template-columns: 1fr; }
+  .bp-meet { flex-direction: column; text-align: center; }
+  .bp-meet__line { text-align: center; }
+}
+
+/* Small registered-trademark mark */
+sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .05em; }
