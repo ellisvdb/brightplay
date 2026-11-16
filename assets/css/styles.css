@@ -2672,3 +2672,10 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 .bp-ways .bp-offer__card .bp-offer__where { color: var(--color-text-soft, #5b6166); margin: auto 0 0; }
 
 .bp-offer__lead { font-weight: 700; color: var(--color-text); }
+
+/* Personality line: four types on one line, "and everyone in between."
+   on the next, from iPad width up. Phones wrap naturally. */
+@media (min-width: 768px) {
+  .bp-kinds__types { max-width: none; text-wrap: initial; }
+  .bp-kinds__line { display: block; white-space: nowrap; }
+}
