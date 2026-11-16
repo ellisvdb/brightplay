@@ -35,3 +35,7 @@ dot of the i) should replace the current header logo for now.
 - Never delete photos or the three-polaroid section (content:offset, below "What working together can look like") from the homepage. Ellis may change the photos and captions inside the polaroids, and may prune text boxes, but the polaroid section stays unless she explicitly says to remove it.
 
 - Always use the Oxford (serial) comma in all site copy: "red, white, and blue".
+
+## Planned page: Methods / ways to play (not built yet)
+- One section per modality, each with a clear "Suited for:" line.
+- Project ImPACT, Suited for: children whose social and communication skills are still unfolding (moved here from the homepage card, Nov 16).
