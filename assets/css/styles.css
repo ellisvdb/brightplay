@@ -2650,3 +2650,23 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 /* Ellis Polaroid caption sits in the white strip */
 .bp-meet__polaroid { padding-bottom: 0; }
 .bp-meet__polaroid .bp-polaroid__caption { height: 60px; font-size: 21px; }
+
+/* -------- Ways to work with BrightPlay: four offering cards -------- */
+.bp-swash { position: relative; display: inline-block; }
+.bp-swash svg { position: absolute; left: -4%; width: 108%; bottom: -.16em; height: .3em; overflow: visible; }
+.bp-offer__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2.5vw, 28px); text-align: left; }
+.bp-offer__card { display: flex; flex-direction: column; padding: clamp(26px, 3vw, 36px) clamp(24px, 3vw, 36px) 28px; }
+.bp-offer__card .bp-ways__card-title { margin: 0 0 6px; }
+.bp-offer__label { font-family: var(--font-body); font-size: 16px; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; color: #9A5A3F; margin: 0 0 14px; }
+.bp-offer__label--asis { text-transform: none; }
+.bp-ways .bp-offer__text { font-size: 1.125rem; line-height: 1.6; color: var(--color-text); margin: 0 0 22px; text-wrap: pretty; }
+.bp-offer__where { margin: auto 0 0; padding-top: 16px; border-top: 1px solid rgba(44,49,53,.12);
+  font-size: 1.0625rem; color: var(--color-text-soft, #5b6166); }
+.bp-ways .bp-offer__where { font-size: 1.0625rem; line-height: 1.5; }
+.bp-offer__soon { font-style: italic; font-weight: 700; color: #9A5A3F; }
+.bp-ways__inner { max-width: 1040px; }
+@media (max-width: 700px) { .bp-offer__grid { grid-template-columns: 1fr; } }
+
+.bp-ways .bp-offer__card .bp-offer__label { color: #9A5A3F; margin: 0 0 14px; font-size: 16px; line-height: 1.4; }
+.bp-ways .bp-offer__card .bp-offer__where { color: var(--color-text-soft, #5b6166); margin: auto 0 0; }
