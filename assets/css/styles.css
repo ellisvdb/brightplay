@@ -2723,3 +2723,13 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 
 .bp-voices .bp-voices__inner p.bp-eyebrow { width: 100%; max-width: none; margin-left: auto; margin-right: auto; }
 .bp-voices__slides { min-height: 250px; align-items: center; }
+
+/* Spark: one soft golden glow when the quotes come into view (once per visit). */
+.bp-voices__spark { transform-origin: 50% 50%; }
+.bp-voices__spark.is-lit { animation: bpSpark 1.6s ease-out 1; }
+@keyframes bpSpark {
+  0%   { transform: scale(1);    filter: drop-shadow(0 0 0 rgba(226,180,60,0)); }
+  35%  { transform: scale(1.18); filter: drop-shadow(0 0 10px rgba(226,180,60,.85)) drop-shadow(0 0 22px rgba(226,180,60,.45)); }
+  100% { transform: scale(1);    filter: drop-shadow(0 0 0 rgba(226,180,60,0)); }
+}
+@media (prefers-reduced-motion: reduce) { .bp-voices__spark.is-lit { animation: none; } }

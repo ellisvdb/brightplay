@@ -66,3 +66,15 @@
   });
   dots.forEach(function (d, k) { d.addEventListener('click', function () { show(k); }); });
 })();
+
+/* Light the spark once, the first time the quotes scroll into view. */
+(function () {
+  var spark = document.querySelector('.bp-voices__spark');
+  if (!spark || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { spark.classList.add('is-lit'); io.disconnect(); }
+    });
+  }, { threshold: 0.6 });
+  io.observe(spark);
+})();
