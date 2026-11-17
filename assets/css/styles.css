@@ -2733,3 +2733,6 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
   100% { transform: scale(1);    filter: drop-shadow(0 0 0 rgba(226,180,60,0)); }
 }
 @media (prefers-reduced-motion: reduce) { .bp-voices__spark.is-lit { animation: none; } }
+
+/* Studio triptych: third polaroid tips to the right */
+.bp-studio .offset__pol--right { transform: rotate(2.5deg); }
