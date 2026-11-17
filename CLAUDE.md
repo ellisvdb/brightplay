@@ -41,3 +41,6 @@ dot of the i) should replace the current header logo for now.
 - Project ImPACT, Suited for: children whose social and communication skills are still unfolding (moved here from the homepage card, Nov 16).
 
 - PLACEHOLDERS: the studio triptych uses two AI-generated mood images (PLACEHOLDER-ai-reading-nook.jpg, PLACEHOLDER-ai-library-wall.jpg). Replace with real studio photos before launch; never launch with them.
+
+## Planned for the About page
+- Colleague endorsements (2-3 short quotes with name and role, with permission) go on the About page, kept separate from the homepage family quotes.
