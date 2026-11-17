@@ -2736,3 +2736,13 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 
 /* Studio triptych: third polaroid tips to the right */
 .bp-studio .offset__pol--right { transform: rotate(2.5deg); }
+
+/* Studio triptych, Nov 17: a little bigger, more breathing room, no overlap;
+   the library polaroid tips toward the middle. Desktop/tablet only. */
+@media (min-width: 680px) {
+  .bp-studio .offset__row { gap: clamp(20px, 3vw, 44px); }
+  .bp-studio .offset .bp-polaroid,
+  .bp-studio .bp-polaroid.offset__pol { width: clamp(210px, 28vw, 330px); }
+  .bp-studio .offset__pol--mid { left: 0; }
+  .bp-studio .offset__pol--right { margin-left: 0; transform: rotate(-3deg); }
+}
