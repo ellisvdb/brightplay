@@ -44,3 +44,5 @@ dot of the i) should replace the current header logo for now.
 
 ## Planned for the About page
 - Colleague endorsements (2-3 short quotes with name and role, with permission) go on the About page, kept separate from the homepage family quotes.
+
+- PREVIEW: the "Worth looking forward to." quotes section is visible for review but contains SAMPLE quotes. Re-hide it or replace with real, consented quotes before launch.
