@@ -48,3 +48,21 @@
   window.addEventListener('resize', setHdr);
   window.addEventListener('load', setHdr);
 })();
+
+/* Family quotes: one at a time, moved only by the visitor (no autoplay). */
+(function () {
+  var root = document.querySelector('.bp-voices');
+  if (!root) return;
+  var slides = root.querySelectorAll('.bp-voices__slide');
+  var dots = root.querySelectorAll('.bp-voices__dot');
+  var i = 0;
+  function show(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach(function (s, k) { s.hidden = k !== i; });
+    dots.forEach(function (d, k) { if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+  }
+  root.querySelectorAll('.bp-voices__arrow').forEach(function (b) {
+    b.addEventListener('click', function () { show(i + Number(b.getAttribute('data-dir'))); });
+  });
+  dots.forEach(function (d, k) { d.addEventListener('click', function () { show(k); }); });
+})();
