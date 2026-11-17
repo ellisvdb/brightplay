@@ -19,7 +19,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261116b" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261116c" />
 </head>
 <body>
 
@@ -454,6 +454,51 @@
     </section>
     <!-- /content:ways -->
 
+    <!-- content:offset — the BrightPlay studio: intro text + the three-polaroid
+         triptych (never delete; photos/captions may change). Earlier family
+         photos (rollercart, twomoms, kids-running) are kept in assets/images/photos.
+         !!! PLACEHOLDER: polaroids 2 and 3 are AI-generated mood images of the
+         planned reading nook and library wall. Replace with real studio photos
+         BEFORE LAUNCH. !!! -->
+    <section class="section offset bp-studio" aria-labelledby="studio-title">
+      <div class="container">
+        <div class="bp-studio__intro">
+          <p class="bp-eyebrow">The BrightPlay studio &middot; Pacific Beach</p>
+          <h2 id="studio-title" class="bp-studio__title">A little room for possibility.</h2>
+          <p>Somewhere between a living room and a playground, the BrightPlay studio is a space to get comfortable, get curious, and enjoy each other&rsquo;s company.</p>
+          <p>Thoughtfully arranged for children and their grown-ups, it&rsquo;s where our time together takes shape.</p>
+          <p class="bp-studio__link"><a href="about.html">Come take a look <span aria-hidden="true">&rarr;</span></a></p>
+        </div>
+        <div class="offset__row">
+          <figure class="bp-polaroid offset__pol offset__pol--left">
+            <div class="bp-polaroid__photo">
+              <img src="assets/images/photos/studio-theraplay-room.jpg"
+                   alt="The BrightPlay playroom: a soft sage sofa, a woven basket with a globe, a tall plant, and a large cream rug on a wooden floor"
+                   width="800" height="800" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="bp-polaroid__caption">Not your typical playroom.</figcaption>
+          </figure>
+          <figure class="bp-polaroid offset__pol offset__pol--mid">
+            <div class="bp-polaroid__photo">
+              <img src="assets/images/photos/PLACEHOLDER-ai-reading-nook.jpg"
+                   alt="PLACEHOLDER: reading nook with two chairs and lit wooden cabinets"
+                   width="800" height="800" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="bp-polaroid__caption">The comfiest seat in Pacific Beach.</figcaption>
+          </figure>
+          <figure class="bp-polaroid offset__pol offset__pol--right">
+            <div class="bp-polaroid__photo">
+              <img src="assets/images/photos/PLACEHOLDER-ai-library-wall.jpg"
+                   alt="PLACEHOLDER: long library wall of books"
+                   width="800" height="800" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="bp-polaroid__caption">Every shelf, a new adventure.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- /content:offset -->
+
     <!-- content:start — "Getting started": three steps from first contact to sessions.
          Method-neutral wording (fits Theraplay now, Project ImPACT later). -->
     <section class="section bp-start" aria-labelledby="start-title">
@@ -483,39 +528,6 @@
     <!-- /content:start -->
 
 
-    <!-- content:offset (brief §16): three static staggered Polaroids, none level.
-         Real photos; scoped tilt/overlap so the composed-block Polaroid is untouched. -->
-    <section class="section offset" aria-label="Moments from real families">
-      <div class="container">
-        <div class="offset__row">
-          <figure class="bp-polaroid offset__pol offset__pol--left">
-            <div class="bp-polaroid__photo">
-              <img src="assets/images/photos/offset-mom-boy-rollercart.jpg"
-                   alt="Mom and son laughing on a ride-on cart"
-                   width="1600" height="2400" loading="lazy" decoding="async">
-            </div>
-            <figcaption class="bp-polaroid__caption">Wheee!</figcaption>
-          </figure>
-          <figure class="bp-polaroid offset__pol offset__pol--mid">
-            <div class="bp-polaroid__photo">
-              <img src="assets/images/photos/polaroid-twomoms-feeding.jpg"
-                   alt="Two moms feeding their baby in a high chair"
-                   width="1600" height="955" loading="lazy" decoding="async">
-            </div>
-            <figcaption class="bp-polaroid__caption">Solids!</figcaption>
-          </figure>
-          <figure class="bp-polaroid offset__pol offset__pol--right">
-            <div class="bp-polaroid__photo">
-              <img src="assets/images/photos/polaroid-kids-running.jpg"
-                   alt="Two kids running across a sunny field"
-                   width="1260" height="840" loading="lazy" decoding="async">
-            </div>
-            <figcaption class="bp-polaroid__caption">Tag, you're it!</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-    <!-- /content:offset -->
 
 
 
@@ -991,6 +1003,6 @@
   </footer>
   <!-- /shell:footer -->
 
-  <script src="assets/js/main.js?v=20261116b" defer></script>
+  <script src="assets/js/main.js?v=20261116c" defer></script>
 </body>
 </html>

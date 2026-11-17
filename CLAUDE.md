@@ -39,3 +39,5 @@ dot of the i) should replace the current header logo for now.
 ## Planned page: Methods / ways to play (not built yet)
 - One section per modality, each with a clear "Suited for:" line.
 - Project ImPACT, Suited for: children whose social and communication skills are still unfolding (moved here from the homepage card, Nov 16).
+
+- PLACEHOLDERS: the studio triptych uses two AI-generated mood images (PLACEHOLDER-ai-reading-nook.jpg, PLACEHOLDER-ai-library-wall.jpg). Replace with real studio photos before launch; never launch with them.

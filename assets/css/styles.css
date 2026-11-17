@@ -2679,3 +2679,18 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
   .bp-kinds__types { max-width: none; text-wrap: initial; }
   .bp-kinds__line { display: block; white-space: nowrap; }
 }
+
+/* -------- The BrightPlay studio (intro text above the triptych) -------- */
+.bp-studio__intro { max-width: 720px; margin: 0 auto clamp(36px, 5vw, 56px); text-align: center; }
+.bp-studio__intro .bp-eyebrow { display: block; text-align: center; }
+.bp-studio__title {
+  font-family: var(--font-display); font-size: var(--h-section-size); font-weight: var(--h-section-weight);
+  color: #1C5854; line-height: 1.12; margin: 0 0 18px;
+}
+.bp-studio__intro p { font-size: 1.125rem; line-height: 1.65; color: var(--color-text); margin: 0 0 12px; text-wrap: pretty; }
+.bp-studio__link { margin-top: 18px !important; }
+.bp-studio__link a { color: #1C5854; font-weight: 700; text-decoration: none; border-bottom: 1.5px solid rgba(28,88,84,.35); padding-bottom: 2px; }
+.bp-studio__link a:hover, .bp-studio__link a:focus-visible { border-bottom-color: var(--color-accent); }
+
+.bp-studio .bp-studio__intro .bp-eyebrow { color: #9A5A3F; margin: 0 0 12px; }
+.bp-studio .offset__pol .bp-polaroid__caption { height: auto; min-height: 64px; padding: 10px 8px; font-size: clamp(16px, 1.55vw, 20px); line-height: 1.25; text-align: center; }
