@@ -19,7 +19,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261117" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261118" />
 </head>
 <body>
 
@@ -573,34 +573,23 @@
 
 
 
-    <!-- content:close-band — full-bleed editorial closing band.
-         Wide cropped image + soft RIGHT-SIDE scrim pool (warm charcoal,
-         low opacity) so the photo stays warm and bright; white text
-         carries its own contrast via a gentle text-shadow. Two text
-         candidates rendered together so Ellis can pick. No CTA yet. -->
-    <section class="closing-band" aria-labelledby="close-band-title">
-      <img class="closing-band__img"
-           src="assets/images/photos/close-dad-reading-sons.jpg"
-           alt="A father reads a picture book on a couch with three of his sons gathered close around him."
-           width="1530" height="1076"
-           loading="lazy" decoding="async" />
-      <div class="closing-band__scrim" aria-hidden="true"></div>
-      <div class="closing-band__content">
-        <h2 id="close-band-title" class="closing-band__headline">Play speaks louder than words.</h2>
-        <p class="closing-band__sub">A reach. A glance. A shared giggle. Your child always has so much to say.</p>
+    <!-- shell:prefooter: closing invitation band, mirroring the hero (photo left, text right).
+         Meant to appear on every page; edit here, then run tools/sync-footer.py.
+         Photo is a STAND-IN; replace before launch. -->
+    <section class="bp-close" aria-labelledby="close-title">
+      <div class="bp-close__media">
+        <img src="assets/images/photos/close-pillow-fight-standin.jpg"
+             alt="A laughing father and two young children in a pillow fight on a bed, with the ocean outside the window"
+             width="958" height="434" loading="lazy" decoding="async">
+      </div>
+      <div class="bp-close__text">
+        <h2 id="close-title" class="bp-close__title">Play speaks louder than words.</h2>
+        <p class="bp-close__sub">A reach. A glance. A shared giggle.</p>
+        <p class="bp-close__btn"><a class="btn btn--primary" href="contact.html">Book an introduction</a></p>
+        <p class="bp-close__micro">Confidential &middot; Zero pressure &middot; Tailored to your schedule</p>
       </div>
     </section>
-    <!-- /content:close-band -->
-
-    <!-- content:bottom-cta — closing line + the primary button, third and
-         last appearance of the same label. -->
-    <section class="section bottom-cta" aria-label="Get in touch">
-      <div class="container text-center">
-        <p class="bottom-cta__line">Every family&rsquo;s story is different. We&rsquo;d love to hear yours.</p>
-        <p class="bottom-cta__btn"><a class="btn btn--primary" href="contact.html">Book an introduction</a></p>
-      </div>
-    </section>
-    <!-- /content:bottom-cta -->
+    <!-- /shell:prefooter -->
 
 <!-- Remaining Phase 2 (later): FAQ, full footer.
          Recover any old copy from git history if needed. -->
@@ -710,6 +699,6 @@
   </footer>
   <!-- /shell:footer -->
 
-  <script src="assets/js/main.js?v=20261117" defer></script>
+  <script src="assets/js/main.js?v=20261118" defer></script>
 </body>
 </html>

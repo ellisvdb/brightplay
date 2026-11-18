@@ -2761,3 +2761,28 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 .bp-start .bp-start__lede { width: 100%; max-width: 36em; margin: -18px auto 34px; text-align: center;
   font-size: 1.1875rem; line-height: 1.55; color: var(--color-text); }
 .bp-start .bp-start__lede { margin-bottom: 48px; }
+
+/* -------- Closing band (prefooter): mirrors the hero, photo left, text right -------- */
+.bp-close { display: grid; grid-template-columns: 62% 38%; min-height: min(70vh, 600px);
+  background: var(--color-bg); border-top: 1px solid rgba(44,49,53,.08); }
+.bp-close__media { position: relative; overflow: hidden; }
+.bp-close__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 50%; }
+.bp-close__text { display: flex; flex-direction: column; justify-content: center;
+  padding: 56px calc(max(0px, (100vw - 88rem) / 2) + var(--space-5)) 56px clamp(28px, 3.4vw, 56px); }
+.bp-close__title { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.015em;
+  font-size: clamp(2.4rem, 4.2vw, 4.25rem); line-height: 1.04; color: var(--color-text); margin: 0 0 20px; }
+.bp-close__sub { font-size: clamp(1.125rem, 1.5vw, 1.5rem); line-height: 1.4; color: var(--color-text); margin: 0 0 30px; }
+.bp-close__btn { margin: 0; }
+.bp-close__micro { margin: 16px 0 0; font-size: 15px; letter-spacing: .03em; color: #5b6166; white-space: nowrap; }
+@media (max-width: 760px) {
+  .bp-close { grid-template-columns: 1fr; }
+  .bp-close__media { height: 300px; }
+  .bp-close__text { padding: 40px 20px 52px; }
+  .bp-close__micro { white-space: normal; }
+}
+/* Closing band: let the wide photo keep its own shape (no face crops). */
+.bp-close { min-height: 0; grid-template-columns: 58% 42%; align-items: center; }
+.bp-close__media { overflow: visible; }
+.bp-close__media img { position: static; display: block; width: 100%; height: auto; aspect-ratio: 958 / 434; object-fit: cover; }
+@media (max-width: 760px) { .bp-close__media { height: auto; } }
+@media (max-width: 760px) { .bp-close { grid-template-columns: 1fr; } }
