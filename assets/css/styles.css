@@ -2877,3 +2877,16 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
             mask-image: radial-gradient(ellipse 100% 150% at 0% 50%, #000 92%, transparent 100%);
   }
 }
+
+/* Nov 18: Ellis's own pre-faded photos. No CSS masks; the section
+   background matches each photo's faded edge so it blends seamlessly. */
+@media (min-width: 641px) {
+  .hero-parallax { background: #F7F1ED; }
+  .hero-parallax__img {
+    left: calc(var(--split) - 14%); width: calc(100% - var(--split) + 14%);
+    object-position: 100% 50%;
+    -webkit-mask-image: none; mask-image: none;
+  }
+}
+.bp-close { background: #FCF7F1; }
+.bp-close__media img { aspect-ratio: 1993 / 789; -webkit-mask-image: none !important; mask-image: none !important; }
