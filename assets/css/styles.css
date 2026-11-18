@@ -2757,3 +2757,7 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 .bp-start__more a:hover, .bp-start__more a:focus-visible { border-bottom-color: var(--color-accent); }
 .bp-start .bp-start__cta { margin-top: 26px; }
 .bp-start .bp-start__more { width: 100%; max-width: none; text-align: center; margin-left: auto; margin-right: auto; }
+
+.bp-start .bp-start__lede { width: 100%; max-width: 36em; margin: -18px auto 34px; text-align: center;
+  font-size: 1.1875rem; line-height: 1.55; color: var(--color-text); }
+.bp-start .bp-start__lede { margin-bottom: 48px; }
