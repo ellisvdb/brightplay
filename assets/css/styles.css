@@ -2890,3 +2890,27 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 }
 .bp-close { background: #FCF7F1; }
 .bp-close__media img { aspect-ratio: 1993 / 789; -webkit-mask-image: none !important; mask-image: none !important; }
+
+/* ============================================================
+   FOOTER v2 (Nov 18): four calm columns + bottom bar, every page.
+   ============================================================ */
+.bp-foot { background: var(--color-bg); border-top: 1px solid rgba(44,49,53,.10); padding: clamp(48px, 6vw, 72px) 0 28px; }
+.bp-foot__inner { max-width: 88rem; padding-inline: var(--space-5); }
+.bp-foot__cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px clamp(24px, 3vw, 48px); }
+.bp-foot__heading { font-family: var(--font-display); font-weight: 500; font-size: 1.375rem; color: #1C5854; margin: 0 0 16px; }
+.bp-foot__links { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.bp-foot__links a { color: var(--color-text); text-decoration: none; font-size: 1.0625rem; line-height: 1.35; }
+.bp-foot__links a:hover, .bp-foot__links a:focus-visible { color: #1C5854; text-decoration: underline; text-underline-offset: 3px; }
+.bp-foot__sub { display: block; font-size: .95rem; color: #6b7177; margin-top: 2px; }
+.bp-foot__address { font-style: normal; font-size: 1.0625rem; line-height: 1.55; color: var(--color-text); margin: 0 0 12px; }
+.bp-foot__note { color: #6b7177; font-size: .95rem; }
+.bp-foot__slogan { margin: 18px 0 0; font-family: var(--font-display); font-style: italic; font-size: 1.125rem; color: #1C5854; }
+.bp-foot__bar { margin-top: clamp(36px, 5vw, 56px); padding-top: 20px; border-top: 1px solid rgba(44,49,53,.12);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-size: 15px; color: #6b7177; }
+.bp-foot__bar p { margin: 0; }
+.bp-foot__legal { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.bp-foot__legal a { color: #6b7177; text-decoration: none; }
+.bp-foot__legal a:hover, .bp-foot__legal a:focus-visible { color: #1C5854; text-decoration: underline; }
+@media (max-width: 900px) { .bp-foot__cols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .bp-foot__cols { grid-template-columns: 1fr; } }
+.bp-foot__slogan { font-weight: 500; }

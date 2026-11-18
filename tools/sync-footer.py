@@ -1,22 +1,44 @@
 #!/usr/bin/env python3
-"""Copy the site footer from index.html into every other page, so the footer
-is identical everywhere. Edit the footer in index.html only, then run:
+"""Keep the shared parts of the site identical on every page.
+
+Edit the FOOTER and the CLOSING BAND (prefooter) in index.html only, then run:
     python3 tools/sync-footer.py
+
+- Footer: copied to every page.
+- Closing band: copied to the pages listed in PREFOOTER_PHOTOS, each with
+  its own photo. Pages not listed (contact, client portal, legal pages)
+  get no closing band.
 """
 import re, pathlib
 root = pathlib.Path(__file__).resolve().parent.parent
-pat = re.compile(r'[ \t]*<!-- shell:footer.*?</footer>\n(?:[ \t]*<!-- /shell:footer -->\n)?', re.S)
-master = pat.search((root / "index.html").read_text())
-assert master, "no footer found in index.html"
-block = master.group(0)
-if "<!-- /shell:footer -->" not in block:
-    block += "  <!-- /shell:footer -->\n"
+
+PREFOOTER_PHOTOS = {
+    "about.html": ("assets/images/photos/close-grandma-handstack.jpg",
+                   "A laughing grandmother and grandson stacking their hands together", 1536, 608),
+    "approach.html": ("assets/images/photos/close-family-feeding.jpg",
+                      "Two smiling parents feeding their delighted, food-covered toddler in a high chair", 1536, 608),
+}
+
+foot_pat = re.compile(r'[ \t]*<!-- shell:footer.*?</footer>\n(?:[ \t]*<!-- /shell:footer -->\n)?', re.S)
+pre_pat = re.compile(r'[ \t]*<!-- shell:prefooter.*?<!-- /shell:prefooter -->\n', re.S)
+
+index = (root / "index.html").read_text()
+footer = foot_pat.search(index).group(0)
+prefooter = pre_pat.search(index).group(0)
+
 for page in sorted(root.glob("*.html")):
     if page.name == "index.html":
         continue
     s = page.read_text()
-    m = pat.search(s)
+    m = foot_pat.search(s)
     if not m:
         print("skipped (no footer):", page.name); continue
-    page.write_text(s[:m.start()] + block + s[m.end():])
-    print("footer synced:", page.name)
+    s = s[:m.start()] + footer + s[m.end():]
+    s = pre_pat.sub("", s)
+    if page.name in PREFOOTER_PHOTOS:
+        src, alt, w, h = PREFOOTER_PHOTOS[page.name]
+        block = re.sub(r'<img src="[^"]*"\s+alt="[^"]*"\s+width="\d+" height="\d+"',
+                       f'<img src="{src}"\n             alt="{alt}"\n             width="{w}" height="{h}"', prefooter, count=1)
+        s = s.replace("  </main>", block + "  </main>", 1)
+    page.write_text(s)
+    print("synced:", page.name, "(with closing band)" if page.name in PREFOOTER_PHOTOS else "")

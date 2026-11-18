@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accessibility · BrightPlay</title>
+  <meta name="description" content="Accessibility for BrightPlay, San Diego." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,450;6..72,500;6..72,600&family=Patrick+Hand&family=Public+Sans:wght@400;500;600&display=swap" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261118c" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- shell:header -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand brand--stacked" href="index.html" aria-label="BrightPlay home">
+        <img class="brand__logo" src="assets/images/logo/brightplay-logo-golden-spark.png" alt="" width="174" height="52" />
+        <span class="brand__descriptor">Parent-Child Coaching &middot; San Diego</span>
+      </a>
+
+      <nav class="site-nav" id="primary-nav" data-nav aria-label="Primary">
+        <button class="site-nav__close" type="button" data-nav-close aria-label="Close menu">×</button>
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">Home</a></li>
+          <li><a class="site-nav__link" href="about.html">About</a></li>
+          <li><a class="site-nav__link" href="approach.html">Approach</a></li>
+          <li><a class="site-nav__link" href="contact.html">Contact</a></li>
+          <li class="site-nav__item--client"><a class="site-nav__link" href="client.html">Client portal</a></li>
+        </ul>
+      </nav>
+
+      <a class="site-header__client" href="client.html">Client portal</a>
+
+      <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" data-nav-toggle>
+        <span class="visually-hidden">Open menu</span>
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+  <!-- /shell:header -->
+
+  <main id="main">
+    <!-- ACCESSIBILITY: page shell only. Content to be written and approved by Ellis before launch. -->
+    <section class="section">
+      <div class="container">
+        <h1 class="approach__title">Accessibility</h1>
+      </div>
+    </section>
+  </main>
+
+  <!-- shell:footer: identical on every page. Edit here only, then run: python3 tools/sync-footer.py -->
+  <footer class="site-footer bp-foot">
+    <div class="container bp-foot__inner">
+      <div class="bp-foot__cols">
+        <nav class="bp-foot__col" aria-label="BrightPlay">
+          <h3 class="bp-foot__heading">BrightPlay</h3>
+          <ul class="bp-foot__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="approach.html">Approach</a></li>
+            <li><a href="contact.html">Book an introduction</a></li>
+            <li><a href="client.html">Client portal</a></li>
+          </ul>
+        </nav>
+        <nav class="bp-foot__col" aria-label="Our approaches">
+          <h3 class="bp-foot__heading">Our Approaches</h3>
+          <ul class="bp-foot__links">
+            <li><a href="approach.html#theraplay">Relationships<span class="bp-foot__sub">Theraplay<sup class="tm">&reg;</sup>-informed</span></a></li>
+            <li><a href="approach.html#project-impact">Interplay<span class="bp-foot__sub">Project ImPACT</span></a></li>
+            <li><a href="approach.html#functional-communication">Expression<span class="bp-foot__sub">Functional communication</span></a></li>
+            <li><a href="approach.html#groups">Belonging<span class="bp-foot__sub">Group programs</span></a></li>
+          </ul>
+        </nav>
+        <nav class="bp-foot__col" aria-label="Helpful resources">
+          <h3 class="bp-foot__heading">Helpful Resources</h3>
+          <ul class="bp-foot__links">
+            <li><a href="https://www.sdrc.org" target="_blank" rel="noopener">San Diego Regional Center <span aria-hidden="true">&#8599;</span></a></li>
+            <li><a href="https://www.dds.ca.gov/services/early-start/" target="_blank" rel="noopener">California Early Start <span aria-hidden="true">&#8599;</span></a></li>
+            <li><a href="https://interwork.sdsu.edu/main/efrc" target="_blank" rel="noopener">Exceptional Family Resource Center <span aria-hidden="true">&#8599;</span></a></li>
+          </ul>
+        </nav>
+        <div class="bp-foot__col">
+          <h3 class="bp-foot__heading">Visit &amp; Connect</h3>
+          <address class="bp-foot__address">
+            <strong>BrightPlay Studio</strong><br>
+            1940 Garnet Ave, Suite 220<br>
+            San Diego, CA 92109<br>
+            <span class="bp-foot__note">Sessions by appointment</span>
+          </address>
+          <ul class="bp-foot__links">
+            <li><a href="tel:+18582242377">(858) 224-2377</a></li>
+            <li><a href="mailto:hello@brightplay.org">hello@brightplay.org</a></li>
+          </ul>
+          <p class="bp-foot__slogan">Curious by Nature. Connected by Play.</p>
+        </div>
+      </div>
+      <div class="bp-foot__bar">
+        <p>&copy; <span data-year>2026</span> BrightPlay</p>
+        <p class="bp-foot__legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="client-rights.html">Client Rights</a>
+          <a href="accessibility.html">Accessibility</a>
+          <span>Website by Wonderland Web Design</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- /shell:footer -->
+
+  <script src="assets/js/main.js?v=20261118c" defer></script>
+</body>
+</html>
