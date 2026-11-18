@@ -2854,3 +2854,26 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
             mask-composite: intersect;
   }
 }
+/* Fade v3 (Nov 18): back to the narrow first fade, but with a curved edge,
+   as if the photo had soft rounded corners. Keeps clear of the people. */
+@media (min-width: 641px) {
+  .hero-parallax__img {
+    left: calc(var(--split) - 4%); width: calc(100% - var(--split) + 4%);
+    -webkit-mask-composite: source-over; mask-composite: add;
+    -webkit-mask-image: radial-gradient(ellipse 100% 118% at 100% 50%, #000 89%, transparent 100%);
+            mask-image: radial-gradient(ellipse 100% 118% at 100% 50%, #000 89%, transparent 100%);
+  }
+}
+@media (min-width: 761px) {
+  .bp-close__media img {
+    -webkit-mask-composite: source-over; mask-composite: add;
+    -webkit-mask-image: radial-gradient(ellipse 100% 118% at 0% 50%, #000 91%, transparent 100%);
+            mask-image: radial-gradient(ellipse 100% 118% at 0% 50%, #000 91%, transparent 100%);
+  }
+}
+@media (min-width: 761px) {
+  .bp-close__media img {
+    -webkit-mask-image: radial-gradient(ellipse 100% 150% at 0% 50%, #000 92%, transparent 100%);
+            mask-image: radial-gradient(ellipse 100% 150% at 0% 50%, #000 92%, transparent 100%);
+  }
+}
