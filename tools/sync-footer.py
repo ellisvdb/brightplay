@@ -15,8 +15,8 @@ root = pathlib.Path(__file__).resolve().parent.parent
 PREFOOTER_PHOTOS = {
     "about.html": ("assets/images/photos/close-grandma-handstack.jpg",
                    "A laughing grandmother and grandson stacking their hands together", 1536, 608),
-    "approach.html": ("assets/images/photos/close-family-feeding.jpg",
-                      "Two smiling parents feeding their delighted, food-covered toddler in a high chair", 1536, 608),
+    "approach.html": ("assets/images/photos/close-mom-baby-bubbles-band.jpg",
+                      "A delighted toddler reaches for soap bubbles while his smiling mother holds him on her lap", 1024, 405),
 }
 
 foot_pat = re.compile(r'[ \t]*<!-- shell:footer.*?</footer>\n(?:[ \t]*<!-- /shell:footer -->\n)?', re.S)

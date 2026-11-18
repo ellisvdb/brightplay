@@ -49,5 +49,5 @@ dot of the i) should replace the current header logo for now.
 
 - FOOTER: identical on every page. Edit it in index.html only, then run: python3 tools/sync-footer.py
 
-- CLOSING BAND (prefooter): edit in index.html; tools/sync-footer.py copies it to the pages listed in PREFOOTER_PHOTOS (each with its own photo). No band on contact, client portal, or legal pages. Spare band photos: close-mom-girl-rideon.jpg, close-mom-baby-bubbles.jpg, close-teacher-mouse-crafts.jpg (blur the Mickey shirt before using this one).
+- CLOSING BAND (prefooter): edit in index.html; tools/sync-footer.py copies it to the pages listed in PREFOOTER_PHOTOS (each with its own photo). No band on contact, client portal, or legal pages. Reserved photos: close-family-feeding.jpg for the Project ImPACT section (daily routines), close-teacher-mouse-crafts.jpg for group programs (blur the Mickey shirt first), close-mom-girl-rideon.jpg spare (tall photo; too narrow for the band).
 - LEGAL PAGES (privacy.html, client-rights.html, accessibility.html): shells only, linked from the footer bar; content needed before launch.
