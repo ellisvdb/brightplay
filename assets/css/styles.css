@@ -2786,3 +2786,71 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 .bp-close__media img { position: static; display: block; width: 100%; height: auto; aspect-ratio: 958 / 434; object-fit: cover; }
 @media (max-width: 760px) { .bp-close__media { height: auto; } }
 @media (max-width: 760px) { .bp-close { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Morning-mist fades (Nov 18): photos dissolve organically into the
+   cream text side; softest at the corners, no straight edge.
+   ============================================================ */
+@media (min-width: 641px) {
+  .hero-parallax__img {
+    left: calc(var(--split) - 9%); width: calc(100% - var(--split) + 9%);
+    -webkit-mask-image: radial-gradient(ellipse 88% 120% at 72% 46%, #000 52%, rgba(0,0,0,.6) 68%, transparent 92%);
+            mask-image: radial-gradient(ellipse 88% 120% at 72% 46%, #000 52%, rgba(0,0,0,.6) 68%, transparent 92%);
+  }
+}
+
+/* Closing band: vertical line of text | photo | invitation */
+.bp-close { position: relative; grid-template-columns: 76px 58% 1fr; align-items: center; padding: 84px 0; border-top: 0; }
+.bp-close__vert { position: absolute; left: 0; top: 0; bottom: 0; width: 76px; margin: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.bp-close__vert::before, .bp-close__vert::after { content: ""; flex: 1; min-height: 40px; width: 1px; background: #1C5854; opacity: .45; }
+.bp-close__vert span { writing-mode: vertical-rl; transform: rotate(180deg); padding: 16px 0;
+  font-family: var(--font-body); font-weight: 600; font-size: 16px; letter-spacing: .06em; color: #1C5854; white-space: nowrap; }
+.bp-close__media { grid-column: 2; }
+.bp-close__media img {
+  -webkit-mask-image: radial-gradient(ellipse 90% 125% at 34% 50%, #000 54%, rgba(0,0,0,.6) 70%, transparent 94%);
+          mask-image: radial-gradient(ellipse 90% 125% at 34% 50%, #000 54%, rgba(0,0,0,.6) 70%, transparent 94%);
+}
+.bp-close__text { grid-column: 3; align-items: center; text-align: center; padding: 0 clamp(20px, 3vw, 48px); }
+.bp-close__title { max-width: 9em; margin-bottom: 30px; font-size: clamp(2.2rem, 3.6vw, 3.4rem); }
+.bp-close__btn { display: flex; justify-content: center; }
+@media (max-width: 760px) {
+  .bp-close { grid-template-columns: 1fr; padding: 0 0 48px; }
+  .bp-close__vert { position: static; width: auto; order: 2; padding: 18px 20px 0; flex-direction: row; }
+  .bp-close__vert::before, .bp-close__vert::after { display: none; }
+  .bp-close__vert span { writing-mode: horizontal-tb; transform: none; padding: 0; text-align: center; white-space: normal; }
+  .bp-close__media { grid-column: 1; order: 1; }
+  .bp-close__media img { -webkit-mask-image: none; mask-image: none; }
+  .bp-close__text { grid-column: 1; order: 3; padding: 20px 20px 0; }
+}
+/* Mist v2: the fade edge dissolves completely; corners soften most. */
+@media (min-width: 641px) {
+  .hero-parallax__img {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 16%, #000 32%),
+                        radial-gradient(ellipse 115% 135% at 100% 50%, #000 62%, transparent 100%);
+    -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 16%, #000 32%),
+                        radial-gradient(ellipse 115% 135% at 100% 50%, #000 62%, transparent 100%);
+            mask-composite: intersect;
+  }
+}
+@media (min-width: 761px) {
+  .bp-close__media img {
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, rgba(0,0,0,.55) 12%, #000 26%),
+                        radial-gradient(ellipse 120% 150% at 0% 50%, #000 62%, transparent 100%);
+    -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to left, transparent 0%, rgba(0,0,0,.55) 12%, #000 26%),
+                        radial-gradient(ellipse 120% 150% at 0% 50%, #000 62%, transparent 100%);
+            mask-composite: intersect;
+  }
+}
+@media (min-width: 761px) {
+  .bp-close__media img {
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, rgba(0,0,0,.6) 5%, #000 12%),
+                        radial-gradient(ellipse 135% 160% at 0% 50%, #000 66%, transparent 100%);
+    -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to left, transparent 0%, rgba(0,0,0,.6) 5%, #000 12%),
+                        radial-gradient(ellipse 135% 160% at 0% 50%, #000 66%, transparent 100%);
+            mask-composite: intersect;
+  }
+}
