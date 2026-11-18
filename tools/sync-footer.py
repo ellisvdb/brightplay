@@ -13,10 +13,10 @@ import re, pathlib
 root = pathlib.Path(__file__).resolve().parent.parent
 
 PREFOOTER_PHOTOS = {
-    "about.html": ("assets/images/photos/close-grandma-handstack.jpg",
-                   "A laughing grandmother and grandson stacking their hands together", 1536, 608),
-    "approach.html": ("assets/images/photos/close-mom-baby-bubbles-band.jpg",
-                      "A delighted toddler reaches for soap bubbles while his smiling mother holds him on her lap", 1024, 405),
+    "about.html": ("assets/images/photos/close-grandma-handstack-full.jpg",
+                   "A laughing grandmother and grandson stacking their hands together", 1536, 1024),
+    "approach.html": ("assets/images/photos/close-mom-baby-bubbles-full.jpg",
+                      "A delighted toddler reaches for soap bubbles while his smiling mother holds him on her lap", 1024, 1536),
 }
 
 foot_pat = re.compile(r'[ \t]*<!-- shell:footer.*?</footer>\n(?:[ \t]*<!-- /shell:footer -->\n)?', re.S)

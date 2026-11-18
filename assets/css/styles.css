@@ -2914,3 +2914,13 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 @media (max-width: 900px) { .bp-foot__cols { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 540px) { .bp-foot__cols { grid-template-columns: 1fr; } }
 .bp-foot__slogan { font-weight: 500; }
+
+/* Closing band shows each photo WHOLE (never cropped). The photo column
+   sizes to the image; tall photos get a taller, narrower column. */
+@media (min-width: 761px) {
+  .bp-close { grid-template-columns: 76px auto minmax(300px, 1fr); }
+  .bp-close__media img { width: auto; height: auto; max-width: 100%; max-height: min(72vh, 640px);
+    aspect-ratio: auto; object-fit: contain; }
+}
+@media (max-width: 760px) { .bp-close__media img { width: 100%; height: auto; aspect-ratio: auto; } }
+@media (min-width: 761px) { .bp-close { grid-template-columns: 76px fit-content(58%) minmax(380px, 1fr); } .bp-close__media img { display: block; } }
