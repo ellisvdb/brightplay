@@ -78,3 +78,14 @@
   }, { threshold: 0.6 });
   io.observe(spark);
 })();
+
+/* Footer signature sparks: pop in once, the first time the footer is seen. */
+(function () {
+  var sig = document.querySelector('.bp-sig');
+  if (!sig) return;
+  if (!('IntersectionObserver' in window)) { sig.classList.add('is-lit'); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { sig.classList.add('is-lit'); io.disconnect(); } });
+  }, { threshold: 0.8 });
+  io.observe(sig);
+})();
