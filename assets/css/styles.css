@@ -2978,3 +2978,5 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 .bp-foot .bp-sig { font-size: clamp(1.45rem, 1.1rem + .9vw, 1.85rem); padding-right: 1.5em; }
 .bp-sig__spark--big   { right: -.72em; top: -.6em; }
 .bp-sig__spark--small { right: -1.22em; top: -1.04em; }
+.bp-sig__spark--small { right: -1.0em; top: -.92em; }
+.bp-sig__spark--small { right: -.94em; top: -.82em; }
