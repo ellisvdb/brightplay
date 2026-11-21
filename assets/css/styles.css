@@ -2984,3 +2984,23 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 .bp-sig__spark--small { right: -.7em; top: -.64em; }
 .bp-sig__spark--big { right: -.3em; top: -.26em; }
 .bp-sig__spark--small { right: -.52em; top: -.48em; }
+
+/* ============================================================
+   ONE SPACING RHYTHM (Nov 21): every section on every page sits the
+   same distance from its neighbors. Change --section-gap to change all.
+   Exceptions must be declared below, by name, with the reason.
+   ============================================================ */
+:root { --section-gap: clamp(96px, 12vw, 168px); --section-pad: calc(var(--section-gap) / 2); }
+main > section { padding-top: var(--section-pad) !important; padding-bottom: var(--section-pad) !important;
+  margin-top: 0 !important; margin-bottom: 0 !important; }
+
+/* Exception: the intro layout is absolutely positioned, so its stage must
+   enclose the right box and start at the polaroid's tilted top. */
+@media (min-width: 680px) { .bp-intro__stage { min-height: 632px; margin-top: -22px; } }
+/* Exception: tilted polaroids poke a few pixels past their box; compensate
+   so the visible gap stays equal. */
+main > section.bp-ways { padding-top: calc(var(--section-pad) + 7px) !important; }
+main > section.bp-studio { padding-bottom: calc(var(--section-pad) + 8px) !important; }
+/* No stray outer margins inside sections (keeps the rhythm exact). */
+main > section > .container > :first-child { margin-top: 0 !important; }
+main > section > .container > :last-child { margin-bottom: 0 !important; }

@@ -51,3 +51,5 @@ dot of the i) should replace the current header logo for now.
 
 - CLOSING BAND (prefooter): edit in index.html; tools/sync-footer.py copies it to the pages listed in PREFOOTER_PHOTOS (each with its own photo). No band on contact, client portal, or legal pages. Reserved photos: close-family-feeding.jpg for the Project ImPACT section (daily routines), close-teacher-mouse-crafts.jpg for group programs (blur the Mickey shirt first), close-mom-girl-rideon.jpg spare (tall photo; too narrow for the band).
 - LEGAL PAGES (privacy.html, client-rights.html, accessibility.html): shells only, linked from the footer bar; content needed before launch.
+
+- SPACING: every section (main > section) gets the same top/bottom padding from --section-gap in styles.css. Never add per-section margins or padding; declare any exception at the end of the "ONE SPACING RHYTHM" block with a reason.
