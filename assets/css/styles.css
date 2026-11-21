@@ -3004,3 +3004,12 @@ main > section.bp-studio { padding-bottom: calc(var(--section-pad) + 8px) !impor
 /* No stray outer margins inside sections (keeps the rhythm exact). */
 main > section > .container > :first-child { margin-top: 0 !important; }
 main > section > .container > :last-child { margin-bottom: 0 !important; }
+
+/* Footer "Visit" column: contact details slightly larger than the links,
+   spaced exactly like the link lists; invitation line in italic below. */
+.bp-foot__contact { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px;
+  font-size: 1.1875rem; line-height: 1.35; color: var(--color-text); }
+.bp-foot__contact a { color: var(--color-text); text-decoration: none; }
+.bp-foot__contact a:hover, .bp-foot__contact a:focus-visible { color: #1C5854; text-decoration: underline; text-underline-offset: 3px; }
+.bp-foot__invite { margin: 16px 0 0; font-family: var(--font-display); font-style: italic; font-size: 1.0625rem; color: #5b6166; }
+.bp-foot__invite { font-weight: 400; }
