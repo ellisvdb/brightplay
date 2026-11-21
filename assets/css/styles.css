@@ -2469,7 +2469,7 @@ main.has-parallax-hero {
 
 /* Eyebrows: darker clay and bold so they read clearly in any light
    (old #C08A73 was too faint on cream). */
-.bp-eyebrow { color: #9A5A3F; font-weight: 700; font-size: 16px; }
+.bp-eyebrow { color: #BA4A22; font-weight: 700; font-size: 16px; }  /* sunset terracotta (was #9A5A3F, Nov 21) */
 
 /* -------- Different personalities (centered, after the intro) -------- */
 .bp-kinds { padding: clamp(64px, 9vw, 112px) var(--gutter, 24px); text-align: center; }
@@ -2481,7 +2481,7 @@ main.has-parallax-hero {
 }
 .bp-kinds__kicker {
   font-family: var(--font-display); font-style: italic; font-weight: 500;
-  font-size: clamp(1.375rem, 1.1rem + 1vw, 1.75rem); color: #9A5A3F; margin: 0 0 28px;
+  font-size: clamp(1.375rem, 1.1rem + 1vw, 1.75rem); color: #BA4A22; margin: 0 0 28px;
 }
 .bp-kinds__types {
   font-family: var(--font-display); font-weight: 500; color: var(--color-text);
@@ -2534,7 +2534,7 @@ main.has-parallax-hero {
 }
 .bp-meet__photo {
   flex: 0 0 auto; width: 76px; height: 76px; border-radius: 50%; overflow: hidden;
-  display: grid; place-items: center; background: #E9DED3; color: #9A5A3F;
+  display: grid; place-items: center; background: #E9DED3; color: #BA4A22;
   font-family: var(--font-display); font-size: 2rem; font-weight: 500;
   box-shadow: 0 0 0 3px #fff, 0 4px 14px rgba(0,0,0,.10);
 }
@@ -2658,17 +2658,17 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 .bp-offer__card { display: flex; flex-direction: column; padding: clamp(26px, 3vw, 36px) clamp(24px, 3vw, 36px) 28px; }
 .bp-offer__card .bp-ways__card-title { margin: 0 0 6px; }
 .bp-offer__label { font-family: var(--font-body); font-size: 16px; font-weight: 700; letter-spacing: .09em;
-  text-transform: uppercase; color: #9A5A3F; margin: 0 0 14px; }
+  text-transform: uppercase; color: #BA4A22; margin: 0 0 14px; }
 .bp-offer__label--asis { text-transform: none; }
 .bp-ways .bp-offer__text { font-size: 1.125rem; line-height: 1.6; color: var(--color-text); margin: 0 0 22px; text-wrap: pretty; }
 .bp-offer__where { margin: auto 0 0; padding-top: 16px; border-top: 1px solid rgba(44,49,53,.12);
   font-size: 1.0625rem; color: var(--color-text-soft, #5b6166); }
 .bp-ways .bp-offer__where { font-size: 1.0625rem; line-height: 1.5; }
-.bp-offer__soon { font-style: italic; font-weight: 700; color: #9A5A3F; }
+.bp-offer__soon { font-style: italic; font-weight: 700; color: #BA4A22; }
 .bp-ways__inner { max-width: 1040px; }
 @media (max-width: 700px) { .bp-offer__grid { grid-template-columns: 1fr; } }
 
-.bp-ways .bp-offer__card .bp-offer__label { color: #9A5A3F; margin: 0 0 14px; font-size: 16px; line-height: 1.4; }
+.bp-ways .bp-offer__card .bp-offer__label { color: #BA4A22; margin: 0 0 14px; font-size: 16px; line-height: 1.4; }
 .bp-ways .bp-offer__card .bp-offer__where { color: var(--color-text-soft, #5b6166); margin: auto 0 0; }
 
 .bp-offer__lead { font-weight: 700; color: var(--color-text); }
@@ -2692,14 +2692,14 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 .bp-studio__link a { color: #1C5854; font-weight: 700; text-decoration: none; border-bottom: 1.5px solid rgba(28,88,84,.35); padding-bottom: 2px; }
 .bp-studio__link a:hover, .bp-studio__link a:focus-visible { border-bottom-color: var(--color-accent); }
 
-.bp-studio .bp-studio__intro .bp-eyebrow { color: #9A5A3F; margin: 0 0 12px; }
+.bp-studio .bp-studio__intro .bp-eyebrow { color: #BA4A22; margin: 0 0 12px; }
 .bp-studio .offset__pol .bp-polaroid__caption { height: auto; min-height: 64px; padding: 10px 8px; font-size: clamp(16px, 1.55vw, 20px); line-height: 1.25; text-align: center; }
 
 /* -------- Worth looking forward to: family quotes -------- */
 .bp-voices { background: #EEF2EC; padding: clamp(64px, 8vw, 104px) 24px; }
 .bp-voices[hidden] { display: none; }
 .bp-voices__inner { max-width: 980px; margin: 0 auto; text-align: center; }
-.bp-voices .bp-voices__inner .bp-eyebrow { display: block; text-align: center; color: #9A5A3F; margin: 0 0 12px; }
+.bp-voices .bp-voices__inner .bp-eyebrow { display: block; text-align: center; color: #BA4A22; margin: 0 0 12px; }
 .bp-voices__title { font-family: var(--font-display); font-size: var(--h-section-size); font-weight: var(--h-section-weight);
   color: #1C5854; line-height: 1.12; margin: 0 0 40px; }
 .bp-voices__spark { display: block; width: 30px; height: 30px; margin: 0 auto 18px; }
@@ -2749,7 +2749,7 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 
 /* -------- Approach page (skeleton) -------- */
 .approach__title { font-family: var(--font-display); font-size: var(--h-section-size); font-weight: var(--h-section-weight); color: #1C5854; margin: 0; }
-.approach-section .bp-eyebrow { color: #9A5A3F; }
+.approach-section .bp-eyebrow { color: #BA4A22; }
 .approach__h2 { font-family: var(--font-display); font-size: var(--h-card-size); font-weight: var(--h-card-weight); color: #1C5854; margin: 0; }
 
 .bp-start__more { margin: 28px 0 0; font-size: 1.0625rem; }
@@ -3005,10 +3005,14 @@ main > section.bp-studio { padding-bottom: calc(var(--section-pad) + 8px) !impor
 main > section > .container > :first-child { margin-top: 0 !important; }
 main > section > .container > :last-child { margin-bottom: 0 !important; }
 
-/* Footer "Visit" column: contact details slightly larger than the links,
-   spaced exactly like the link lists; invitation line in italic below. */
-.bp-foot__contact { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px;
-  font-size: 1.1875rem; line-height: 1.35; color: var(--color-text); }
+/* Footer "Visit" column: contact details set like an address block in a
+   written document: same size, regular line spacing, no gaps between lines.
+   Studio name in regular weight so the "Visit" heading leads, as in the
+   other three columns. Invitation line in italic below. */
+.bp-foot__contact { list-style: none; margin: 0; padding: 0; display: block;
+  font-size: 1.1875rem; line-height: 1.5; color: var(--color-text); }
+.bp-foot__contact li { margin: 0; }
+.bp-foot__contact strong { font-weight: 400; }
 .bp-foot__contact a { color: var(--color-text); text-decoration: none; }
 .bp-foot__contact a:hover, .bp-foot__contact a:focus-visible { color: #1C5854; text-decoration: underline; text-underline-offset: 3px; }
 .bp-foot__invite { margin: 16px 0 0; font-family: var(--font-display); font-style: italic; font-size: 1.0625rem; color: #5b6166; }
