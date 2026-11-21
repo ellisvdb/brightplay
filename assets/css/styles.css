@@ -2924,3 +2924,30 @@ sup.tm { font-size: .55em; line-height: 0; vertical-align: super; margin-left: .
 }
 @media (max-width: 760px) { .bp-close__media img { width: 100%; height: auto; aspect-ratio: auto; } }
 @media (min-width: 761px) { .bp-close { grid-template-columns: 76px fit-content(58%) minmax(380px, 1fr); } .bp-close__media img { display: block; } }
+
+/* Hero fix (Nov 20): the photo always shows WHOLE (never cropped), so its
+   built-in fade and everyone in it stay visible at every window size.
+   The hero's height follows the photo, capped at the screen height. */
+@media (min-width: 641px) {
+  :root {
+    --heroImgH: min(calc(100vw * 0.80 / 1.6996), calc(100svh - var(--hdr)));
+    --heroH: calc(var(--hdr) + var(--heroImgH));
+  }
+  .hero-parallax { height: var(--heroH); }
+  main.has-parallax-hero { margin-top: var(--heroH); }
+  .hero-parallax__img {
+    top: var(--hdr); left: auto; right: 0; bottom: auto;
+    height: var(--heroImgH); width: calc(var(--heroImgH) * 1.6996);
+    object-fit: cover; object-position: 100% 50%;
+  }
+}
+@media (min-width: 641px) and (prefers-reduced-motion: reduce) {
+  main.has-parallax-hero { margin-top: 0; }
+}
+/* Narrow tablets/windows: scale the hero text so it fits the shorter hero. */
+@media (min-width: 641px) and (max-width: 1000px) {
+  .hero-parallax__content { padding-bottom: 0; }
+  .hero-parallax .hero-parallax__title { font-size: 4.5vw; margin-bottom: 1.6vw; }
+  .hero-parallax .hero-parallax__sub { font-size: max(15px, 1.9vw); margin-bottom: 2.4vw; max-width: 15em; }
+  .hero-parallax .btn--on-photo { font-size: 16px; padding: 12px 22px; }
+}
