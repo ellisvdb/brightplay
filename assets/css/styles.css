@@ -3013,3 +3013,5 @@ main > section > .container > :last-child { margin-bottom: 0 !important; }
 .bp-foot__contact a:hover, .bp-foot__contact a:focus-visible { color: #1C5854; text-decoration: underline; text-underline-offset: 3px; }
 .bp-foot__invite { margin: 16px 0 0; font-family: var(--font-display); font-style: italic; font-size: 1.0625rem; color: #5b6166; }
 .bp-foot__invite { font-weight: 400; }
+.bp-foot__invite a { color: inherit; text-decoration: none; }
+.bp-foot__invite a:hover, .bp-foot__invite a:focus-visible { color: #1C5854; text-decoration: underline; text-underline-offset: 3px; }
