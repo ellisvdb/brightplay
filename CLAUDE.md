@@ -53,3 +53,5 @@ dot of the i) should replace the current header logo for now.
 - LEGAL PAGES (privacy.html, client-rights.html, accessibility.html): shells only, linked from the footer bar; content needed before launch.
 
 - SPACING: every section (main > section) gets the same top/bottom padding from --section-gap in styles.css. Never add per-section margins or padding; declare any exception at the end of the "ONE SPACING RHYTHM" block with a reason.
+
+- TRADEMARK SYMBOL (Ellis, Nov 22 2026): use ™ after BrightPlay on the site and in legal documents for now. Switch to ® ONLY after the US registration certificate actually issues (application published Nov 3 2026; opposition period ends Dec 3 2026; if the application is still intent-to-use, a Notice of Allowance and Statement of Use come first). When it registers, update the site, the Terms of Use trademark line, and all documents.
