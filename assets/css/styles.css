@@ -3055,3 +3055,41 @@ main > section > .container > :last-child { margin-bottom: 0 !important; }
 .bp-studio__title, .bp-voices__title, .approach__title { color: var(--teal-section); }
 .bp-floatbox__title, .bp-ways__card-title, .bp-step__title, .why-card__name,
 .approach__h2 { color: var(--teal-card); }
+
+/* ============================================================
+   FOOTER v3 (Nov 23): simple. Signature + the top-menu links,
+   one contact line, one resources line, legal bar. Replaces the
+   four-column footer (.bp-foot__cols styles above are unused).
+   ============================================================ */
+.bp-foot2__row { display: flex; justify-content: space-between; align-items: center; gap: 24px 48px; flex-wrap: wrap; }
+.bp-foot2__row .bp-sig { margin: 0; font-size: 1.5rem; font-weight: 700; }
+.bp-foot2__nav { display: flex; flex-wrap: wrap; gap: 10px 32px; }
+.bp-foot2__nav a { font-family: var(--font-display); font-size: 1.375rem; font-weight: 500; color: #1C5854; text-decoration: none; }
+.bp-foot2__nav a:hover, .bp-foot2__nav a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.bp-foot2__visit, .bp-foot2__res { max-width: none !important; margin: 28px 0 0; padding-top: 24px; border-top: 1px solid rgba(44,49,53,.10);
+  display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 1.0625rem; color: var(--color-text); }
+.bp-foot2__res { margin-top: 20px; padding-top: 20px; }
+.bp-foot2__visit a, .bp-foot2__res a { color: var(--color-text); text-decoration: none; }
+.bp-foot2__visit a:hover, .bp-foot2__visit a:focus-visible, .bp-foot2__res a:hover, .bp-foot2__res a:focus-visible { color: #1C5854; text-decoration: underline; text-underline-offset: 3px; }
+.bp-foot2__visit .bp-foot2__invite { font-family: var(--font-display); font-style: italic; color: #5b6166; }
+.bp-foot2__label { font-weight: 700; color: #1C5854; }
+
+/* ============================================================
+   LEGAL PAGES + APPROACH TEXT (Nov 23): calm, readable document
+   ============================================================ */
+.legal__inner { max-width: 48rem; }
+.legal p, .legal li { font-size: 1.125rem; line-height: 1.65; color: var(--color-text); }
+.legal p { margin: 0 0 1em; }
+.legal .legal__date { color: #5b6166; margin: 14px 0 28px; font-size: 1.0625rem; }
+.legal__h2 { font-family: var(--font-display); font-weight: var(--h-card-weight); font-size: var(--h-card-size); color: var(--teal-card); line-height: 1.2; margin: 2.2em 0 .6em; }
+.legal__h3 { font-weight: 700; font-size: 1.1875rem; color: var(--color-text); margin: 1.6em 0 .5em; }
+.legal ul, .legal ol { margin: 0 0 1.2em; padding-left: 1.4em; }
+.legal li { margin: .45em 0; padding-left: .2em; }
+.legal a, .approach-section p a { color: #1C5854; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.legal__todo { background: #FCE6D6; color: inherit; padding: 0 .2em; border-radius: 3px; }
+.approach-section .container > p:not(.bp-eyebrow), .approach-section .approach__steps, .approach-intro .container > p:not(.bp-eyebrow) { max-width: 46rem; font-size: 1.125rem; line-height: 1.65; color: var(--color-text); }
+.approach-section .approach__h2 { margin: 0 0 .5em; }
+.approach-section .approach__where { font-style: italic; color: #5b6166; margin: 0 0 1em; }
+.approach__steps { padding-left: 1.4em; }
+.approach__steps li { margin: .5em 0; }
+.approach-intro .container > p:not(.bp-eyebrow) { margin: 18px 0 0; }

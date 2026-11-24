@@ -50,7 +50,7 @@ dot of the i) should replace the current header logo for now.
 - FOOTER: identical on every page. Edit it in index.html only, then run: python3 tools/sync-footer.py
 
 - CLOSING BAND (prefooter): edit in index.html; tools/sync-footer.py copies it to the pages listed in PREFOOTER_PHOTOS (each with its own photo). No band on contact, client portal, or legal pages. Reserved photos: close-family-feeding.jpg for the Project ImPACT section (daily routines), close-teacher-mouse-crafts.jpg for group programs (blur the Mickey shirt first), close-mom-girl-rideon.jpg spare (tall photo; too narrow for the band).
-- LEGAL PAGES (privacy.html, client-rights.html, accessibility.html): shells only, linked from the footer bar; content needed before launch.
+- LEGAL PAGES (privacy.html, client-rights.html, accessibility.html, terms.html, funding.html): drafted Nov 23 2026 from Ellis's Word drafts (built with legal2 generator); Ellis is reviewing. Peach-highlighted [brackets] (class legal__todo) = still needs her input (effective dates). Footer v3 (Nov 23): signature + top-menu links, one contact line, one resources line, legal bar; edit in index.html and run tools/sync-footer.py.
 
 - SPACING: every section (main > section) gets the same top/bottom padding from --section-gap in styles.css. Never add per-section margins or padding; declare any exception at the end of the "ONE SPACING RHYTHM" block with a reason.
 
