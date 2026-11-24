@@ -3090,3 +3090,8 @@ main > section > .container > :last-child { margin-bottom: 0 !important; }
 .approach__steps { padding-left: 1.4em; }
 .approach__steps li { margin: .5em 0; }
 .approach-intro .container > p:not(.bp-eyebrow) { margin: 18px 0 0; }
+
+/* Approach page: "Suited for" / "How it unfolds" subheads (Nov 23) */
+.approach__sub { font-weight: 700; font-size: 1.1875rem; color: var(--color-text); margin: 1.5em 0 .4em; }
+.approach__list { max-width: 46rem; padding-left: 1.4em; font-size: 1.125rem; line-height: 1.65; }
+.approach__list li { margin: .5em 0; }
