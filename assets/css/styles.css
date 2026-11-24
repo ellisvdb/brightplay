@@ -3057,22 +3057,19 @@ main > section > .container > :last-child { margin-bottom: 0 !important; }
 .approach__h2 { color: var(--teal-card); }
 
 /* ============================================================
-   FOOTER v3 (Nov 23): simple. Signature + the top-menu links,
-   one contact line, one resources line, legal bar. Replaces the
-   four-column footer (.bp-foot__cols styles above are unused).
+   FOOTER v4 (Nov 23): three stacked columns spread across the page
+   (BrightPlay menu left, Resources center, Visit right), then the
+   signature centered on its own row, then the legal bar.
    ============================================================ */
-.bp-foot2__row { display: flex; justify-content: space-between; align-items: center; gap: 24px 48px; flex-wrap: wrap; }
-.bp-foot2__row .bp-sig { margin: 0; font-size: 1.5rem; font-weight: 700; }
-.bp-foot2__nav { display: flex; flex-wrap: wrap; gap: 10px 32px; }
-.bp-foot2__nav a { font-family: var(--font-display); font-size: 1.375rem; font-weight: 500; color: #1C5854; text-decoration: none; }
-.bp-foot2__nav a:hover, .bp-foot2__nav a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
-.bp-foot2__visit, .bp-foot2__res { max-width: none !important; margin: 28px 0 0; padding-top: 24px; border-top: 1px solid rgba(44,49,53,.10);
-  display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 1.0625rem; color: var(--color-text); }
-.bp-foot2__res { margin-top: 20px; padding-top: 20px; }
-.bp-foot2__visit a, .bp-foot2__res a { color: var(--color-text); text-decoration: none; }
-.bp-foot2__visit a:hover, .bp-foot2__visit a:focus-visible, .bp-foot2__res a:hover, .bp-foot2__res a:focus-visible { color: #1C5854; text-decoration: underline; text-underline-offset: 3px; }
-.bp-foot2__visit .bp-foot2__invite { font-family: var(--font-display); font-style: italic; color: #5b6166; }
-.bp-foot2__label { font-weight: 700; color: #1C5854; }
+.bp-foot3 { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 40px clamp(24px, 4vw, 64px); align-items: start; }
+.bp-foot3 .bp-foot__contact { display: block; line-height: 1.5; }
+.bp-foot3 .bp-foot__contact strong { font-weight: 400; }
+.bp-foot3__sig { display: flex; justify-content: center; margin-top: clamp(40px, 5vw, 64px); }
+.bp-foot3__sig .bp-sig { margin: 0; font-size: 1.5rem; font-weight: 700; padding-right: .6em; }
+@media (max-width: 760px) {
+  .bp-foot3 { grid-template-columns: 1fr; }
+  .bp-foot3__sig { justify-content: flex-start; }
+}
 
 /* ============================================================
    LEGAL PAGES + APPROACH TEXT (Nov 23): calm, readable document
