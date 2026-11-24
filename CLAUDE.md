@@ -55,3 +55,5 @@ dot of the i) should replace the current header logo for now.
 - SPACING: every section (main > section) gets the same top/bottom padding from --section-gap in styles.css. Never add per-section margins or padding; declare any exception at the end of the "ONE SPACING RHYTHM" block with a reason.
 
 - TRADEMARK SYMBOL (Ellis, Nov 22 2026): use ™ after BrightPlay on the site and in legal documents for now. Switch to ® ONLY after the US registration certificate actually issues (application published Nov 3 2026; opposition period ends Dec 3 2026; if the application is still intent-to-use, a Notice of Allowance and Statement of Use come first). When it registers, update the site, the Terms of Use trademark line, and all documents.
+
+- LINKS (Ellis, Nov 23 2026): never underline links at rest, anywhere on the site. Links inside sentences are bold teal (#1C5854) so they differ from body text by more than color (keeps the WCAG 2.2 AA claim); underline only on hover or keyboard focus. Current page in the menu: bold teal, no underline. Rule lives at the end of styles.css ("LINKS WITHOUT UNDERLINES").

@@ -3126,3 +3126,21 @@ main > section > .container > :last-child { margin-bottom: 0 !important; }
   .approach-pick__item .bp-polaroid { width: 100%; max-width: none; }
   .approach-pick__item .bp-polaroid__caption { font-size: 15px; height: 56px; padding: 0 6px; text-align: center; }
 }
+
+/* ============================================================
+   LINKS WITHOUT UNDERLINES (Nov 23, Ellis's rule): no link is
+   underlined at rest. Links inside sentences are bold teal, so
+   they stand out by more than color alone (WCAG 2.2 AA, 1.4.1);
+   an underline appears only on hover or keyboard focus.
+   ============================================================ */
+a { text-decoration: none; }
+.site-nav__link[aria-current="page"] { text-decoration: none; color: #1C5854; font-weight: 700; }
+.feature__link, .resources-list a, .site-footer__credits a { text-decoration: none; }
+.bp-studio__link a, .bp-start__more a { border-bottom: 0; padding-bottom: 0; }
+main p a:not([class*="btn"]):not([class*="pill"]),
+main li a:not([class*="btn"]):not([class*="pill"]),
+.legal a, .approach-section p a { color: #1C5854; font-weight: 700; text-decoration: none; }
+main p a:not([class*="btn"]):not([class*="pill"]):hover,
+main p a:not([class*="btn"]):not([class*="pill"]):focus-visible,
+main li a:not([class*="btn"]):not([class*="pill"]):hover,
+main li a:not([class*="btn"]):not([class*="pill"]):focus-visible { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
