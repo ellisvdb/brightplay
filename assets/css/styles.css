@@ -3095,3 +3095,34 @@ main > section > .container > :last-child { margin-bottom: 0 !important; }
 .approach__sub { font-weight: 700; font-size: 1.1875rem; color: var(--color-text); margin: 1.5em 0 .4em; }
 .approach__list { max-width: 46rem; padding-left: 1.4em; font-size: 1.125rem; line-height: 1.65; }
 .approach__list li { margin: .5em 0; }
+
+/* ============================================================
+   APPROACH PAGE v2 (Nov 23): lede, 2x2 polaroid picker, and
+   two-column approach sections (what it is | suited for card).
+   ============================================================ */
+.approach__lede { max-width: 46rem; font-size: 1.25rem; line-height: 1.65; color: var(--color-text); margin: 20px 0 0; }
+.approach-pick { display: grid; grid-template-columns: repeat(2, auto); justify-content: center; gap: 44px 64px; margin: clamp(48px, 6vw, 80px) auto 0; }
+.approach-pick__item { display: block; text-decoration: none; color: inherit; transition: transform .25s ease; }
+.approach-pick__item .bp-polaroid { width: 300px; }
+.approach-pick__item--1 { transform: rotate(-2.5deg); }
+.approach-pick__item--2 { transform: rotate(2deg) translateY(14px); }
+.approach-pick__item--3 { transform: rotate(1.5deg); }
+.approach-pick__item--4 { transform: rotate(-2deg) translateY(14px); }
+.approach-pick__item:hover, .approach-pick__item:focus-visible { transform: rotate(0) scale(1.03); }
+.approach-pick__item .bp-polaroid__caption { font-size: 21px; }
+.approach-section { scroll-margin-top: calc(var(--hdr, 80px) + 16px); }
+.approach__grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: start; margin-top: 20px; }
+.approach__main p, .approach__card p, .approach__card li { font-size: 1.125rem; line-height: 1.65; color: var(--color-text); }
+.approach__main p { margin: 0 0 1em; }
+.approach__card { background: #fff; border-radius: 16px; padding: 28px 32px; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(28,88,84,.07); }
+.approach__card .approach__sub:first-child { margin-top: 0; }
+.approach__card p { margin: 0 0 .6em; }
+.approach__more { font-size: 1.0625rem !important; color: #5b6166 !important; }
+@media (max-width: 860px) {
+  .approach__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .approach-pick { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 18px; }
+  .approach-pick__item .bp-polaroid { width: 100%; max-width: none; }
+  .approach-pick__item .bp-polaroid__caption { font-size: 15px; height: 56px; padding: 0 6px; text-align: center; }
+}
