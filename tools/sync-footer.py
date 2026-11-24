@@ -15,7 +15,7 @@ root = pathlib.Path(__file__).resolve().parent.parent
 PREFOOTER_PHOTOS = {
     "about.html": ("assets/images/photos/close-grandma-handstack-full.jpg",
                    "A laughing grandmother and grandson stacking their hands together", 1536, 1024),
-    "approach.html": ("assets/images/photos/close-mom-baby-bubbles-full.jpg",
+    "approach.html": ("assets/images/photos/close-mom-baby-bubbles-faded.jpg",
                       "A delighted toddler reaches for soap bubbles while his smiling mother holds him on her lap", 1024, 1536),
 }
 
