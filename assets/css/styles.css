@@ -3144,3 +3144,4 @@ main p a:not([class*="btn"]):not([class*="pill"]):hover,
 main p a:not([class*="btn"]):not([class*="pill"]):focus-visible,
 main li a:not([class*="btn"]):not([class*="pill"]):hover,
 main li a:not([class*="btn"]):not([class*="pill"]):focus-visible { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+.approach-pick { scroll-margin-top: calc(var(--hdr, 80px) + 24px); }

@@ -42,16 +42,30 @@
   </header>
   <!-- /shell:header -->
 
-  <main id="main">
+  <!-- APPROACH HERO (Nov 24): mirrors the homepage hero (photo right, built-in fade left). -->
+  <section class="hero-parallax" aria-label="Approach introduction">
+    <img class="hero-parallax__img"
+         src="assets/images/photos/hero-approach-blanket-faded.jpg"
+         alt="A laughing toddler swings in a blanket held between his smiling parents, on a soft rug in a bright living room."
+         width="1599" height="941" />
+    <div class="hero-parallax__overlay photo-scrim"></div>
+    <div class="hero-parallax__content">
+      <h1 class="hero-parallax__title on-photo__title"><span class="hero-line">The joy</span> <span class="hero-line">is in the</span> <span class="hero-line">doing.</span></h1>
+      <p class="hero-parallax__sub on-photo__sub">Discover how BrightPlay brings parents and children together through play.</p>
+      <p class="hero-parallax__cta"><a class="btn btn--primary btn--on-photo" href="#approaches">Explore</a></p>
+    </div>
+  </section>
+
+  <main id="main" class="has-parallax-hero">
     <!-- APPROACH PAGE v2 (Nov 23): intro on play + connection, 2x2 polaroid picker (PLACEHOLDER AI images),
          then one section per approach: what it is (left) and suited for / how it unfolds (card, right).
          Rule: never repeat homepage card copy here. -->
     <section class="section approach-intro">
       <div class="container">
         <p class="bp-eyebrow">Approach</p>
-        <h1 class="approach__title">Why play works.</h1>
+        <h2 class="approach__title">Why play works.</h2>
         <p class="approach__lede">Play is how children do their most important work. A game of peekaboo or a tower that topples asks a child to watch, wait, take a turn, handle a surprise, and find a way to ask for &ldquo;again.&rdquo; Each of those moments exercises the attention, language, and self-control that developing bodies and brains are building, and the warmth of a trusted grown-up gives that learning a safe place to land. BrightPlay brings both together, playful practice and close connection, in four approaches. Choose one to see what it involves.</p>
-        <div class="approach-pick">
+        <div class="approach-pick" id="approaches">
           <a class="approach-pick__item approach-pick__item--1" href="#theraplay">
             <figure class="bp-polaroid">
               <div class="bp-polaroid__photo"><img src="assets/images/photos/PLACEHOLDER-ai-approach-theraplay.jpg" alt="PLACEHOLDER: a father and daughter laughing as she punches through a newspaper he holds" width="900" height="900" loading="lazy" decoding="async"></div>
